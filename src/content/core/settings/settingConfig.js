@@ -2181,9 +2181,9 @@ export const SETTINGS_CONFIG = {
                 },
             },
             hideRoValraSettingsNavbarDropdown: {
-                label: 'Hide RoValra Settings from the navigation bar dropdown',
+                label: 'Hide ufi Settings from the navigation bar dropdown',
                 description:
-                    'Removes the RoValra Settings shortcut from the Roblox settings dropdown in the top navigation bar.',
+                    'Removes the ufi Settings shortcut from the Roblox settings dropdown in the top navigation bar.',
                 type: 'checkbox',
                 default: false,
             },

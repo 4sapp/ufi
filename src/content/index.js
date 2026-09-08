@@ -666,8 +666,8 @@ async function initializePage() {
         const endTime = performance.now();
 
         console.log(
-            `%cRoValra Initialized`,
-            'font-size: 1.5em; color: #FF4500;',
+            `%cufi Initialized`,
+            'font-size: 1.5em; color: #ff6b8b;',
             `\n(Observer: ${observerStatus})` +
                 `\nFeature Load Time: ${(endTime - featureStartTime).toFixed(2)}ms` +
                 `\nTotal Load Time: ${(endTime - startTime).toFixed(2)}ms`,
@@ -754,7 +754,7 @@ async function handleUrlChange() {
 
     if (currentPath !== lastPath) {
         console.log(
-            `%cRoValra: URL changed from ${lastPath} to ${currentPath}`,
+            `%cufi: URL changed from ${lastPath} to ${currentPath}`,
             'color: #FF4500;',
         );
         lastPath = currentPath;

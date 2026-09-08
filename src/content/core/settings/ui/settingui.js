@@ -221,7 +221,7 @@ export async function buildSettingsPage({
         'width: 35px; height: 35px; margin-left: 5px;  user-select: none;';
 
     let rovalraHeader = document.createElement('h1');
-    rovalraHeader.textContent = 'RoValra Settings';
+    rovalraHeader.textContent = 'ufi Settings';
     rovalraHeader.style.margin = '0';
     rovalraHeader.style.color = 'var(--rovalra-main-text-color)';
 
