@@ -54,9 +54,9 @@ function renderCardContent(card) {
     const score = candidate?.score ?? null;
 
     const preferredRegionDisplay =
-        mode === 'miami' ? 'Miami' : 'Best Connection (Lowest Latency)';
+        mode === 'miami' ? 'Miami (Florida)' : 'Mejor Conexión (Menor Ping)';
 
-    let detectedRegionHtml = '<span class="region-badge unknown">None</span>';
+    let detectedRegionHtml = '<span class="region-badge unknown">Ninguno</span>';
     let regionTruthNoteHtml = '';
 
     if (classification) {
@@ -66,19 +66,19 @@ function renderCardContent(card) {
 
         if (mode === 'miami') {
             if (classification.level === 'miami') {
-                regionTruthNoteHtml = `<span class="region-truth-note">✓ Verified Miami Datacenter (${candidate.datacenterId ? `DC #${candidate.datacenterId}` : 'Direct match'})</span>`;
+                regionTruthNoteHtml = `<span class="region-truth-note">✓ Datacenter de Miami Verificado (${candidate.datacenterId ? `DC #${candidate.datacenterId}` : 'Coincidencia directa'})</span>`;
             } else if (classification.level === 'florida') {
-                regionTruthNoteHtml = `<span class="region-truth-note">Exact Miami unavailable at city level. Using closest verified Florida server.</span>`;
+                regionTruthNoteHtml = `<span class="region-truth-note">Miami no disponible a nivel de ciudad. Usando el servidor más cercano en Florida.</span>`;
             } else if (classification.level === 'us_east') {
-                regionTruthNoteHtml = `<span class="region-truth-note">Miami preference unavailable at city level. Using closest available US East server (${classification.subLabel}).</span>`;
+                regionTruthNoteHtml = `<span class="region-truth-note">Miami no disponible en este juego. Usando servidor más cercano en US East (${classification.subLabel}).</span>`;
             } else {
-                regionTruthNoteHtml = `<span class="region-truth-note">No US East or Florida servers found. Showing fallback candidate (${classification.label}).</span>`;
+                regionTruthNoteHtml = `<span class="region-truth-note">Mostrando mejor servidor alternativo disponible (${classification.label}).</span>`;
             }
         } else {
             if (candidate.latencyMs !== null) {
-                regionTruthNoteHtml = `<span class="region-truth-note">Measured roundtrip latency: ~${candidate.latencyMs}ms (${classification.label})</span>`;
+                regionTruthNoteHtml = `<span class="region-truth-note">Latencia estimada: ~${candidate.latencyMs}ms (${classification.label})</span>`;
             } else {
-                regionTruthNoteHtml = `<span class="region-truth-note">Region: ${classification.label} (${classification.confidence})</span>`;
+                regionTruthNoteHtml = `<span class="region-truth-note">Región: ${classification.label} (${classification.confidence})</span>`;
             }
         }
     }
@@ -92,24 +92,24 @@ function renderCardContent(card) {
     const scoreDisplay = score !== null ? `${score} / 100` : '-';
 
     const mainSearchBtnLabel = isSearching
-        ? 'Searching...'
+        ? 'Buscando...'
         : mode === 'miami'
-          ? 'Find Miami Server'
-          : 'Find Best Connection';
+          ? 'Buscar Servidor Miami'
+          : 'Buscar Mejor Conexión';
 
     const cardInnerHtml = `
         <div class="miami-finder-header">
             <div class="header-title-group">
                 <span class="header-icon">${createPalmSvg()}</span>
-                <span class="header-title">Miami Server Finder</span>
-                <span class="header-badge">${mode === 'miami' ? 'Miami Priority' : 'Best Ping'}</span>
+                <span class="header-title">ufi • Miami Server Finder</span>
+                <span class="header-badge">${mode === 'miami' ? 'Modo Miami' : 'Menor Ping'}</span>
             </div>
             <div class="header-modes">
                 <button type="button" class="mode-pill ${mode === 'miami' ? 'active' : ''}" data-set-mode="miami">
                     Miami
                 </button>
                 <button type="button" class="mode-pill ${mode === 'best_connection' ? 'active' : ''}" data-set-mode="best_connection">
-                    Best Connection
+                    Mejor Conexión
                 </button>
             </div>
         </div>
@@ -117,32 +117,32 @@ function renderCardContent(card) {
         <div class="miami-finder-body">
             <div class="server-info-grid">
                 <div class="info-field">
-                    <span class="field-label">Preferred region</span>
+                    <span class="field-label">Región preferida</span>
                     <span class="field-value">${DOMPurify.sanitize(preferredRegionDisplay)}</span>
                 </div>
                 <div class="info-field">
-                    <span class="field-label">Detected region</span>
+                    <span class="field-label">Región detectada</span>
                     <span class="field-value">${detectedRegionHtml}</span>
                 </div>
                 <div class="info-field">
-                    <span class="field-label">Players</span>
+                    <span class="field-label">Jugadores</span>
                     <span class="field-value">${DOMPurify.sanitize(playersDisplay)}</span>
                 </div>
                 <div class="info-field">
-                    <span class="field-label">Server ID</span>
+                    <span class="field-label">ID del Servidor</span>
                     <span class="field-value">
                         <span class="server-id-label" title="${DOMPurify.sanitize(serverIdDisplay)}">
                             ${server ? `${server.id.substring(0, 12)}...` : '-'}
                         </span>
                         ${
                             server
-                                ? `<button type="button" class="copy-id-btn" data-copy-id="${server.id}" title="Copy Server JobId">${createCopySvg()}</button>`
+                                ? `<button type="button" class="copy-id-btn" data-copy-id="${server.id}" title="Copiar JobId del Servidor">${createCopySvg()}</button>`
                                 : ''
                         }
                     </span>
                 </div>
                 <div class="info-field">
-                    <span class="field-label">Connection score</span>
+                    <span class="field-label">Puntaje de conexión</span>
                     <span class="field-value score-value">${DOMPurify.sanitize(scoreDisplay)}</span>
                 </div>
             </div>
@@ -163,10 +163,10 @@ function renderCardContent(card) {
                 ${DOMPurify.sanitize(mainSearchBtnLabel)}
             </button>
             <button type="button" class="btn-finder-action join" id="btn-join-server" ${!server || isSearching ? 'disabled' : ''}>
-                Join Server
+                Unirse al Servidor
             </button>
             <button type="button" class="btn-finder-action secondary" id="btn-find-another" ${!server || isSearching ? 'disabled' : ''}>
-                Find Another
+                Buscar Otro
             </button>
         </div>
     `;

@@ -41,7 +41,7 @@ export function addCustomButton(debouncedAddPopoverButton) {
     if (rovalraButtonAdded) return;
 
     const existingButton = menuList.querySelector(
-        'li.menu-option > a > span.font-caption-header[textContent="RoValra Settings"]',
+        'li.menu-option > a > span.font-caption-header[textContent="ufi Settings"]',
     );
     if (existingButton) {
         rovalraButtonAdded = true;
@@ -72,7 +72,7 @@ export function addCustomButton(debouncedAddPopoverButton) {
 
     const newButtonSpan = document.createElement('span');
     newButtonSpan.classList.add('font-caption-header');
-    newButtonSpan.textContent = 'RoValra Settings';
+    newButtonSpan.textContent = 'ufi Settings';
     newButtonSpan.style.fontSize = '12px';
 
     const logo = document.createElement('img');
@@ -156,7 +156,7 @@ export async function addPopoverButton() {
     logo.src = assets.rovalraIcon;
     Object.assign(logo.style, { width: '18px', height: '18px' });
 
-    const buttonText = document.createTextNode('RoValra Settings');
+    const buttonText = document.createTextNode('ufi Settings');
     newButtonLink.append(logo, buttonText);
     newButtonListItem.appendChild(newButtonLink);
 

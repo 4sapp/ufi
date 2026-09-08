@@ -419,19 +419,19 @@
             "accountStanding": "Account Standing"
         },
         "info": {
-            "title": "RoValra Information!",
-            "desc1": "RoValra is an extension that's trying to make basic quality-of-life features free and accessible to everyone by making everything completely open-source.",
-            "desc2": "Some free features still rely on RoValra servers and cost money to run.",
-            "desc3": "Supporter donations help cover those costs, letting RoValra keep more features free for everyone while continuing to improve over time. <icon style=\"color:#c13ad9\" filled>heart</icon>",
-            "desc4": "RoValra is a passion project and has always been one.",
-            "suggestions": "If you have any feature suggestions please let me know in my Discord server or via GitHub",
-            "bugs": "If you find any bugs let me know in my Discord server or via GitHub",
-            "review": "If you like this extension please consider <a href=\"https://chromewebstore.google.com/detail/rovalra-roblox-improved/njcickgebhnpgmoodjdgohkclfplejli/reviews\" target=\"_blank\" class=\"rovalra-review-link\">leaving a review</a>, it helps a lot <icon style=\"color:#c13ad9\" filled>heart</icon>",
-            "discord": "Discord Server",
+            "title": "ufi Information!",
+            "desc1": "ufi is an open-source Roblox extension designed to optimize your connection, featuring a dedicated Miami Server Finder and Best Connection routing.",
+            "desc2": "Find real Florida datacenters with authentic verification and low latency.",
+            "desc3": "Runs completely inside your browser with no external backend or tracking.",
+            "desc4": "ufi is built to make Roblox smoother and lag-free.",
+            "suggestions": "If you have any suggestions or find issues, report them on GitHub",
+            "bugs": "If you find any bugs let us know via GitHub",
+            "review": "Enjoying ufi? Star the repository on GitHub!",
+            "discord": "Community",
             "github": "Github Repository",
-            "support": "Support RoValra",
-            "tiktok": "ValraWantBanana",
-            "x": "ValraSwag"
+            "support": "GitHub Repository",
+            "tiktok": "ufi",
+            "x": "ufi"
         },
         "credits": {
             "contributorsTitle": "Contributors",
