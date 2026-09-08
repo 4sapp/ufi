@@ -22,7 +22,7 @@ async function getGroupRoles(userId) {
                 res?.data?.map((item) => [item.group.id, item.role.name]) || [],
             );
         } catch (e) {
-            console.error('RoValra: Failed to fetch group roles', e);
+            console.error('ufi: Failed to fetch group roles', e);
             rolesPromise = null;
             return new Map();
         }

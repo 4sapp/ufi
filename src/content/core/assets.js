@@ -210,7 +210,7 @@ function loadRovalraLogoPreference() {
             setRovalraLogoPreference(settings[ROVALRA_LOGO_SETTING_NAME]);
         })
         .catch((error) => {
-            console.warn('RoValra: Failed to load logo preference.', error);
+            console.warn('ufi: Failed to load logo preference.', error);
             rovalraLogoPreferenceLoaded = true;
         })
         .finally(() => {

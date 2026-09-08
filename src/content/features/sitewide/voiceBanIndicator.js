@@ -168,7 +168,7 @@ async function fetchVoiceSettings(
         return data;
     } catch (error) {
         console.warn(
-            'RoValra: Failed to fetch voice ban status',
+            'ufi: Failed to fetch voice ban status',
             error,
         );
 
@@ -325,7 +325,7 @@ export async function init() {
 
             syncSetting().catch((error) => {
                 console.warn(
-                    'RoValra: Failed to update voice ban indicator setting',
+                    'ufi: Failed to update voice ban indicator setting',
                     error,
                 );
             });

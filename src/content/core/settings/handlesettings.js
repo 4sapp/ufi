@@ -148,7 +148,7 @@ async function prepareProfilePronounsUpdate(value) {
         apiSynced = true;
     } catch (error) {
         console.warn(
-            'RoValra: Pronouns will remain local because API sync failed.',
+            'ufi: Pronouns will remain local because API sync failed.',
             error,
         );
     }
@@ -258,7 +258,7 @@ function queueGradientNameSync(settingsOverride = {}) {
         );
 
         updateUserSettingViaApi('GradientName', payload).catch((error) =>
-            console.error('RoValra: GradientName sync failed', error),
+            console.error('ufi: GradientName sync failed', error),
         );
     }, 750);
 }
@@ -397,7 +397,7 @@ export const syncDonatorTier = async () => {
 
             return response;
         } catch (error) {
-            console.error('RoValra: Failed to sync donator tier.', {
+            console.error('ufi: Failed to sync donator tier.', {
                 userId: currentUserId,
                 endpoint: '/v1/auth/badges',
                 method: 'GET',
@@ -549,7 +549,7 @@ export const enforceSettingOverrides = async () => {
         const overrideKeys = Object.keys(overrides);
         if (overrideKeys.length > 0) {
             console.log(
-                `RoValra: Enforcing ${overrideKeys.length} setting override(s) at startup:`,
+                `ufi: Enforcing ${overrideKeys.length} setting override(s) at startup:`,
                 overrideKeys,
             );
 
@@ -557,7 +557,7 @@ export const enforceSettingOverrides = async () => {
                 chrome.storage.local.set(overrides, () => {
                     if (chrome.runtime.lastError) {
                         console.error(
-                            'RoValra: Failed to enforce setting overrides',
+                            'ufi: Failed to enforce setting overrides',
                             chrome.runtime.lastError,
                         );
                         resolve();
@@ -588,7 +588,7 @@ export const enforceSettingOverrides = async () => {
             });
         }
     } catch (error) {
-        console.error('RoValra: Failed to enforce setting overrides:', error);
+        console.error('ufi: Failed to enforce setting overrides:', error);
     }
 };
 
@@ -859,7 +859,7 @@ export const handleSaveSettings = async (settingName, value) => {
                             sanitizedValue,
                         ).catch((error) =>
                             console.warn(
-                                'RoValra: Failed to save account-scoped pronouns.',
+                                'ufi: Failed to save account-scoped pronouns.',
                                 error,
                             ),
                         );
@@ -871,7 +871,7 @@ export const handleSaveSettings = async (settingName, value) => {
                     ) {
                         refreshRemoteSettingLocks().catch((error) =>
                             console.warn(
-                                'RoValra: Failed to restore remotely disabled settings for developer override.',
+                                'ufi: Failed to restore remotely disabled settings for developer override.',
                                 error,
                             ),
                         );
@@ -889,7 +889,7 @@ export const handleSaveSettings = async (settingName, value) => {
                                 updateUserSettingViaApi('gradient', val).catch(
                                     (error) =>
                                         console.error(
-                                            'RoValra: Gradient sync failed',
+                                            'ufi: Gradient sync failed',
                                             error,
                                         ),
                                 );
@@ -921,7 +921,7 @@ export const handleSaveSettings = async (settingName, value) => {
                                     borderUrl,
                                 ).catch((error) =>
                                     console.error(
-                                        'RoValra: Border sync failed',
+                                        'ufi: Border sync failed',
                                         error,
                                     ),
                                 );
@@ -938,7 +938,7 @@ export const handleSaveSettings = async (settingName, value) => {
                             })
                             .catch((error) =>
                                 console.error(
-                                    'RoValra: Profile views visibility sync failed',
+                                    'ufi: Profile views visibility sync failed',
                                     error,
                                 ),
                             );
@@ -1033,7 +1033,7 @@ export const buildSettingsKey = async () => {
                             chrome.runtime.lastError,
                         );
                     } else {
-                        console.log('RoValra: Settings key initialized');
+                        console.log('ufi: Settings key initialized');
                     }
                     resolve();
                 },
@@ -1071,7 +1071,7 @@ export const initSettings = async (settingsContent) => {
 
                         if (missingPerms) {
                             console.log(
-                                `RoValra: Disabling '${name}' because required permissions are missing.`,
+                                `ufi: Disabling '${name}' because required permissions are missing.`,
                             );
                             await handleSaveSettings(name, false);
                             settings[name] = false;
@@ -1667,7 +1667,7 @@ async function hasPermission(permission) {
             (response) => {
                 if (chrome.runtime.lastError) {
                     console.error(
-                        'RoValra: Error checking permission:',
+                        'ufi: Error checking permission:',
                         chrome.runtime.lastError.message,
                     );
                     resolve(false);
@@ -1685,7 +1685,7 @@ async function requestPermission(permission) {
             (response) => {
                 if (chrome.runtime.lastError) {
                     console.warn(
-                        `RoValra: Permission request for '${permission}' failed or was dismissed:`,
+                        `ufi: Permission request for '${permission}' failed or was dismissed:`,
                         chrome.runtime.lastError.message,
                     );
                     resolve(false);
@@ -1703,7 +1703,7 @@ async function revokePermission(permission) {
             (response) => {
                 if (chrome.runtime.lastError) {
                     console.error(
-                        `RoValra: Failed to revoke '${permission}' permission:`,
+                        `ufi: Failed to revoke '${permission}' permission:`,
                         chrome.runtime.lastError.message,
                     );
                     resolve(false);
@@ -1744,7 +1744,7 @@ export async function updateAllPermissionToggles() {
 
                     if (missingPerms) {
                         console.log(
-                            `RoValra: Disabling '${name}' because required permissions are missing.`,
+                            `ufi: Disabling '${name}' because required permissions are missing.`,
                         );
                         await handleSaveSettings(name, false);
                         settings[name] = false;
@@ -2177,7 +2177,7 @@ export function initializeSettingsEventListeners() {
                         if (!granted) {
                             target.checked = false;
                             console.log(
-                                `RoValra: Permission denied for ${settingName}`,
+                                `ufi: Permission denied for ${settingName}`,
                             );
                             return;
                         }
@@ -2259,7 +2259,7 @@ export function initializeSettingsEventListeners() {
                     updateUserSettingViaApi('environment', envId).catch(
                         (error) =>
                             console.error(
-                                'RoValra: Environment sync failed',
+                                'ufi: Environment sync failed',
                                 error,
                             ),
                     );

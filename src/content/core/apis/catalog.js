@@ -67,7 +67,7 @@ export async function getCatalogItemDetails(
         noCache,
     }).catch((error) => {
         catalogItemDetailsCache.delete(cacheKey);
-        console.warn('RoValra: Failed to fetch catalog item details', error);
+        console.warn('ufi: Failed to fetch catalog item details', error);
         return null;
     });
 

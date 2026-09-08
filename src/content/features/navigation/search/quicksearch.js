@@ -333,7 +333,7 @@ async function applyUserCosmetics(
         }
     } catch (e) {
         console.warn(
-            'RoValra: Failed to apply quick search cosmetics for user',
+            'ufi: Failed to apply quick search cosmetics for user',
             userId,
             e,
         );

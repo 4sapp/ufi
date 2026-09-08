@@ -45,7 +45,7 @@ async function checkAgeVerificationItem(userId, itemId) {
 
         return typeof isAgeVerified === 'boolean' ? isAgeVerified : null;
     } catch (error) {
-        console.warn('RoValra: Failed to check age verification status', error);
+        console.warn('ufi: Failed to check age verification status', error);
         return null;
     }
 }

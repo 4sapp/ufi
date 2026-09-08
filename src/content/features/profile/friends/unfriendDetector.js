@@ -43,7 +43,7 @@ async function resolveMissingNames(unfriendedUsers) {
                 }
             } catch (error) {
                 console.error(
-                    'RoValra: Failed to resolve missing unfriend detector name',
+                    'ufi: Failed to resolve missing unfriend detector name',
                     error,
                 );
             }
@@ -134,7 +134,7 @@ async function showUnfriendDetectedOverlay(unfriendedUsers) {
             true,
         );
     } catch (error) {
-        console.error('RoValra: Failed to fetch unfriend detector thumbnails', error);
+        console.error('ufi: Failed to fetch unfriend detector thumbnails', error);
     }
 
     const [gradientEnabled, borderEnabled] = await Promise.all([
@@ -265,7 +265,7 @@ async function showUnfriendDetectedOverlay(unfriendedUsers) {
                     })
                     .catch((error) => {
                         console.error(
-                            'RoValra: Failed to resolve avatar border for unfriend detector',
+                            'ufi: Failed to resolve avatar border for unfriend detector',
                             error,
                         );
                     });
@@ -282,7 +282,7 @@ async function showUnfriendDetectedOverlay(unfriendedUsers) {
                     })
                     .catch((error) => {
                         console.error(
-                            'RoValra: Failed to resolve display name gradient for unfriend detector',
+                            'ufi: Failed to resolve display name gradient for unfriend detector',
                             error,
                         );
                     });

@@ -192,7 +192,7 @@ async function renderTransferLimits() {
             return await upsertTransferLimits(data);
         } catch (error) {
             console.warn(
-                'RoValra: Failed to render Plus Robux transfer limits.',
+                'ufi: Failed to render Plus Robux transfer limits.',
                 error,
             );
             return false;

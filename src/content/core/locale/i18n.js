@@ -26,7 +26,7 @@ const i18nPromise = (async () => {
         });
         i18nInitialized = true;
     } catch (error) {
-        console.error('RoValra: Failed to initialize i18n', error);
+        console.error('ufi: Failed to initialize i18n', error);
 
         i18nInitialized = true;
         throw error;

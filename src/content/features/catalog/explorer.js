@@ -773,7 +773,7 @@ async function getStudioFontsCache() {
             return cachedStudioFonts;
         } catch (error) {
             console.error(
-                'RoValra Explorer: Failed to load Studio fonts',
+                'ufi Explorer: Failed to load Studio fonts',
                 error,
             );
             studioFontsFetchPromise = null;
@@ -3037,7 +3037,7 @@ async function fetchImageUrls(assetIds, originalAssetIds) {
                 }
             } catch (e) {
                 console.warn(
-                    '[RoValra Explorer] Failed to fetch image thumbnails batch:',
+                    '[ufi Explorer] Failed to fetch image thumbnails batch:',
                     e,
                 );
             }
@@ -4210,7 +4210,7 @@ async function loadBundleTree(bundleId) {
 
         return { assetId: bundleId, root, format: 'Bundle', isValid: true };
     } catch (error) {
-        console.error('[RoValra Explorer] loadBundleTree failed:', error);
+        console.error('[ufi Explorer] loadBundleTree failed:', error);
         return invalid;
     }
 }
@@ -4235,7 +4235,7 @@ async function openExplorer(
     try {
         const asset = await loadTree(parseInt(assetId, 10));
 
-        console.log('[RoValra Explorer] result', {
+        console.log('[ufi Explorer] result', {
             assetId,
             isValid: asset?.isValid,
             format: asset?.format,
@@ -4255,7 +4255,7 @@ async function openExplorer(
         const explorer = buildExplorer(asset.root, expandAll);
         loading.replaceWith(explorer);
     } catch (e) {
-        console.error('[RoValra Explorer] Failed:', e);
+        console.error('[ufi Explorer] Failed:', e);
         loading.textContent = ts('createRoblox.explorer.loadError');
     }
 }
@@ -4305,7 +4305,7 @@ async function addCatalogButton(rightToolbar) {
 
     container.appendChild(button);
     rightToolbar.parentElement.insertBefore(container, rightToolbar);
-    console.log('%cRoValra Explorer: button added (catalog)', 'color:#FF4500');
+    console.log('%cufi Explorer: button added (catalog)', 'color:#FF4500');
 }
 
 function addBundleButton(rightToolbar) {
@@ -4353,7 +4353,7 @@ function addBundleButton(rightToolbar) {
 
     container.appendChild(button);
     rightToolbar.parentElement.insertBefore(container, rightToolbar);
-    console.log('%cRoValra Explorer: button added (bundle)', 'color:#FF4500');
+    console.log('%cufi Explorer: button added (bundle)', 'color:#FF4500');
 }
 
 function addGameButton(contextMenu) {
@@ -4403,7 +4403,7 @@ function addGameButton(contextMenu) {
         });
 
         contextMenu.insertBefore(button, contextMenu.firstElementChild);
-        console.log('%cRoValra Explorer: button added (game)', 'color:#FF4500');
+        console.log('%cufi Explorer: button added (game)', 'color:#FF4500');
     });
 }
 

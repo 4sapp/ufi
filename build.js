@@ -55,7 +55,7 @@ try {
 const bannerText = `/*!
  * ${pkg.name} v${pkg.version}
  * License: GPL-3.0
- * Repository: https://github.com/NotValra/RoValra
+ * Repository: https://github.com/4sapp/ufi
  * This extension is provided AS-IS without warranty.
  */`;
 

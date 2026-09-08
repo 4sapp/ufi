@@ -542,7 +542,7 @@ async function prefetchBadgeRows(container) {
         markLoadMoreControls(container);
     } catch (error) {
         list.innerHTML = '';
-        console.warn('RoValra: Failed to prefetch game badges', error);
+        console.warn('ufi: Failed to prefetch game badges', error);
     } finally {
         delete container.dataset.rovalraBadgePrefetchLoading;
         updateGridVisibleBadges(container);

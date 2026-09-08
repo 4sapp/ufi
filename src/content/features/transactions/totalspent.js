@@ -735,11 +735,11 @@ function onElementFound(container) {
             }
         } catch (error) {
             if (error instanceof PausedException) {
-                console.log(`RoValra: ${error.message}`);
+                console.log(`ufi: ${error.message}`);
                 await animationController.waitUntilIdle();
             } else {
                 console.error(
-                    'RoValra: An error occurred during calculation:',
+                    'ufi: An error occurred during calculation:',
                     error,
                 );
                 state.status = CALCULATION_STATE.ERROR;

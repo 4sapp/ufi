@@ -49,7 +49,7 @@ export async function searchGames(query, sessionId) {
         return topGames;
     } catch (error) {
         if (error.name !== 'AbortError') {
-            console.error('RoValra Game Search: Search failed.', error);
+            console.error('ufi Game Search: Search failed.', error);
         }
         return [];
     }
@@ -77,7 +77,7 @@ export async function searchGroups(query) {
                 thumbnails.get(String(group.id)),
         }));
     } catch (error) {
-        console.error('RoValra Group Search: Search failed.', error);
+        console.error('ufi Group Search: Search failed.', error);
         return [];
     }
 }

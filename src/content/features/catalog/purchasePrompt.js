@@ -22,7 +22,7 @@ async function processDialog(dialog) {
             balance = currencyData.robux;
         }
     } catch (e) {
-        console.warn('RoValra: API fetch failed for purchase prompt', e);
+        console.warn('ufi: API fetch failed for purchase prompt', e);
     }
 
     if (balance === null) {

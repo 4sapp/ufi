@@ -263,7 +263,7 @@ async function addOwnershipPill(reportButton) {
     } catch (error) {
         container.remove();
         delete reportButton.dataset.rovalraFriendOwnershipInjected;
-        console.warn('RoValra: Failed to load friend ownership', error);
+        console.warn('ufi: Failed to load friend ownership', error);
     }
 }
 

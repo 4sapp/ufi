@@ -613,7 +613,7 @@ function queueUpdateTradeSummary() {
     if (updateSummaryTimeout) clearTimeout(updateSummaryTimeout);
     updateSummaryTimeout = setTimeout(() => {
         updateTradeSummary().catch((error) => {
-            console.warn('[RoValra] Failed to update trade summary', error);
+            console.warn('[ufi] Failed to update trade summary', error);
         });
     }, 200);
 }

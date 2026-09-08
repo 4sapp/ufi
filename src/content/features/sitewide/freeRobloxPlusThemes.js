@@ -65,7 +65,7 @@ function observeThemeSection(themeSection) {
 
     const ensureNotice = () => {
         addThemeNotice(themeSection).catch((error) =>
-            console.warn('RoValra: Failed to add the theme notice.', error),
+            console.warn('ufi: Failed to add the theme notice.', error),
         );
     };
 
@@ -190,7 +190,7 @@ function setEnabled(value) {
             .forEach((themeSection) => {
                 addThemeNotice(themeSection).catch((error) =>
                     console.warn(
-                        'RoValra: Failed to add the theme notice.',
+                        'ufi: Failed to add the theme notice.',
                         error,
                     ),
                 );
@@ -198,7 +198,7 @@ function setEnabled(value) {
 
         loadAccountTheme().catch((error) =>
             console.warn(
-                'RoValra: Failed to load Roblox user settings.',
+                'ufi: Failed to load Roblox user settings.',
                 error,
             ),
         );
@@ -240,7 +240,7 @@ export function init() {
 
         handleUserSettingsResponse(event.detail).catch((error) =>
             console.warn(
-                'RoValra: Failed to cache Roblox user settings.',
+                'ufi: Failed to cache Roblox user settings.',
                 error,
             ),
         );

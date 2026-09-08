@@ -241,7 +241,7 @@ function getOnlineFriends(userId) {
         })
             .then((res) => res.json())
             .catch((e) => {
-                console.warn('RoValra: Friend fetch error', e);
+                console.warn('ufi: Friend fetch error', e);
                 return { data: [] };
             });
         setTimeout(() => {
@@ -423,7 +423,7 @@ export function createGameCard(options) {
                             };
                         }
                     } catch (e) {
-                        console.warn('RoValra: Error fetching friend info', e);
+                        console.warn('ufi: Error fetching friend info', e);
                     }
                 }
 
@@ -438,7 +438,7 @@ export function createGameCard(options) {
                 });
                 card.replaceWith(realCard);
             } catch (e) {
-                console.warn('RoValra: Error creating game card from ID', e);
+                console.warn('ufi: Error creating game card from ID', e);
                 card.innerHTML =
                     '<div style="padding: 10px; color: var(--text-error);">Failed to load game</div>';
             }

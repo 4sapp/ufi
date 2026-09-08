@@ -30,7 +30,7 @@ export function init() {
                     endpoint: '/static/json/items.json'
                 });
             } catch (e) {
-                console.error("RoValra: Failed to load items.json", e);
+                console.error("ufi: Failed to load items.json", e);
                 return;
             }
         }

@@ -502,7 +502,7 @@ async function applyDisplayNameGradientToCard(tile, card) {
         });
     } catch (error) {
         console.warn(
-            'RoValra: Failed to apply display name gradient for user card',
+            'ufi: Failed to apply display name gradient for user card',
             userId,
             error,
         );

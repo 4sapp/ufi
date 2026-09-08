@@ -460,7 +460,7 @@ function onElementFound(container) {
             if (error instanceof PausedException) {
                 await animationController.waitUntilIdle();
             } else {
-                console.error('RoValra Earned: Error:', error);
+                console.error('ufi Earned: Error:', error);
                 state.status = CALCULATION_STATE.ERROR;
                 state.errorMessage = error.message;
                 updateOverlay();

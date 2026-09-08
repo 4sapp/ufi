@@ -12,7 +12,7 @@ async function readAllTrackedUsers() {
         const storage = await chrome.storage.local.get(STORAGE_KEY);
         return storage[STORAGE_KEY] || {};
     } catch (error) {
-        console.warn('RoValra: Failed to read birthday tracker cache', error);
+        console.warn('ufi: Failed to read birthday tracker cache', error);
         return {};
     }
 }
@@ -21,7 +21,7 @@ async function writeAllTrackedUsers(data) {
     try {
         await chrome.storage.local.set({ [STORAGE_KEY]: data });
     } catch (error) {
-        console.warn('RoValra: Failed to write birthday tracker cache', error);
+        console.warn('ufi: Failed to write birthday tracker cache', error);
     }
 }
 
@@ -153,21 +153,21 @@ export async function updateBirthdayTracker(forceRefresh = false) {
             const [birthday, ageGroup, verifiedAge] = await Promise.all([
                 fetchBirthday().catch((error) => {
                     console.warn(
-                        'RoValra: Failed to fetch authenticated user birthday',
+                        'ufi: Failed to fetch authenticated user birthday',
                         error,
                     );
                     return null;
                 }),
                 fetchAgeGroup().catch((error) => {
                     console.warn(
-                        'RoValra: Failed to fetch authenticated user age group',
+                        'ufi: Failed to fetch authenticated user age group',
                         error,
                     );
                     return null;
                 }),
                 fetchVerifiedAge().catch((error) => {
                     console.warn(
-                        'RoValra: Failed to fetch authenticated user verified age',
+                        'ufi: Failed to fetch authenticated user verified age',
                         error,
                     );
                     return null;

@@ -202,7 +202,7 @@ async function cleanupAuthGameFavorites() {
         );
         if (failures.length) {
             console.warn(
-                'RoValra: Failed to check some OAuth fallback favorites.',
+                'ufi: Failed to check some OAuth fallback favorites.',
                 failures,
             );
         }

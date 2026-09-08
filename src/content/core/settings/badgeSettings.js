@@ -13,7 +13,7 @@ async function setBadgeVisibility(badgeName, isVisible) {
         });
     } catch (error) {
         console.error(
-            `RoValra: Failed to set badge visibility for ${badgeName}`,
+            `ufi: Failed to set badge visibility for ${badgeName}`,
             error,
         );
     }
@@ -133,6 +133,6 @@ export async function createBadgeSettings(container) {
         container.appendChild(settingsContent);
         initSettings(settingsContent);
     } catch (error) {
-        console.error('RoValra: Failed to create badge settings', error);
+        console.error('ufi: Failed to create badge settings', error);
     }
 }

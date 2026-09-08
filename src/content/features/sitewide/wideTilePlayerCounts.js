@@ -530,7 +530,7 @@ async function queueFetch() {
         await loadPendingPlaces();
         await loadPendingUniverses();
     } catch (error) {
-        console.warn('RoValra: Wide tile player counts request failed', error);
+        console.warn('ufi: Wide tile player counts request failed', error);
     } finally {
         fetching = false;
         if (pendingPlaceIds.size || pendingUniverseIds.size) {

@@ -154,7 +154,7 @@ export async function checkAssetsInBatch(assetIds) {
         });
 
         if (!batchApiResponse.ok) {
-            console.error(`[Rovalra Asset Parser] AssetDelivery batch API failed: ${batchApiResponse.status}`);
+            console.error(`[ufi Asset Parser] AssetDelivery batch API failed: ${batchApiResponse.status}`);
             return assetIds.map(id => createDefaultResult(id));
         }
 
@@ -202,7 +202,7 @@ export async function checkAssetsInBatch(assetIds) {
                 };
 
             } catch (error) {
-                console.error(`[Rovalra Asset Parser] Error parsing asset ${id}:`, error);
+                console.error(`[ufi Asset Parser] Error parsing asset ${id}:`, error);
                 return createDefaultResult(id);
             }
         });
@@ -210,7 +210,7 @@ export async function checkAssetsInBatch(assetIds) {
         return Promise.all(processingPromises);
 
     } catch (error) {
-        console.error('[Rovalra Asset Parser] Critical error:', error);
+        console.error('[ufi Asset Parser] Critical error:', error);
         return assetIds.map(id => createDefaultResult(id));
     }
 }
@@ -301,7 +301,7 @@ export async function loadAssetTree(assetId) {
             isValid: true,
         };
     } catch (error) {
-        console.error('[Rovalra Explorer] loadAssetTree failed:', error);
+        console.error('[ufi Explorer] loadAssetTree failed:', error);
         return invalid;
     }
 }

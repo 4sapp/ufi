@@ -251,7 +251,7 @@ export async function getPlacesDetails(placeIds) {
 
         return [...cachedDetails, ...fetchedDetails];
     } catch (error) {
-        console.error('RoValra: Failed to fetch place details', error);
+        console.error('ufi: Failed to fetch place details', error);
         return cachedDetails;
     }
 }
@@ -278,7 +278,7 @@ export async function getPlaceDetails(placeId) {
         return placeData;
     } catch (error) {
         console.error(
-            `RoValra: Failed to fetch place details for placeId ${placeId}`,
+            `ufi: Failed to fetch place details for placeId ${placeId}`,
             error,
         );
         return null;
@@ -297,7 +297,7 @@ export async function getUniversesDetails(universeIds) {
 
         return data?.data || [];
     } catch (error) {
-        console.error('RoValra: Failed to fetch universe details', error);
+        console.error('ufi: Failed to fetch universe details', error);
         return [];
     }
 }
@@ -317,7 +317,7 @@ export async function getUniversesVotes(universeIds) {
             universeId: vote.id,
         }));
     } catch (error) {
-        console.error('RoValra: Failed to fetch universe votes', error);
+        console.error('ufi: Failed to fetch universe votes', error);
         return [];
     }
 }
@@ -365,7 +365,7 @@ export async function getUniverseEligibilities(universeIds) {
             universeEligibilityMemoryCache.set(universeId, eligibility);
         });
     } catch (error) {
-        console.error('RoValra: Failed to fetch universe eligibilities', error);
+        console.error('ufi: Failed to fetch universe eligibilities', error);
     }
 
     return result;

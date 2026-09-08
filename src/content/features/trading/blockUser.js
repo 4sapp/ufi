@@ -115,7 +115,7 @@ async function addBlockButton(container) {
                 const ok = await setUserBlocked(userId, !isBlocked);
                 button.disabled = false;
                 await refreshLabel();
-                if (!ok) console.warn('[RoValra] Failed to update block state');
+                if (!ok) console.warn('[ufi] Failed to update block state');
             },
         });
     });

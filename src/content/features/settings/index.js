@@ -240,7 +240,7 @@ async function renderChangelogs(container) {
             container.appendChild(renderChangelogRelease(release));
         });
     } catch (error) {
-        console.warn('RoValra: Failed to load changelogs', error);
+        console.warn('ufi: Failed to load changelogs', error);
         container.innerHTML = '';
 
         const errorMessage = document.createElement('div');
@@ -271,7 +271,7 @@ async function openDonatorPerksDonationUrl() {
                 window.location.href = url;
             }
         } catch (error) {
-            console.warn('RoValra: Failed to open donation URL', error);
+            console.warn('ufi: Failed to open donation URL', error);
             window.location.href = url;
         }
     }
@@ -327,7 +327,7 @@ async function openDonatorPerksDonationUrl() {
 
             requestedDonatorGameUnblockChecked = false;
         } catch (error) {
-            console.warn('[RoValra Unblock Request] Error:', error);
+            console.warn('[ufi Unblock Request] Error:', error);
             loadingOverlay.close();
             const requestFailedOverlay = createOverlay({
                 title: 'Request Failed to Send',
@@ -415,7 +415,7 @@ async function openDonatorPerksDonationUrl() {
         canPlayUniverseReason = canPlayUniverseRequest.playabilityStatus;
     } catch (error) {
         console.warn(
-            'RoValra: Failed to get playability status of donation universe',
+            'ufi: Failed to get playability status of donation universe',
             error,
         );
     }
@@ -440,7 +440,7 @@ async function openDonatorPerksDonationUrl() {
         }
     } catch (error) {
         console.warn(
-            'RoValra: Failed to see if there were any parents linked to account for game unblock overlay',
+            'ufi: Failed to see if there were any parents linked to account for game unblock overlay',
             error,
         );
     }
@@ -478,7 +478,7 @@ async function openDonatorPerksDonationUrl() {
             } else donatorGameUnblockConsentId = 0;
         }
     } catch (error) {
-        console.warn('RoValra: Failed to get parent requests of a user', error);
+        console.warn('ufi: Failed to get parent requests of a user', error);
     }
 
     if (
@@ -661,7 +661,7 @@ async function getOwnedBorders() {
             return ownedBordersCache;
         }
     } catch (e) {
-        console.warn('RoValra: Failed to fetch owned borders', e);
+        console.warn('ufi: Failed to fetch owned borders', e);
     }
     return { borders: new Set(), frames: new Set(), gamepasses: new Set() };
 }
@@ -681,7 +681,7 @@ async function getGamePassPrice(id) {
             return price;
         }
     } catch (e) {
-        console.warn('RoValra: Failed to fetch gamepass price', e);
+        console.warn('ufi: Failed to fetch gamepass price', e);
     }
     return null;
 }
@@ -842,7 +842,7 @@ async function openAvatarBorderUrl(gamepassId) {
                 window.location.href = url;
             }
         } catch (error) {
-            console.warn('RoValra: Failed to open gamepass URL', error);
+            console.warn('ufi: Failed to open gamepass URL', error);
             window.location.href = url;
         }
     }
@@ -898,7 +898,7 @@ async function openAvatarBorderUrl(gamepassId) {
 
             requestedDonatorGameUnblockChecked = false;
         } catch (error) {
-            console.warn('[RoValra Unblock Request] Error:', error);
+            console.warn('[ufi Unblock Request] Error:', error);
             loadingOverlay.close();
             const requestFailedOverlay = createOverlay({
                 title: 'Request Failed to Send',
@@ -983,7 +983,7 @@ async function openAvatarBorderUrl(gamepassId) {
         canPlayUniverseReason = canPlayUniverseRequest.playabilityStatus;
     } catch (error) {
         console.warn(
-            'RoValra: Failed to get playability status of donation universe',
+            'ufi: Failed to get playability status of donation universe',
             error,
         );
     }
@@ -1008,7 +1008,7 @@ async function openAvatarBorderUrl(gamepassId) {
         }
     } catch (error) {
         console.warn(
-            'RoValra: Failed to see if there were any parents linked to account for game unblock overlay',
+            'ufi: Failed to see if there were any parents linked to account for game unblock overlay',
             error,
         );
     }
@@ -1046,7 +1046,7 @@ async function openAvatarBorderUrl(gamepassId) {
             } else donatorGameUnblockConsentId = 0;
         }
     } catch (error) {
-        console.warn('RoValra: Failed to get parent requests of a user', error);
+        console.warn('ufi: Failed to get parent requests of a user', error);
     }
 
     if (
@@ -1915,7 +1915,7 @@ async function loadContributors() {
         contributorsCache = { users, thumbMap };
         renderContributors(container, users, thumbMap);
     } catch (err) {
-        console.error('RoValra: Error loading contributors', err);
+        console.error('ufi: Error loading contributors', err);
         const error = document.createElement('p');
         error.className = 'rovalra-contributors-error';
         error.textContent = ts('settings.credits.failedToLoadContributors');
@@ -2441,7 +2441,7 @@ async function loadTopDonators() {
                 }
             } catch (error) {
                 console.error(
-                    'RoValra: Error rendering anon toggle area',
+                    'ufi: Error rendering anon toggle area',
                     error,
                 );
             }
@@ -2460,7 +2460,7 @@ async function loadTopDonators() {
             authenticatedUserId,
         );
     } catch (err) {
-        console.error('RoValra: Error loading top donators', err);
+        console.error('ufi: Error loading top donators', err);
         container.innerHTML = '';
     }
 }
@@ -2813,7 +2813,7 @@ async function renderAccountStanding(container) {
         standingCache = data;
         updateAccountStandingUI(discordCard, data, ACCOUNT_STANDING_LEVELS);
     } catch (err) {
-        console.error('RoValra: Failed to load standing data', err);
+        console.error('ufi: Failed to load standing data', err);
     }
 }
 
@@ -3522,7 +3522,7 @@ async function renderStoreBorders(container) {
         }
         setStoreTab('all');
     } catch (error) {
-        console.error('RoValra: Failed to render store borders', error);
+        console.error('ufi: Failed to render store borders', error);
         container.innerHTML =
             '<p style="color: var(--rovalra-secondary-text-color);">Failed to load borders. Please try again later.</p>';
     }
@@ -4129,7 +4129,7 @@ async function renderStoreFrames(container) {
         setFrameTab('all');
         updateFrameStoreUI(container, currentFrameValue);
     } catch (error) {
-        console.error('RoValra: Failed to render store frames', error);
+        console.error('ufi: Failed to render store frames', error);
         container.innerHTML = '';
         const failed = document.createElement('p');
         failed.style.cssText = 'color: var(--rovalra-secondary-text-color);';
@@ -4416,7 +4416,7 @@ export async function updateContent(buttonInfo, contentContainer) {
                     addTooltip(
                         tierBadge,
                         totalDonatedLabel
-                            ? `Your total donated to RoValra: ${totalDonatedLabel}`
+                            ? `Your total donated to ufi: ${totalDonatedLabel}`
                             : 'Your donator tier',
                         { position: 'top' },
                     );
@@ -4742,16 +4742,16 @@ function initializeHeartbeatSpoofer() {
                 useBackground: true,
             });
             console.log(
-                `RoValra: Spoofed heartbeat sent. Mode: ${spoofingMode}`,
+                `ufi: Spoofed heartbeat sent. Mode: ${spoofingMode}`,
             );
         } catch (error) {
-            console.error('RoValra: Failed to send spoofed heartbeat.', error);
+            console.error('ufi: Failed to send spoofed heartbeat.', error);
         }
     };
 
     const startSpoofingTimer = () => {
         if (pulseInterval) return;
-        console.log(`RoValra: Starting spoofer timer (${spoofingMode}).`);
+        console.log(`ufi: Starting spoofer timer (${spoofingMode}).`);
         pulseInterval = setInterval(async () => {
             if (spoofingMode === 'studio') {
                 sendSpoofedHeartbeat();
@@ -4761,7 +4761,7 @@ function initializeHeartbeatSpoofer() {
 
     const stopSpoofingTimer = () => {
         if (pulseInterval) {
-            console.log('RoValra: Stopping spoofer timer.');
+            console.log('ufi: Stopping spoofer timer.');
             clearInterval(pulseInterval);
             pulseInterval = null;
         }
@@ -4856,7 +4856,7 @@ function initializeHeartbeatSpoofer() {
         return originalFetch.apply(this, args);
     };
 
-    console.log('RoValra: Proactive heartbeat spoofer initialized.');
+    console.log('ufi: Proactive heartbeat spoofer initialized.');
 }
 
 initializeHeartbeatSpoofer();

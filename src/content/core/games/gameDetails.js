@@ -41,7 +41,7 @@ export async function getGameDetailsFromPlaceId(placeId) {
             thumbnail: thumbnails.get(universeId)
         };
     } catch (error) {
-        console.error(`RoValra Game Details: Failed to fetch details for Place ID ${placeId}.`, error);
+        console.error(`ufi Game Details: Failed to fetch details for Place ID ${placeId}.`, error);
         return null;
     }
 }

@@ -513,7 +513,7 @@ function handleStorageChange(changes, areaName) {
         .then(syncAllLogoElements)
         .catch((error) =>
             console.error(
-                'RoValra: Failed to update custom Roblox banner.',
+                'ufi: Failed to update custom Roblox banner.',
                 error,
             ),
         );
@@ -527,7 +527,7 @@ function savePosition(nextX, nextY) {
         handleSaveSettings('customRobloxBannerPositionX', currentPositionX),
         handleSaveSettings('customRobloxBannerPositionY', currentPositionY),
     ]).catch((error) =>
-        console.error('RoValra: Failed to save custom banner position.', error),
+        console.error('ufi: Failed to save custom banner position.', error),
     );
 
     syncAllLogoElements();
@@ -537,7 +537,7 @@ function saveZoom(nextZoom) {
     currentZoom = normalizeZoom(nextZoom);
 
     handleSaveSettings('customRobloxBannerZoom', currentZoom).catch((error) =>
-        console.error('RoValra: Failed to save custom banner zoom.', error),
+        console.error('ufi: Failed to save custom banner zoom.', error),
     );
 
     syncAllLogoElements();
@@ -587,7 +587,7 @@ export function init() {
 
     initialize().catch((error) =>
         console.error(
-            'RoValra: Custom Roblox banner initialization failed.',
+            'ufi: Custom Roblox banner initialization failed.',
             error,
         ),
     );

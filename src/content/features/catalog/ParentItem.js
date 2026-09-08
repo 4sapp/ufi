@@ -132,7 +132,7 @@ export function init() {
                         }
                     } catch (e) {
                         console.warn(
-                            'RoValra: Failed to fetch bundle thumbnail',
+                            'ufi: Failed to fetch bundle thumbnail',
                             e,
                         );
                     }
@@ -176,7 +176,7 @@ export function init() {
                     );
                 }
             } catch (e) {
-                console.warn('RoValra: Failed to fetch parent bundle info', e);
+                console.warn('ufi: Failed to fetch parent bundle info', e);
             }
         },
     );

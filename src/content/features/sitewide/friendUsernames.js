@@ -128,7 +128,7 @@ async function applyCardUsernameLabel(tile, context) {
         );
     } catch (error) {
         console.warn(
-            'RoValra: Failed to render friend username label',
+            'ufi: Failed to render friend username label',
             userId,
             error,
         );
@@ -182,7 +182,7 @@ function applyServerFriendName(link, userId) {
         .catch((error) => {
             delete link.dataset.rovalraFriendUsernameName;
             console.warn(
-                'RoValra: Failed to render server friend username',
+                'ufi: Failed to render server friend username',
                 userId,
                 error,
             );

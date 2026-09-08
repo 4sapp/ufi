@@ -28,7 +28,7 @@ export async function fetchUniverseId(placeId) {
         const data = await response.json();
         return data?.[0]?.universeId;
     } catch (error) {
-        console.error('RoValra: Error fetching universe ID', error);
+        console.error('ufi: Error fetching universe ID', error);
         return null;
     }
 }
@@ -61,7 +61,7 @@ async function fetchDevProducts(universeId) {
 
         return allProducts;
     } catch (error) {
-        console.error('RoValra: Error fetching developer products', error);
+        console.error('ufi: Error fetching developer products', error);
         return allProducts;
     }
 }

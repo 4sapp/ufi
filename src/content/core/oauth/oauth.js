@@ -12,23 +12,23 @@ let activeOAuthPromise = null;
 
 export async function init() {
     try {
-        console.log('RoValra: Script loaded. Syncing session...');
+        console.log('ufi: Script loaded. Syncing session...');
 
         const isDonator = getCurrentUserTierSync() >= 1;
         if (isDonator) {
             const token = await getValidAccessToken(true);
             if (token) {
-                console.log('RoValra: Session synchronized successfully.');
+                console.log('ufi: Session synchronized successfully.');
             } else {
-                console.log('RoValra: No active session or re-auth required.');
+                console.log('ufi: No active session or re-auth required.');
             }
         } else {
             console.log(
-                'RoValra: Non-donator detected, skipped auto OAuth sync.',
+                'ufi: Non-donator detected, skipped auto OAuth sync.',
             );
         }
     } catch (error) {
-        console.error('RoValra: Error during script initialization', error);
+        console.error('ufi: Error during script initialization', error);
     }
 }
 
@@ -60,7 +60,7 @@ export async function getValidAccessToken(
 
     const useFallback = await shouldUseFallback();
     if (useFallback) {
-        console.log('RoValra: Using fallback authentication (skipping OAuth)');
+        console.log('ufi: Using fallback authentication (skipping OAuth)');
         await clearOAuthProgress();
         return await getValidFallbackToken(forceRefresh);
     }
@@ -80,7 +80,7 @@ export async function getValidAccessToken(
         String(existingProgress.data.userId) !== String(userId)
     ) {
         console.log(
-            'RoValra: OAuth progress belongs to another user. Clearing.',
+            'ufi: OAuth progress belongs to another user. Clearing.',
         );
         await clearOAuthProgress();
     }
@@ -92,7 +92,7 @@ export async function getValidAccessToken(
         !isAccountSwitch
     ) {
         console.log(
-            'RoValra: Non-donator lazy mode - skipping OAuth generation until explicitly needed.',
+            'ufi: Non-donator lazy mode - skipping OAuth generation until explicitly needed.',
         );
         return null;
     }
@@ -103,7 +103,7 @@ export async function getValidAccessToken(
             const newStorage = await chrome.storage.local.get(STORAGE_KEY);
             return newStorage[STORAGE_KEY]?.[userId]?.accessToken || null;
         }
-        console.log('RoValra: OAuth failed, trying fallback...');
+        console.log('ufi: OAuth failed, trying fallback...');
         await clearOAuthProgress();
         return await getValidFallbackToken(forceRefresh);
     }
@@ -113,14 +113,14 @@ export async function getValidAccessToken(
         String(storedVerification.robloxId) !== String(userId)
     ) {
         console.warn(
-            'RoValra: Stored OAuth ID mismatch. Proactively re-authenticating.',
+            'ufi: Stored OAuth ID mismatch. Proactively re-authenticating.',
         );
         const success = await startOAuthFlow(true);
         if (success) {
             const newStorage = await chrome.storage.local.get(STORAGE_KEY);
             return newStorage[STORAGE_KEY]?.[userId]?.accessToken || null;
         }
-        console.log('RoValra: OAuth failed (wrong user), trying fallback...');
+        console.log('ufi: OAuth failed (wrong user), trying fallback...');
         await clearOAuthProgress();
         return await getValidFallbackToken(forceRefresh);
     }
@@ -143,7 +143,7 @@ export async function getValidAccessToken(
 
         if (response.status === 401 || response.status === 403) {
             console.warn(
-                `RoValra: Session unauthorized (Status ${response.status}). Triggering re-auth...`,
+                `ufi: Session unauthorized (Status ${response.status}). Triggering re-auth...`,
             );
             if (!isDonator && lazyForNonDonators) {
                 return null;
@@ -154,7 +154,7 @@ export async function getValidAccessToken(
                 const updated = await chrome.storage.local.get(STORAGE_KEY);
                 return updated[STORAGE_KEY]?.[userId]?.accessToken || null;
             }
-            console.log('RoValra: OAuth re-auth failed, trying fallback...');
+            console.log('ufi: OAuth re-auth failed, trying fallback...');
             await clearOAuthProgress();
             return await getValidFallbackToken(true);
         }
@@ -165,7 +165,7 @@ export async function getValidAccessToken(
             storedVerification.accessToken
         );
     } catch (error) {
-        console.error('RoValra: Network error during token sync:', error);
+        console.error('ufi: Network error during token sync:', error);
         return storedVerification.accessToken;
     }
 }
@@ -176,7 +176,7 @@ async function startOAuthFlow(silent = false) {
 
     if (!silent) {
         console.warn(
-            'RoValra: Non-silent OAuth flow is not implemented as per the background-only request.',
+            'ufi: Non-silent OAuth flow is not implemented as per the background-only request.',
         );
         return Promise.resolve(false);
     }
@@ -197,7 +197,7 @@ async function startOAuthFlow(silent = false) {
                 String(currentProgress.data?.userId) === String(userId)
             ) {
                 if (elapsed < 60000) {
-                    console.log('RoValra: Resuming recent OAuth process...');
+                    console.log('ufi: Resuming recent OAuth process...');
                     const success = await resumeOAuthFlow(
                         userId,
                         currentProgress,
@@ -205,20 +205,20 @@ async function startOAuthFlow(silent = false) {
                     if (success) return true;
 
                     console.log(
-                        'RoValra: Resumption attempt failed. Too recent to redo steps.',
+                        'ufi: Resumption attempt failed. Too recent to redo steps.',
                     );
                     return false;
                 } else {
                     console.log(
-                        'RoValra: OAuth flow stale (> 1 min). Restarting.',
+                        'ufi: OAuth flow stale (> 1 min). Restarting.',
                     );
                     await clearOAuthProgress();
                 }
             }
 
-            console.log('RoValra: Starting new OAuth flow...');
+            console.log('ufi: Starting new OAuth flow...');
 
-            console.log('RoValra: Checking birthdate...');
+            console.log('ufi: Checking birthdate...');
             const birthResponse = await callRobloxApi({
                 subdomain: 'users',
                 endpoint: '/v1/birthdate',
@@ -238,7 +238,7 @@ async function startOAuthFlow(silent = false) {
 
                 if (age < 13) {
                     console.log(
-                        'RoValra: User is under 13. Will use fallback auth.',
+                        'ufi: User is under 13. Will use fallback auth.',
                     );
                     await clearOAuthProgress();
                     return false;
@@ -251,7 +251,7 @@ async function startOAuthFlow(silent = false) {
 
             try {
                 console.log(
-                    'RoValra: Attempting direct OAuth authorization POST request...',
+                    'ufi: Attempting direct OAuth authorization POST request...',
                 );
 
                 const response = await callRobloxApi({
@@ -291,11 +291,11 @@ async function startOAuthFlow(silent = false) {
                     });
                 }
             } catch (error) {
-                console.error('RoValra: OAuth authorization error', error);
+                console.error('ufi: OAuth authorization error', error);
                 return false;
             }
         } catch (error) {
-            console.error('RoValra: OAuth flow failure', error);
+            console.error('ufi: OAuth flow failure', error);
             return false;
         }
     })();
@@ -328,7 +328,7 @@ async function resumeOAuthFlow(userId, progress) {
             const storage = await chrome.storage.local.get(STORAGE_KEY);
             if (storage[STORAGE_KEY]?.[userId]?.accessToken) {
                 console.log(
-                    'RoValra: Token already present, clearing progress.',
+                    'ufi: Token already present, clearing progress.',
                 );
                 await clearOAuthProgress();
                 return true;
@@ -336,7 +336,7 @@ async function resumeOAuthFlow(userId, progress) {
 
             const { locationUrl } = data;
 
-            console.log('RoValra: Resuming token fetch from callback...');
+            console.log('ufi: Resuming token fetch from callback...');
             const tokenResponse = await callRobloxApi({
                 fullUrl: locationUrl,
                 method: 'GET',
@@ -400,14 +400,14 @@ async function resumeOAuthFlow(userId, progress) {
 
                 if (!locationUrl) {
                     console.error(
-                        'RoValra: OAuth authorization response did not contain a location URL.',
+                        'ufi: OAuth authorization response did not contain a location URL.',
                     );
                     await clearOAuthProgress();
                     return false;
                 }
 
                 console.log(
-                    'RoValra: Got authorization code. Fetching token from callback URL...',
+                    'ufi: Got authorization code. Fetching token from callback URL...',
                 );
 
                 await saveOAuthProgress('got_auth_code', {
@@ -421,17 +421,17 @@ async function resumeOAuthFlow(userId, progress) {
                 });
             } else {
                 console.error(
-                    'RoValra: OAuth authorization POST request failed with status ' +
+                    'ufi: OAuth authorization POST request failed with status ' +
                         response.status,
                 );
                 return false;
             }
         }
 
-        console.warn('RoValra: Unknown OAuth progress step:', step);
+        console.warn('ufi: Unknown OAuth progress step:', step);
         return false;
     } catch (error) {
-        console.error('RoValra: Error resuming OAuth flow:', error);
+        console.error('ufi: Error resuming OAuth flow:', error);
         await clearOAuthProgress();
         return false;
     }

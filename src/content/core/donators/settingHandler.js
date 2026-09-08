@@ -57,7 +57,7 @@ function assertValidUserId(userId) {
         String(userId).toLowerCase() === 'null'
     ) {
         throw new Error(
-            'RoValra: Cannot fetch user settings without a valid user ID.',
+            'ufi: Cannot fetch user settings without a valid user ID.',
         );
     }
 }
@@ -149,7 +149,7 @@ async function fetchAndProcessSettings(userId, options = {}) {
             }
         }
     } catch (error) {
-        console.warn('RoValra: Failed to fetch settings from API.', error);
+        console.warn('ufi: Failed to fetch settings from API.', error);
         apiProvidedMeaningfulSettings = false;
     }
 
@@ -315,7 +315,7 @@ async function processBatchQueue() {
         }
     } catch (error) {
         console.warn(
-            'RoValra: Batch settings fetch failed, falling back to individual requests.',
+            'ufi: Batch settings fetch failed, falling back to individual requests.',
             error,
         );
 
@@ -603,7 +603,7 @@ export async function updateUserSettingViaApi(key, value, options = {}) {
 
         if (!options.suppressErrorLog) {
             console.error(
-                `RoValra: Failed to update setting '${key}' via API.`,
+                `ufi: Failed to update setting '${key}' via API.`,
                 error,
             );
         }

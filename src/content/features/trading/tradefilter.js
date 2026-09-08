@@ -123,7 +123,7 @@ async function getTradeDetails(tradeId) {
         const allItems = [...myOffer.items, ...partnerOffer.items];
         return { items: allItems };
     } catch (e) {
-        console.error('RoValra: Failed to fetch trade details for filter', e);
+        console.error('ufi: Failed to fetch trade details for filter', e);
         return null;
     }
 }

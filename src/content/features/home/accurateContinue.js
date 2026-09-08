@@ -439,7 +439,7 @@ async function refreshAccurateContinue({ force = false } = {}) {
                 refreshed: true,
             };
         } catch (error) {
-            console.warn('RoValra: accurateContinue failed to refresh', error);
+            console.warn('ufi: accurateContinue failed to refresh', error);
             return { changed: false, refreshed: false };
         } finally {
             refreshPromise = null;

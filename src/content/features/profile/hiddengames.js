@@ -511,7 +511,7 @@ class HiddenGamesManager {
                 this.visibleCount += nextBatch.length;
             }
         } catch (err) {
-            console.warn('RoValra: Error loading more games', err);
+            console.warn('ufi: Error loading more games', err);
         } finally {
             this.elements.loader.innerHTML = '';
         }

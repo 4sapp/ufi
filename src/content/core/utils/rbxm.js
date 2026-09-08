@@ -609,7 +609,7 @@ export function parseRbxm(buffer) {
             }
             } catch (chunkErr) {
                 console.warn(
-                    `[Rovalra RBXM Parser] skipped ${chunkType.replace(/\0/g, '')} chunk:`,
+                    `[ufi RBXM Parser] skipped ${chunkType.replace(/\0/g, '')} chunk:`,
                     chunkErr,
                 );
             }
@@ -628,7 +628,7 @@ export function parseRbxm(buffer) {
 
         return roots;
     } catch (e) {
-        console.error('[Rovalra RBXM Parser] Failed:', e);
+        console.error('[ufi RBXM Parser] Failed:', e);
         return [];
     }
 }

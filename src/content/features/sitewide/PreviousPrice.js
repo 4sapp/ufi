@@ -346,7 +346,7 @@ async function handleOffsalePriceContainer(container) {
             }
         } catch (e) {
             console.warn(
-                'RoValra: Failed to fetch item details for previous price',
+                'ufi: Failed to fetch item details for previous price',
                 e,
             );
         }

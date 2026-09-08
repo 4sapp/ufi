@@ -79,7 +79,7 @@ async function readAllTransferData() {
         const storage = await chrome.storage.local.get(ROBUX_TRANSFER_DATA_KEY);
         return storage[ROBUX_TRANSFER_DATA_KEY] || {};
     } catch (error) {
-        console.warn('RoValra: Failed to read Robux transfer tracker', error);
+        console.warn('ufi: Failed to read Robux transfer tracker', error);
         return {};
     }
 }
@@ -88,7 +88,7 @@ async function writeAllTransferData(data) {
     try {
         await chrome.storage.local.set({ [ROBUX_TRANSFER_DATA_KEY]: data });
     } catch (error) {
-        console.warn('RoValra: Failed to write Robux transfer tracker', error);
+        console.warn('ufi: Failed to write Robux transfer tracker', error);
     }
 }
 
@@ -328,7 +328,7 @@ export async function updateRobuxTransferData(forceRefresh = false) {
             const subscription = shouldRefreshSubscription
                 ? await fetchRobloxPlusSubscription().catch((error) => {
                       console.warn(
-                          'RoValra: Failed to fetch Roblox Plus subscription for transfer tracker',
+                          'ufi: Failed to fetch Roblox Plus subscription for transfer tracker',
                           error,
                       );
                       return cachedData?.subscriptionRaw || null;
@@ -336,7 +336,7 @@ export async function updateRobuxTransferData(forceRefresh = false) {
                 : cachedData.subscriptionRaw || null;
             const limits = await fetchRobloxTransferLimits().catch((error) => {
                 console.warn(
-                    'RoValra: Failed to fetch Roblox Robux transfer limits',
+                    'ufi: Failed to fetch Roblox Robux transfer limits',
                     error,
                 );
 
@@ -372,7 +372,7 @@ export async function updateRobuxTransferData(forceRefresh = false) {
             return transferData;
         } catch (error) {
             console.warn(
-                'RoValra: Failed to update Robux transfer tracker',
+                'ufi: Failed to update Robux transfer tracker',
                 error,
             );
             return cachedData || null;

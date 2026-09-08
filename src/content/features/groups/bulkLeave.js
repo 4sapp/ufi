@@ -168,7 +168,7 @@ async function fetchUserGroups() {
             });
         }
     } catch (error) {
-        console.error('RoValra: Failed to fetch user communities', error);
+        console.error('ufi: Failed to fetch user communities', error);
     }
 }
 

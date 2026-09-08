@@ -168,7 +168,7 @@ async function getBadgeDetailsBatch(badgeIds) {
             batch.map((badgeId) =>
                 getBadgeDetails(badgeId).catch((error) => {
                     console.warn(
-                        'RoValra: Failed to fetch hidden badge details',
+                        'ufi: Failed to fetch hidden badge details',
                         badgeId,
                         error,
                     );
@@ -367,7 +367,7 @@ async function renderHiddenBadges(container, hiddenList) {
         }
     } catch (error) {
         showHiddenMessage(hiddenList, localeText.failedToLoad);
-        console.warn('RoValra: Failed to render hidden badges', error);
+        console.warn('ufi: Failed to render hidden badges', error);
     } finally {
         delete hiddenList.dataset.rovalraHiddenBadgesLoading;
     }

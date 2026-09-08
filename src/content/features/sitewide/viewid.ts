@@ -197,7 +197,7 @@ async function HandleMessage(request: RequestType) {
     }))?.["data"]?.[0];
 
     if (itemdata === undefined)
-        console.error(`RoValra: Failed to retrieve item data for ${itemType === 1 ? "Asset" : "Bundle"} ${id}.`)
+        console.error(`ufi: Failed to retrieve item data for ${itemType === 1 ? "Asset" : "Bundle"} ${id}.`)
     const result = formatUIMarkdown(itemdata.id, itemdata.productId, itemdata.taxonomy, itemdata.bundledItems);
     const bodyContentContainer = result[0];
     const bodyContentMarkdown = result[1];

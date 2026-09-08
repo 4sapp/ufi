@@ -204,7 +204,7 @@ function getMaturitySummary(universeId) {
             getExperienceGuidelinesAgeRecommendationSummary(universeId).catch(
                 (error) => {
                     console.warn(
-                        'RoValra: failed to load underrated game maturity',
+                        'ufi: failed to load underrated game maturity',
                         error,
                     );
                     return null;
@@ -425,7 +425,7 @@ async function loadUnderratedGames() {
             }
         } catch (error) {
             console.warn(
-                'RoValra: failed to fetch underrated game details',
+                'ufi: failed to fetch underrated game details',
                 error,
             );
         }
@@ -467,6 +467,6 @@ export async function init() {
             );
         })
         .catch((error) => {
-            console.warn('RoValra: underrated games failed to load', error);
+            console.warn('ufi: underrated games failed to load', error);
         });
 }

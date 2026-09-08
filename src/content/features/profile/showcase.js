@@ -176,7 +176,7 @@ async function getDecal(decalId) {
             thumbnail,
         };
     } catch (error) {
-        console.warn('RoValra: Failed to fetch showcase decal.', error);
+        console.warn('ufi: Failed to fetch showcase decal.', error);
         return null;
     }
 }
@@ -927,7 +927,7 @@ export async function init() {
         (tabs) =>
             addShowcaseTab(tabs).catch((error) => {
                 console.error(
-                    'RoValra: Failed to initialize Showcase tab.',
+                    'ufi: Failed to initialize Showcase tab.',
                     error,
                 );
             }),

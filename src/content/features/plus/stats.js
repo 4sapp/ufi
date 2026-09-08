@@ -67,7 +67,7 @@ async function makeHtml() {
             method: 'GET',
         });
     } catch (e) {
-        console.warn('We had an exception in RoValra Plus Stats:', e);
+        console.warn('We had an exception in ufi Plus Stats:', e);
         return;
     }
 

@@ -73,7 +73,7 @@ export async function getJoinDate(groupId, userId) {
             }
 
             console.warn(
-                `RoValra: Failed to fetch join date for group ${groupId}`,
+                `ufi: Failed to fetch join date for group ${groupId}`,
                 e,
             );
 

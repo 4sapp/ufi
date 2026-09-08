@@ -48,7 +48,7 @@ export async function reportDetectedUnfriends(userId, removedFriends) {
             onUnfriendsDetected(removedFriends);
         } catch (error) {
             console.error(
-                'RoValra: Unfriend Detector listener threw an error',
+                'ufi: Unfriend Detector listener threw an error',
                 error,
             );
         }

@@ -476,14 +476,14 @@ export function init() {
             state.userId = userData.id;
             if (!state.userId) {
                 console.error(
-                    'RoValra: Could not get user ID for pending Robux feature.',
+                    'ufi: Could not get user ID for pending Robux feature.',
                 );
                 return;
             }
             observeElement(TARGET_ELEMENT_SELECTOR, onElementFound);
         } catch (e) {
             console.error(
-                'RoValra: Failed to initialize pending Robux feature.',
+                'ufi: Failed to initialize pending Robux feature.',
                 e,
             );
         }

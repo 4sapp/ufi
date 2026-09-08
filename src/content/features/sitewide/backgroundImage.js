@@ -146,11 +146,11 @@ export function init() {
         if (areaName !== 'local') return;
         if (changes[BACKGROUND_IMAGE_SETTING] || changes[BACKGROUND_IMAGE_ENABLED_SETTING]) {
             applyStoredBackgroundImage(changes).catch((error) =>
-                console.error('RoValra: Failed to refresh the custom background.', error),
+                console.error('ufi: Failed to refresh the custom background.', error),
             );
         }
     });
     applyStoredBackgroundImage().catch((error) =>
-        console.error('RoValra: Failed to apply the custom background.', error),
+        console.error('ufi: Failed to apply the custom background.', error),
     );
 }

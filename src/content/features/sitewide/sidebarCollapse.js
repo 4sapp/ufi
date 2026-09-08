@@ -314,7 +314,7 @@ async function getStoredCollapsed() {
 }
 
 const storedCollapsedPromise = getStoredCollapsed().catch((error) => {
-    console.error('RoValra: Failed to load sidebar collapsed state', error);
+    console.error('ufi: Failed to load sidebar collapsed state', error);
     return false;
 });
 
@@ -473,6 +473,6 @@ export function init() {
     initialized = true;
 
     initSidebarCollapse().catch((error) =>
-        console.error('RoValra: Sidebar collapse initialization failed', error),
+        console.error('ufi: Sidebar collapse initialization failed', error),
     );
 }

@@ -52,7 +52,7 @@ async function getUniverseIdFromPlaceId(placeId) {
         }
     } catch (error) {
         console.warn(
-            'RoValra: Failed to get universe ID for place',
+            'ufi: Failed to get universe ID for place',
             placeId,
             error,
         );

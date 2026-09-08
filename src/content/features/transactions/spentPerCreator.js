@@ -323,7 +323,7 @@ function addSection(table) {
             updateTotalAmount();
         } catch (error) {
             creatorsContainer.textContent = ts('spentPerCreator.loadError');
-            console.error('RoValra: Failed to load spending per creator', error);
+            console.error('ufi: Failed to load spending per creator', error);
         } finally {
             loading = false;
         }

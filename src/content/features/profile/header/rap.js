@@ -97,7 +97,7 @@ async function fetchUserCollectibles(userId) {
                     10,
                 );
                 console.warn(
-                    `RoValra (RAP): Rate limited. Retrying after ${retryAfter} seconds.`,
+                    `ufi (RAP): Rate limited. Retrying after ${retryAfter} seconds.`,
                 );
                 await new Promise((resolve) =>
                     setTimeout(resolve, retryAfter * 1000),
@@ -136,7 +136,7 @@ async function fetchUserCollectibles(userId) {
         userCollectiblesCache.set(userId, result);
         return result;
     } catch (error) {
-        console.error('RoValra: Failed to fetch user collectibles:', error);
+        console.error('ufi: Failed to fetch user collectibles:', error);
         return null;
     }
 }
@@ -244,7 +244,7 @@ async function showInventoryOverlay(
         } catch (error) {
             if (error.name !== 'AbortError') {
                 console.error(
-                    'RoValra: Failed to fetch item thumbnails.',
+                    'ufi: Failed to fetch item thumbnails.',
                     error,
                 );
             }

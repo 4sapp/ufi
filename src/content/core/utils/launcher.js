@@ -6,7 +6,7 @@ function executeLaunchScript(codeToInject) {
         chrome.runtime.sendMessage({ action: 'injectScript', codeToInject });
     } else {
         console.error(
-            'RoValra Launcher: Chrome runtime is not available to inject the script.',
+            'ufi Launcher: Chrome runtime is not available to inject the script.',
         );
     }
 }
@@ -72,7 +72,7 @@ export async function launchStudioForGame(placeId) {
         }
     } catch (error) {
         console.error(
-            'RoValra Launcher: Failed to launch studio with universeId, falling back.',
+            'ufi Launcher: Failed to launch studio with universeId, falling back.',
             error,
         );
         const uri = `roblox-studio:launchmode:edit+task:EditPlace+placeId:${placeId}`;

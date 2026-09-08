@@ -4,7 +4,7 @@ import { showSystemAlert } from './ui/roblox/alert.js';
 export async function reportUserContent(userId, configKey) {
     if (!userId || !configKey) {
         console.error(
-            'RoValra (Report): Missing required reporting parameters.',
+            'ufi (Report): Missing required reporting parameters.',
         );
         throw new Error(
             'user_id and config_key are required to file a content report.',

@@ -49,7 +49,7 @@ async function downloadThumbnail(userId, username, type, size, button) {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     } catch (err) {
-        console.error('RoValra AvatarDownload: download failed', err);
+        console.error('ufi AvatarDownload: download failed', err);
         showSystemAlert(ts('avatarDownload.failed'), 'warning');
     } finally {
         button.disabled = false;

@@ -186,7 +186,7 @@ const applyProfileGameCardFix = () => {
                     originalCard.appendChild(newCard);
                 } catch (e) {
                     console.warn(
-                        'RoValra: Failed to replace profile game card',
+                        'ufi: Failed to replace profile game card',
                         e,
                     );
                 }

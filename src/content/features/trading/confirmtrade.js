@@ -286,11 +286,11 @@ export function init() {
             offerActionListenerAttached = true;
         }
 
-        console.log('[RoValra] Initializing confirmtrade feature.');
+        console.log('[ufi] Initializing confirmtrade feature.');
         observerRequest = observeElement(
             '.modal-window .modal-body, [role="dialog"].foundation-web-dialog-content',
             (modalBody) => {
-                console.log('[RoValra] Modal body observed.', modalBody);
+                console.log('[ufi] Modal body observed.', modalBody);
                 const isRadixDialog = modalBody.matches(
                     '[role="dialog"].foundation-web-dialog-content',
                 );
@@ -305,7 +305,7 @@ export function init() {
 
                 if (modalBody.querySelector('.rovalra-trade-preview')) {
                     console.log(
-                        '[RoValra] Trade preview already exists. Skipping.',
+                        '[ufi] Trade preview already exists. Skipping.',
                     );
                     return;
                 }
@@ -340,7 +340,7 @@ export function init() {
                 }
 
                 console.log(
-                    `[RoValra] Found ${tradeOffers.length} trade offers. DetailView: ${isDetailView}`,
+                    `[ufi] Found ${tradeOffers.length} trade offers. DetailView: ${isDetailView}`,
                 );
 
                 if (tradeOffers.length < 2) {
@@ -396,7 +396,7 @@ async function injectTradePreview(
     isRadixDialog = false,
     requestedTradeId = null,
 ) {
-    console.log('[RoValra] Inside injectTradePreview.');
+    console.log('[ufi] Inside injectTradePreview.');
     const assets = getAssets();
     const activeTradeId =
         requestedTradeId ||
@@ -416,7 +416,7 @@ async function injectTradePreview(
     if (!analysis) return;
 
     if (!modalBody.isConnected) return;
-    console.log('[RoValra] Injecting trade preview.');
+    console.log('[ufi] Injecting trade preview.');
 
     const mapOffer = (offer) => {
         return {
@@ -444,7 +444,7 @@ async function injectTradePreview(
         receiving: mapOffer(analysis.partnerOffer),
     };
 
-    console.log('[RoValra] Trade preview data:', previewData);
+    console.log('[ufi] Trade preview data:', previewData);
 
     const modalDialog = modalBody.closest('.modal-dialog');
     if (modalDialog) {
@@ -682,9 +682,9 @@ async function injectTradePreview(
     }
     hydrateTradePreviewThumbnails(container, previewData).catch((error) => {
         console.warn(
-            '[RoValra] Failed to load trade preview thumbnails',
+            '[ufi] Failed to load trade preview thumbnails',
             error,
         );
     });
-    console.log('[RoValra] Trade preview injected.');
+    console.log('[ufi] Trade preview injected.');
 }

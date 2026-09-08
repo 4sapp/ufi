@@ -78,7 +78,7 @@ export async function refreshModerationStatusAfterLimitedError(error) {
         return await fetchModerationStatus();
     } catch (refreshError) {
         console.warn(
-            'RoValra: Failed to refresh moderation status after temporary limit.',
+            'ufi: Failed to refresh moderation status after temporary limit.',
             refreshError,
         );
         return null;

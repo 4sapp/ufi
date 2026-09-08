@@ -47,7 +47,7 @@ async function getCurrencyTransferStatus() {
             return isRobloxPlus;
         } catch (err) {
             console.error(
-                'RoValra: Failed to fetch currency transfer status.',
+                'ufi: Failed to fetch currency transfer status.',
                 err,
             );
             return false;

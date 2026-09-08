@@ -108,7 +108,7 @@ async function fetchBatchData(
             }
         } catch (error) {
             console.error(
-                `RoValra Thumbnails: Failed to fetch batch for "PlayerToken".`,
+                `ufi Thumbnails: Failed to fetch batch for "PlayerToken".`,
                 error,
             );
         }
@@ -142,7 +142,7 @@ async function fetchBatchData(
             }
         } catch (error) {
             console.error(
-                `RoValra Thumbnails: Failed to fetch batch for "GameThumbnail".`,
+                `ufi Thumbnails: Failed to fetch batch for "GameThumbnail".`,
                 error,
             );
         }
@@ -175,7 +175,7 @@ async function fetchBatchData(
             }
         } catch (error) {
             console.error(
-                'RoValra Thumbnails: Failed to fetch batch for "GroupIcon".',
+                'ufi Thumbnails: Failed to fetch batch for "GroupIcon".',
                 error,
             );
         }
@@ -210,7 +210,7 @@ async function fetchBatchData(
             }
         } catch (error) {
             console.error(
-                'RoValra Thumbnails: Failed to fetch batch for "Outfit".',
+                'ufi Thumbnails: Failed to fetch batch for "Outfit".',
                 error,
             );
         }
@@ -279,7 +279,7 @@ async function fetchBatchData(
         }
     } catch (error) {
         console.error(
-            `RoValra Thumbnails: Failed to fetch batch for "${type}".`,
+            `ufi Thumbnails: Failed to fetch batch for "${type}".`,
             error,
         );
     }
@@ -633,7 +633,7 @@ export async function fetchUserThumbnailWithApiKey(userId) {
         }
     } catch (error) {
         console.error(
-            `RoValra Thumbnails: Cloud generateThumbnail failed for ${userId}`,
+            `ufi Thumbnails: Cloud generateThumbnail failed for ${userId}`,
             error,
         );
     }
@@ -702,7 +702,7 @@ export function renderAvatarThumbnail(userId) {
             }
         } catch (e) {
             console.error(
-                `RoValra Thumbnails: Avatar render fallback failed for ${userId}`,
+                `ufi Thumbnails: Avatar render fallback failed for ${userId}`,
                 e,
             );
         }
@@ -730,7 +730,7 @@ export async function fetchPromotionalThumbnails(universeId) {
             return thumbnails;
         }
     } catch (e) {
-        console.error('RoValra Thumbnails: Promotional fetch failed', e);
+        console.error('ufi Thumbnails: Promotional fetch failed', e);
     }
     return [];
 }

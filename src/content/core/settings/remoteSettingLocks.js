@@ -66,7 +66,7 @@ const getRemoteSettingsConfig = async () => {
     } catch (error) {
         if (cachedConfig?.data) {
             console.warn(
-                'RoValra: Failed to refresh remote settings config. Using cached config.',
+                'ufi: Failed to refresh remote settings config. Using cached config.',
                 error,
             );
             return cachedConfig.data;

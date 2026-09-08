@@ -40,7 +40,7 @@ async function fetchLatestPlaceVersion(placeId) {
         return null;
     } catch (error) {
         console.error(
-            'RoValra Server Stats: Failed to fetch latest place version from Roblox.',
+            'ufi Server Stats: Failed to fetch latest place version from Roblox.',
             error,
         );
         return null;
@@ -87,7 +87,7 @@ export async function fetchServerStats(placeId) {
         return data.counts;
     } catch (error) {
         console.error(
-            'RoValra Server Stats: Failed to fetch server statistics.',
+            'ufi Server Stats: Failed to fetch server statistics.',
             error,
         );
         return null;
@@ -154,7 +154,7 @@ async function createStatsBarUI(serverListContainer) {
             );
         });
     } catch (error) {
-        console.error('RoValra Server Stats: Failed to fetch settings.', error);
+        console.error('ufi Server Stats: Failed to fetch settings.', error);
         return;
     }
 
@@ -331,7 +331,7 @@ export async function initGlobalStatsBar() {
         }
     } catch (error) {
         console.error(
-            'RoValra Server Stats: Failed to initialize stats bar.',
+            'ufi Server Stats: Failed to initialize stats bar.',
             error,
         );
     }

@@ -9,7 +9,7 @@ import { t } from '../../core/locale/i18n.js';
 function onMessage(request) {
     if (request.action === 'copyToClipboard' && request.text) {
         navigator.clipboard.writeText(request.text).catch((err) => {
-            console.error('RoValra: Failed to copy ID', err);
+            console.error('ufi: Failed to copy ID', err);
         });
     }
 }

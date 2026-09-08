@@ -383,7 +383,7 @@ export function startObserving() {
     }
 
     if (!globalObserver) {
-        console.error('RoValra: Observer initialization failed.');
+        console.error('ufi: Observer initialization failed.');
         return 'failed';
     }
 

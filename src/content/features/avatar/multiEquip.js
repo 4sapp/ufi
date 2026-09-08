@@ -23,7 +23,7 @@ export function init() {
                     }
                 }));
             } catch (e) {
-                console.warn("RoValra: Failed to fetch dynamic categories for multi-equip", e);
+                console.warn("ufi: Failed to fetch dynamic categories for multi-equip", e);
             }
         }
     };

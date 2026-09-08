@@ -195,7 +195,7 @@ function resolvePaidPlayabilityCallbacks(universeId, hideBadge) {
         try {
             callback(!!hideBadge);
         } catch (e) {
-            console.warn('RoValra: Failed to resolve paid access status', e);
+            console.warn('ufi: Failed to resolve paid access status', e);
         }
     });
 }
@@ -256,7 +256,7 @@ async function flushPaidPlayabilityQueue() {
             }
         });
     } catch (e) {
-        console.warn('RoValra: Delaying paid access badge ownership check', e);
+        console.warn('ufi: Delaying paid access badge ownership check', e);
     } finally {
         paidPlayabilityInFlight = false;
         if (paidPlayabilityQueue.size) {

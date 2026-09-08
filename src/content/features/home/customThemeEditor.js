@@ -141,7 +141,7 @@ export function init() {
     document.addEventListener('rovalra:openCustomThemeBackground', () => {
         sessionStorage.setItem(EDITOR_SESSION_KEY, 'true');
         openBackgroundEditor().catch((error) =>
-            console.error('RoValra: Failed to open custom background settings.', error),
+            console.error('ufi: Failed to open custom background settings.', error),
         );
     });
 }

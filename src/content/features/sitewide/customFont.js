@@ -61,7 +61,7 @@ function applyCustomFont(input) {
 
     const resolved = resolveGoogleFont(input);
     if (!resolved) {
-        console.warn('[RoValra] customFont: Could not parse font input:', input);
+        console.warn('[ufi] customFont: Could not parse font input:', input);
         return;
     }
 

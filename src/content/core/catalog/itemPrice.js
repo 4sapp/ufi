@@ -108,7 +108,7 @@ export function getItemDetails(itemId, itemType) {
                     }
                 } catch (error) {
                     console.warn(
-                        'RoValra: Failed to fetch marketplace details for item',
+                        'ufi: Failed to fetch marketplace details for item',
                         error,
                     );
                 }

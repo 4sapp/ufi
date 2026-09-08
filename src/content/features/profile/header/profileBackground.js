@@ -121,7 +121,7 @@ export async function applyGradientForUserId(
 
         applyToAvatarContainer(element, gradient, isSmallScale);
     } catch (e) {
-        console.warn('RoValra: Failed to apply gradient for user', userId, e);
+        console.warn('ufi: Failed to apply gradient for user', userId, e);
     }
 }
 
@@ -271,7 +271,7 @@ export async function init() {
         }
     } catch (error) {
         console.error(
-            'RoValra: Profile background gradient init failed',
+            'ufi: Profile background gradient init failed',
             error,
         );
     }

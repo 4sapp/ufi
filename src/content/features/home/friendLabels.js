@@ -70,7 +70,7 @@ async function loadFriendLabels() {
 
         return sanitizeLabels(result[STORAGE_KEY]);
     } catch (error) {
-        console.warn('RoValra: Failed to load friend labels', error);
+        console.warn('ufi: Failed to load friend labels', error);
         return {};
     }
 }
@@ -83,7 +83,7 @@ async function saveFriendLabels(nextLabels) {
             [STORAGE_KEY]: friendLabels,
         });
     } catch (error) {
-        console.warn('RoValra: Failed to save friend labels', error);
+        console.warn('ufi: Failed to save friend labels', error);
     }
 
     refreshExistingCards();

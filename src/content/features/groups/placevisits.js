@@ -28,7 +28,7 @@ async function fetchTotalVisits(groupId) {
 
         return totalVisits;
     } catch (e) {
-        console.error('RoValra: Failed to fetch group place visits', e);
+        console.error('ufi: Failed to fetch group place visits', e);
         return null;
     }
 }

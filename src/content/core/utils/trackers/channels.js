@@ -32,7 +32,7 @@ async function readSavedAssignments(userId) {
         return storage[STORAGE_KEY]?.[userId] || {};
     } catch (error) {
         console.warn(
-            'RoValra: Failed to read client channel assignments',
+            'ufi: Failed to read client channel assignments',
             error,
         );
         return {};
@@ -58,7 +58,7 @@ async function readLastReportedAt(userId) {
         return typeof timestamp === 'number' ? timestamp : 0;
     } catch (error) {
         console.warn(
-            'RoValra: Failed to read client channel report timestamp',
+            'ufi: Failed to read client channel report timestamp',
             error,
         );
         return 0;
@@ -182,7 +182,7 @@ export async function updateClientChannelAssignments() {
         results.forEach((result, index) => {
             if (result.status === 'rejected') {
                 console.warn(
-                    `RoValra: Failed to fetch ${BINARY_TYPES[index]} client channel`,
+                    `ufi: Failed to fetch ${BINARY_TYPES[index]} client channel`,
                     result.reason,
                 );
             }
@@ -232,7 +232,7 @@ export function init() {
             await updateClientChannelAssignments();
         } catch (error) {
             console.warn(
-                'RoValra: Failed to update client channel assignments',
+                'ufi: Failed to update client channel assignments',
                 error,
             );
         } finally {

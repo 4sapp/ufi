@@ -324,7 +324,7 @@ class HiddenGamesManager {
 
                 await this.applyFilters();
             } catch (err) {
-                console.warn('RoValra: Failed to load hidden games', err);
+                console.warn('ufi: Failed to load hidden games', err);
             }
         })();
     }
@@ -458,7 +458,7 @@ class HiddenGamesManager {
                 this.displayedCount += nextBatch.length;
             }
         } catch (err) {
-            console.warn('RoValra: Error loading more games', err);
+            console.warn('ufi: Error loading more games', err);
         } finally {
             this.elements.loader.innerHTML = '';
             this.isPaginating = false;

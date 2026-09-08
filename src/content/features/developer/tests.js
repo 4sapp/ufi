@@ -112,7 +112,7 @@ async function renderTestPage(contentDiv) {
             });
         }
     } catch (e) {
-        console.error('RoValra: Failed to load friend tiles', e);
+        console.error('ufi: Failed to load friend tiles', e);
     }
 
     const container = document.createElement('div');

@@ -243,7 +243,7 @@ export async function checkRoValraPage() {
             if (hasRegionSettings) {
                 loadTabContent(currentTab).catch((error) =>
                     console.warn(
-                        'RoValra: Failed to refresh settings region data.',
+                        'ufi: Failed to refresh settings region data.',
                         error,
                     ),
                 );

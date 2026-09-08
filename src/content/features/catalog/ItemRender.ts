@@ -449,7 +449,7 @@ async function applyItemRenderSkybox(skyboxUrls: string[], darken = false) {
             transformSkyboxImage(skyboxUrls[5], { darken }),
         ]);
     } catch (error) {
-        console.warn('RoValra: ItemRender skybox transform failed', error);
+        console.warn('ufi: ItemRender skybox transform failed', error);
     }
 
     mainScene.scene.background = new THREE.CubeTextureLoader().load(skyboxUrls);
@@ -567,7 +567,7 @@ async function loadItemRenderEnvironmentModel(config: ModelConfig) {
             },
             undefined,
             (error) => {
-                console.error('RoValra: ItemRender GLTF Load Error', error);
+                console.error('ufi: ItemRender GLTF Load Error', error);
                 reject(error);
             },
         );
@@ -599,7 +599,7 @@ async function applyItemRenderEnvironmentMode() {
             await loadItemRenderEnvironmentModel(environmentConfig.model);
         } catch (error) {
             console.error(
-                'RoValra: Failed to load item render baseplate.',
+                'ufi: Failed to load item render baseplate.',
                 error,
             );
         }

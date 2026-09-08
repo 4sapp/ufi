@@ -17,7 +17,7 @@ export async function getUserDescription(userId) {
         return userData ? userData.description || '' : null;
     } catch (error) {
         console.error(
-            `RoValra: Failed to get description for user ${userId}`,
+            `ufi: Failed to get description for user ${userId}`,
             error,
         );
         return null;
@@ -35,7 +35,7 @@ export async function isTextFiltered(text) {
         });
         return filterResponse?.isFiltered;
     } catch (error) {
-        console.error('RoValra: Failed to check text with filter', error);
+        console.error('ufi: Failed to check text with filter', error);
         return true; // Assume it's filtered on error to be safe.
     }
 }
@@ -66,7 +66,7 @@ export async function updateUserDescription(userId, newDescription) {
         return updateResponse.ok;
     } catch (error) {
         console.error(
-            `RoValra: Failed to update description for user ${userId}`,
+            `ufi: Failed to update description for user ${userId}`,
             error,
         );
         return false;
@@ -103,7 +103,7 @@ export async function migrateLegacyStatus() {
         }
 
         console.log(
-            `RoValra: Found legacy status in description. Migrating: "${legacyStatus}"`,
+            `ufi: Found legacy status in description. Migrating: "${legacyStatus}"`,
         );
 
         const updatedValue = await updateUserSettingViaApi(
@@ -123,23 +123,23 @@ export async function migrateLegacyStatus() {
                 );
                 if (updateResult === true) {
                     console.log(
-                        'RoValra: Successfully cleaned legacy status line from description.',
+                        'ufi: Successfully cleaned legacy status line from description.',
                     );
                 } else {
                     console.warn(
-                        'RoValra: Could not clean description (may be filtered or failed), but status was migrated.',
+                        'ufi: Could not clean description (may be filtered or failed), but status was migrated.',
                     );
                 }
             }
 
-            console.log('RoValra: Successfully migrated legacy status to API.');
+            console.log('ufi: Successfully migrated legacy status to API.');
         } else {
-            console.warn('RoValra: Failed to migrate legacy status via API.');
+            console.warn('ufi: Failed to migrate legacy status via API.');
         }
 
         await chrome.storage.local.set({ [STATUS_MIGRATION_KEY]: true });
     } catch (error) {
-        console.error('RoValra: Failed to migrate legacy status.', error);
+        console.error('ufi: Failed to migrate legacy status.', error);
         await chrome.storage.local.set({ [STATUS_MIGRATION_KEY]: true });
     }
 }
@@ -184,7 +184,7 @@ export async function migrateLegacyEnvironment() {
         }
 
         console.log(
-            `RoValra: Found legacy environment in description. Migrating: ${envId}`,
+            `ufi: Found legacy environment in description. Migrating: ${envId}`,
         );
 
         const updatedValue = await updateUserSettingViaApi(
@@ -204,27 +204,27 @@ export async function migrateLegacyEnvironment() {
                 );
                 if (updateResult === true) {
                     console.log(
-                        'RoValra: Successfully cleaned legacy environment line from description.',
+                        'ufi: Successfully cleaned legacy environment line from description.',
                     );
                 } else {
                     console.warn(
-                        'RoValra: Could not clean description (may be filtered or failed), but environment was migrated.',
+                        'ufi: Could not clean description (may be filtered or failed), but environment was migrated.',
                     );
                 }
             }
 
             console.log(
-                'RoValra: Successfully migrated legacy environment to API.',
+                'ufi: Successfully migrated legacy environment to API.',
             );
         } else {
             console.warn(
-                'RoValra: Failed to migrate legacy environment via API.',
+                'ufi: Failed to migrate legacy environment via API.',
             );
         }
 
         await chrome.storage.local.set({ [ENVIRONMENT_MIGRATION_KEY]: true });
     } catch (error) {
-        console.error('RoValra: Failed to migrate legacy environment.', error);
+        console.error('ufi: Failed to migrate legacy environment.', error);
         await chrome.storage.local.set({ [ENVIRONMENT_MIGRATION_KEY]: true });
     }
 }

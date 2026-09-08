@@ -106,7 +106,7 @@ async function loadAndRenderHeatmap(placeId, parentElement) {
                     );
                 }
             } catch (e) {
-                console.warn('RoValra: Failed to check content maturity', e);
+                console.warn('ufi: Failed to check content maturity', e);
             }
         }
 
@@ -129,7 +129,7 @@ async function loadAndRenderHeatmap(placeId, parentElement) {
                     );
                 }
             } catch (e) {
-                console.warn('RoValra: Failed to check paid access status', e);
+                console.warn('ufi: Failed to check paid access status', e);
             }
         }
 
@@ -150,7 +150,7 @@ async function loadAndRenderHeatmap(placeId, parentElement) {
                 }
             } catch (e) {
                 console.warn(
-                    'RoValra: Failed to check subplace joinability',
+                    'ufi: Failed to check subplace joinability',
                     e,
                 );
             }
@@ -167,7 +167,7 @@ async function loadAndRenderHeatmap(placeId, parentElement) {
                 }
             } catch (e) {
                 console.warn(
-                    'RoValra: Failed to check desktop platform support',
+                    'ufi: Failed to check desktop platform support',
                     e,
                 );
             }
@@ -222,6 +222,6 @@ async function loadAndRenderHeatmap(placeId, parentElement) {
             }
         }
     } catch (error) {
-        console.error('RoValra: Failed to load heatmap data', error);
+        console.error('ufi: Failed to load heatmap data', error);
     }
 }

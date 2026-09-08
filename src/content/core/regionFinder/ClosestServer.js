@@ -320,7 +320,7 @@ export async function findServerViaRovalraApi(
 
         return { status: 'API_ERROR' };
     } catch (error) {
-        console.error('Rovalra Search Error', error);
+        console.error('ufi Search Error', error);
         return { status: 'API_ERROR' };
     }
 }
@@ -382,7 +382,7 @@ async function getRankedRegions(placeId, preferredRegionId) {
     }
 
     if (FINDER_CONFIG.logScores) {
-        console.log(`[RoValra] Region Scores for Place ${placeId}:`);
+        console.log(`[ufi] Region Scores for Place ${placeId}:`);
         ranked.forEach((r) => {
             console.log(
                 ` - ${getRegionName(r.region.id)}: Score ${r.score} (${Math.round(r.distance)} km)`,

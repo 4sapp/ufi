@@ -297,7 +297,7 @@ async function mountDependencyScanner(favButton) {
         contentWrapper.appendChild(grid);
         panel.appendChild(contentWrapper);
     } catch (error) {
-        console.warn('[Rovalra Scanner] Silent failure:', error);
+        console.warn('[ufi Scanner] Silent failure:', error);
     }
 }
 

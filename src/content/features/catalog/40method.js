@@ -109,7 +109,7 @@ async function publishTemplateToPlace(targetPlaceId) {
 
         return true;
     } catch (error) {
-        console.error('RoValra: Auto-publish failed', error);
+        console.error('ufi: Auto-publish failed', error);
         throw error;
     }
 }
@@ -153,7 +153,7 @@ async function fetchCatalogMetadata() {
                 }
             }
         } catch (error) {
-            console.warn('RoValra: Failed to fetch catalog metadata', error);
+            console.warn('ufi: Failed to fetch catalog metadata', error);
         } finally {
             metadataPromise = null;
         }
@@ -226,7 +226,7 @@ async function updateGameDescription(universeId, sourcePlaceId) {
             body: patchBody,
         });
     } catch (e) {
-        console.warn('RoValra: Failed to update game description', e);
+        console.warn('ufi: Failed to update game description', e);
     }
 }
 
@@ -396,7 +396,7 @@ const checkItemOwnership = async (userId, itemId, itemType) => {
         }
         return false;
     } catch (error) {
-        console.warn('RoValra: Could not check item ownership:', error);
+        console.warn('ufi: Could not check item ownership:', error);
         return false;
     }
 };
@@ -428,7 +428,7 @@ async function fetchGamePassesForUniverse(universeId) {
             cursor = response.nextPageToken;
         } while (cursor);
     } catch (error) {
-        console.warn('RoValra: Failed to fetch game passes via API', error);
+        console.warn('ufi: Failed to fetch game passes via API', error);
     }
     return gamePasses;
 }
@@ -802,7 +802,7 @@ export const createAndShowPopup = (onSave, initialState = null) => {
                 () => {
                     if (chrome.runtime.lastError) {
                         console.error(
-                            'RoValra: Storage save error:',
+                            'ufi: Storage save error:',
                             chrome.runtime.lastError,
                         );
                         alert(
@@ -815,7 +815,7 @@ export const createAndShowPopup = (onSave, initialState = null) => {
                 },
             );
         } else {
-            console.error('RoValra: Storage API unavailable.');
+            console.error('ufi: Storage API unavailable.');
             alert('Failed to save settings. Storage API unavailable.');
         }
     };
@@ -889,7 +889,7 @@ export const createAndShowPopup = (onSave, initialState = null) => {
                 }
             } catch (e) {
                 console.error(
-                    'RoValra: Failed to fetch initial place version',
+                    'ufi: Failed to fetch initial place version',
                     e,
                 );
             }
@@ -975,7 +975,7 @@ export const createAndShowPopup = (onSave, initialState = null) => {
                 }
             } catch {}
         } catch (error) {
-            console.error('RoValra: Failed to fetch groups:', error);
+            console.error('ufi: Failed to fetch groups:', error);
             groupDropdownContainer.innerHTML = DOMPurify.sanitize(
                 '<div class="text font-body" style="color: var(--rovalra-secondary-text-color);">Failed to load groups. Please refresh and try again.</div>',
             );
@@ -1045,7 +1045,7 @@ export const createAndShowPopup = (onSave, initialState = null) => {
             const newPlaceId = createResponse.rootPlaceId;
 
             console.log(
-                `RoValra: Created Universe ${newUniverseId}, Place ${newPlaceId}`,
+                `ufi: Created Universe ${newUniverseId}, Place ${newPlaceId}`,
             );
 
             createNewGameBtn.textContent = 'Uploading Template...';
@@ -1080,7 +1080,7 @@ export const createAndShowPopup = (onSave, initialState = null) => {
                 if (typeof onSave === 'function') onSave();
             });
         } catch (error) {
-            console.error('RoValra: Create Game Error', error);
+            console.error('ufi: Create Game Error', error);
             if (errorEl) {
                 if (
                     error.response &&
@@ -1256,7 +1256,7 @@ export const createAndShowPopup = (onSave, initialState = null) => {
             viewUpdateInstructions.classList.add('sr-hidden');
             manualAckView.classList.remove('sr-hidden');
         } catch (e) {
-            console.error('RoValra: Update failed', e);
+            console.error('ufi: Update failed', e);
             alert(`Update failed: ${e.message}. Please try again.`);
         } finally {
             updateConfirmBtn.textContent = originalText;
@@ -1421,7 +1421,7 @@ const showInitialConfirmation = async (savedPlaceId, useRoValraGroup) => {
             }
         }
     } catch (error) {
-        console.warn('RoValra: Could not fetch game details:', error);
+        console.warn('ufi: Could not fetch game details:', error);
     }
 
     const isDonating = useRoValraGroup || savedPlaceId === 'ROVALRA_GROUP';
@@ -1551,7 +1551,7 @@ const executeCartPurchase = async (
             }
         });
     } catch (error) {
-        console.warn('RoValra: Could not fetch cart item thumbnails:', error);
+        console.warn('ufi: Could not fetch cart item thumbnails:', error);
     }
 
     let result;
@@ -1597,7 +1597,7 @@ const executeCartPurchase = async (
                 gameThumbnailUrl = (await prefetchData.gameThumb) || '';
             }
         } catch (e) {
-            console.warn('RoValra: Prefetch game info error', e);
+            console.warn('ufi: Prefetch game info error', e);
         }
     } else {
         try {
@@ -1624,7 +1624,7 @@ const executeCartPurchase = async (
                 }
             }
         } catch (error) {
-            console.warn('RoValra: Could not fetch game details:', error);
+            console.warn('ufi: Could not fetch game details:', error);
         }
     }
 
@@ -1965,7 +1965,7 @@ const execute40MethodPurchase = async (
                 }
             } catch (error) {
                 console.warn(
-                    'RoValra: Could not fetch game pass thumbnail:',
+                    'ufi: Could not fetch game pass thumbnail:',
                     error,
                 );
             }
@@ -1997,7 +1997,7 @@ const execute40MethodPurchase = async (
                     }
                 }
             } catch (error) {
-                console.warn('RoValra: Could not fetch item details:', error);
+                console.warn('ufi: Could not fetch item details:', error);
             }
         }
     }
@@ -2023,7 +2023,7 @@ const execute40MethodPurchase = async (
                 gameThumbnailUrl = (await prefetchData.gameThumb) || '';
             }
         } catch (e) {
-            console.warn('RoValra: Prefetch game info error', e);
+            console.warn('ufi: Prefetch game info error', e);
         }
     } else {
         try {
@@ -2050,7 +2050,7 @@ const execute40MethodPurchase = async (
                 }
             }
         } catch (error) {
-            console.warn('RoValra: Could not fetch game details:', error);
+            console.warn('ufi: Could not fetch game details:', error);
         }
     }
 
@@ -2618,7 +2618,7 @@ const addSaveButton = (modal) => {
                 }
             } catch (e) {
                 console.warn(
-                    'RoValra: Failed to fetch asset type for button text',
+                    'ufi: Failed to fetch asset type for button text',
                     e,
                 );
             }
@@ -2784,7 +2784,7 @@ const addSaveButton = (modal) => {
                         }
                     } catch (thumbError) {
                         console.warn(
-                            'RoValra: Could not fetch item thumbnail:',
+                            'ufi: Could not fetch item thumbnail:',
                             thumbError,
                         );
                     }
@@ -2893,6 +2893,6 @@ export function init() {
             }
         });
     } else {
-        console.error('RoValra: Chrome storage API not available.');
+        console.error('ufi: Chrome storage API not available.');
     }
 }

@@ -229,7 +229,7 @@ export async function init() {
 
                     return versionMap;
                 } catch (e) {
-                    console.warn('RoValra: Failed to fetch place versions', e);
+                    console.warn('ufi: Failed to fetch place versions', e);
                     return new Map();
                 }
             };
@@ -287,7 +287,7 @@ export async function init() {
                     }
                 } catch (e) {
                     console.warn(
-                        'RoValra: Failed to check for subplace banner',
+                        'ufi: Failed to check for subplace banner',
                         e,
                     );
                 }

@@ -60,7 +60,7 @@ export async function initSitewide() {
                 });
                 updateUserSettingViaApi('theme', robloxUserSettings.accountTheme || "");
             } catch (e) {
-                console.error('RoValra App Themes On Profile: Uh oh! Something went wrong! Setting theme to none. Details:', e);
+                console.error('ufi App Themes On Profile: Uh oh! Something went wrong! Setting theme to none. Details:', e);
                 updateUserSettingViaApi('theme', "");
             }
         } else if (event.detail.value === false) {

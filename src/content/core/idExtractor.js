@@ -15,7 +15,7 @@ export function getPlaceIdFromUrl(url = window.location.href) {
             return match[1];
         }
     } catch (e) {
-        console.warn('RoValra: URL parsing failed', e);
+        console.warn('ufi: URL parsing failed', e);
     }
 
     const match = url.match(
@@ -37,7 +37,7 @@ export function getUniverseIdFromUrl(url = window.location.href) {
 
         return /^\d+$/.test(universeId || '') ? universeId : null;
     } catch (e) {
-        console.warn('RoValra: URL parsing failed', e);
+        console.warn('ufi: URL parsing failed', e);
         return null;
     }
 }
@@ -52,7 +52,7 @@ export function getGamePassIdFromUrl(url = window.location.href) {
             return match[1];
         }
     } catch (e) {
-        console.warn('RoValra: URL parsing failed', e);
+        console.warn('ufi: URL parsing failed', e);
     }
 
     const match = url.match(/\/game-pass\/(\d+)/i);
@@ -73,7 +73,7 @@ export function getAssetIdFromUrl(url = window.location.href) {
             return match[1];
         }
     } catch (e) {
-        console.warn('RoValra: URL parsing failed', e);
+        console.warn('ufi: URL parsing failed', e);
     }
 
     const match = url.match(/\/store\/asset\/(\d+)/);
@@ -94,7 +94,7 @@ export async function getUserIdFromFriendUrl(url = window.location.href) {
             return match[1];
         }
     } catch (e) {
-        console.warn('RoValra: URL parsing failed', e);
+        console.warn('ufi: URL parsing failed', e);
     }
 
     const match = url.match(/\/(?:users|banned-users)\/(\d+)\/profile/);
@@ -114,7 +114,7 @@ export function getUserIdFromUrl(url = window.location.href) {
             return match[1];
         }
     } catch (e) {
-        console.warn('RoValra: URL parsing failed', e);
+        console.warn('ufi: URL parsing failed', e);
     }
 
     const match = url.match(/\/(?:users|banned-users)\/(\d+)\/profile/);
@@ -138,7 +138,7 @@ export function getGroupIdFromUrl(url = window.location.href) {
             return match[1];
         }
     } catch (e) {
-        console.warn('RoValra: URL parsing failed', e);
+        console.warn('ufi: URL parsing failed', e);
     }
 
     const match = url.match(/(?:groups|communities)\/(\d+)/);

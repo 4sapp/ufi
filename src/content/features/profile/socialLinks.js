@@ -107,7 +107,7 @@ async function renderSocialLinks(moreButton) {
 function renderAllSocialLinks() {
     document.querySelectorAll(MORE_BUTTON_SELECTOR).forEach((button) => {
         renderSocialLinks(button).catch((error) =>
-            console.error('RoValra: Failed to render social links', error),
+            console.error('ufi: Failed to render social links', error),
         );
     });
 }
@@ -125,7 +125,7 @@ export async function init() {
         MORE_BUTTON_SELECTOR,
         (button) => {
             renderSocialLinks(button).catch((error) =>
-                console.error('RoValra: Failed to render social links', error),
+                console.error('ufi: Failed to render social links', error),
             );
         },
         { multiple: true },

@@ -313,7 +313,7 @@ export async function showPurchaseModal(
                         );
                     }
                 } catch (err) {
-                    console.error('RoValra: Purchase failed', err);
+                    console.error('ufi: Purchase failed', err);
                     const errorMsg =
                         err.response?.message ||
                         err.message ||
@@ -326,7 +326,7 @@ export async function showPurchaseModal(
             };
         }
     } catch (e) {
-        console.error('RoValra: Failed to load purchase modal data', e);
+        console.error('ufi: Failed to load purchase modal data', e);
         const errorMessage = e.message || 'Unknown error';
         modal.querySelector('#purchase-modal-body').innerHTML = `
             <div class="section-content default-error-page" style="text-align: center; padding: 20px;">

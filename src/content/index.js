@@ -585,7 +585,7 @@ function runFeaturesForPage() {
                     try {
                         init();
                     } catch (error) {
-                        console.error('RoValra: Feature init failed', error);
+                        console.error('ufi: Feature init failed', error);
                     }
                 });
             }
@@ -601,7 +601,7 @@ async function initializePage() {
     const observerStatus = startObserving();
 
     getValidAccessToken(false, false).catch((error) =>
-        console.error('RoValra: OAuth token initialization failed', error),
+        console.error('ufi: OAuth token initialization failed', error),
     );
     startAuthFavoriteCleanupMonitor();
 
@@ -609,14 +609,14 @@ async function initializePage() {
         refreshRemoteSettingLocks()
             .catch((error) =>
                 console.error(
-                    'RoValra: Failed to refresh remote settings config.',
+                    'ufi: Failed to refresh remote settings config.',
                     error,
                 ),
             )
             .finally(() =>
                 enforceSettingOverrides().catch((error) =>
                     console.error(
-                        'RoValra: Failed to enforce setting overrides.',
+                        'ufi: Failed to enforce setting overrides.',
                         error,
                     ),
                 ),
@@ -636,11 +636,11 @@ async function initializePage() {
         const featureStartTime = performance.now();
 
         await t('__i18n_ready__').catch((error) =>
-            console.error('RoValra: Locale initialization failed.', error),
+            console.error('ufi: Locale initialization failed.', error),
         );
         enforceSettingOverrides().catch((error) =>
             console.error(
-                'RoValra: Failed to enforce setting overrides.',
+                'ufi: Failed to enforce setting overrides.',
                 error,
             ),
         );
@@ -658,7 +658,7 @@ async function initializePage() {
                 );
             })
             .catch((error) =>
-                console.error('RoValra: Failed to load settings.', error),
+                console.error('ufi: Failed to load settings.', error),
             );
         runFeaturesForPage();
         scheduleSettingsMaintenance();
@@ -729,7 +729,7 @@ async function initializePage() {
 
     if (document.body) {
         startFeatures().catch((error) =>
-            console.error('RoValra: Feature initialization failed', error),
+            console.error('ufi: Feature initialization failed', error),
         );
     } else {
         const docObserverForBody = new MutationObserver((_, obs) => {
@@ -737,7 +737,7 @@ async function initializePage() {
                 obs.disconnect();
                 startFeatures().catch((error) =>
                     console.error(
-                        'RoValra: Feature initialization failed',
+                        'ufi: Feature initialization failed',
                         error,
                     ),
                 );

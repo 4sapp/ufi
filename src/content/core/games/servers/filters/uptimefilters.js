@@ -26,7 +26,7 @@ function getPlaceIdFromUrl() {
 async function fetchUptimeServers(value, cursor = null) {
     const placeId = getPlaceIdFromUrl();
     if (!placeId) {
-        console.error('RoValra UptimeFilters: Could not determine Place ID.');
+        console.error('ufi UptimeFilters: Could not determine Place ID.');
         return null;
     }
 
@@ -47,7 +47,7 @@ async function fetchUptimeServers(value, cursor = null) {
         });
     } catch (error) {
         console.error(
-            `RoValra UptimeFilters: Failed to fetch ${value} servers.`,
+            `ufi UptimeFilters: Failed to fetch ${value} servers.`,
             error,
         );
         return null;

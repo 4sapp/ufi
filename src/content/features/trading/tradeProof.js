@@ -96,6 +96,6 @@ async function copyTradeProof(container, btn) {
             if (btn.isConnected) btn.innerText = originalText;
         }, 2000);
     } catch (err) {
-        console.error('RoValra: Failed to copy proof', err);
+        console.error('ufi: Failed to copy proof', err);
     }
 }

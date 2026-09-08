@@ -154,7 +154,7 @@ async function attachContributors(container, config, isChild = false) {
             renderContributor(id, displayName, thumbData);
         });
     } catch (error) {
-        console.warn('RoValra: Failed to load contributors', error);
+        console.warn('ufi: Failed to load contributors', error);
     }
 }
 

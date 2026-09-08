@@ -112,7 +112,7 @@ async function fetchAndCacheGroupData(groupId) {
 
             return newEntry;
         } catch (error) {
-            console.warn('RoValra: Failed to update group funds data', error);
+            console.warn('ufi: Failed to update group funds data', error);
             return cachedData;
         } finally {
             activeGroupRequests.delete(groupId);
@@ -593,7 +593,7 @@ export function init() {
     };
 
     syncSettingsAndRender().catch((error) => {
-        console.error('RoValra: Failed to initialize group funds', error);
+        console.error('ufi: Failed to initialize group funds', error);
     });
 
     const popoverOpenState = new WeakMap();

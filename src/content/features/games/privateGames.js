@@ -201,7 +201,7 @@ async function loadServerCardAvatars(card, server, type) {
         }
         avatar.classList.toggle('single', items.length === 1 && !hiddenPlayers);
     } catch (error) {
-        console.warn('RoValra: Failed to load server avatars', error);
+        console.warn('ufi: Failed to load server avatars', error);
     }
 }
 
@@ -298,7 +298,7 @@ async function loadServerSection(section, type, placeId) {
             : ts('privateGames.servers.noServers');
     } catch (error) {
         loadedCursors.delete(cursor);
-        console.warn(`RoValra: Failed to load ${type} servers`, error);
+        console.warn(`ufi: Failed to load ${type} servers`, error);
         status.textContent = ts('privateGames.servers.loadError');
     } finally {
         section.dataset.loading = 'false';
@@ -766,7 +766,7 @@ function loadAndRenderPrivateGame(placeId, settings, isSkeletonOnly = false) {
                 })
                 .catch((e) =>
                     console.warn(
-                        'RoValra: Failed to fetch playability status',
+                        'ufi: Failed to fetch playability status',
                         e,
                     ),
                 );
@@ -834,7 +834,7 @@ function loadAndRenderPrivateGame(placeId, settings, isSkeletonOnly = false) {
                 })
                 .catch((e) => {
                     console.warn(
-                        'RoValra: Cloud API failed, using fallback data',
+                        'ufi: Cloud API failed, using fallback data',
                         e,
                     );
                     checkRedirectToStandardPage(gameData, placeId, settings);
@@ -851,7 +851,7 @@ function loadAndRenderPrivateGame(placeId, settings, isSkeletonOnly = false) {
                     }
                 })
                 .catch((e) =>
-                    console.warn('RoValra: Failed to fetch favorites count', e),
+                    console.warn('ufi: Failed to fetch favorites count', e),
                 );
 
             callRobloxApiJson({
@@ -866,7 +866,7 @@ function loadAndRenderPrivateGame(placeId, settings, isSkeletonOnly = false) {
                     }
                 })
                 .catch((e) =>
-                    console.warn('RoValra: Failed to fetch vote data', e),
+                    console.warn('ufi: Failed to fetch vote data', e),
                 );
 
             callRobloxApiJson({
@@ -892,7 +892,7 @@ function loadAndRenderPrivateGame(placeId, settings, isSkeletonOnly = false) {
                 })
                 .catch((e) =>
                     console.warn(
-                        'RoValra: Failed to fetch experience guidelines',
+                        'ufi: Failed to fetch experience guidelines',
                         e,
                     ),
                 );
@@ -917,7 +917,7 @@ function loadAndRenderPrivateGame(placeId, settings, isSkeletonOnly = false) {
                 })
                 .catch((e) =>
                     console.warn(
-                        'RoValra: Failed to fetch place server size',
+                        'ufi: Failed to fetch place server size',
                         e,
                     ),
                 );
@@ -933,7 +933,7 @@ function loadAndRenderPrivateGame(placeId, settings, isSkeletonOnly = false) {
                     }
                 })
                 .catch((e) => {
-                    console.warn('RoValra: Failed to fetch favorites status');
+                    console.warn('ufi: Failed to fetch favorites status');
                     gameData.isFavoritedByUser = false;
                 });
 
@@ -949,7 +949,7 @@ function loadAndRenderPrivateGame(placeId, settings, isSkeletonOnly = false) {
                 }
             }
         } catch (e) {
-            console.error('RoValra: Failed to fetch info for private game', e);
+            console.error('ufi: Failed to fetch info for private game', e);
         }
     };
 
@@ -1194,7 +1194,7 @@ async function fetchVisitsForCreator(gameData, universeId) {
             }
         }
     } catch (e) {
-        console.warn('RoValra: Failed to fetch visit count from creator', e);
+        console.warn('ufi: Failed to fetch visit count from creator', e);
     }
 }
 
@@ -1886,7 +1886,7 @@ function setupFavoriteButton(universeId, initialFavorited) {
                 updateFavoriteUI(isFavorited);
             }
         } catch (err) {
-            console.error(`RoValra: Failed to ${action} game`, err);
+            console.error(`ufi: Failed to ${action} game`, err);
         } finally {
             isFavoriting = false;
         }
@@ -2084,7 +2084,7 @@ async function loadBadges(universeId) {
 
         renderBadgesUI();
     } catch (e) {
-        console.warn('RoValra: Failed to load badges', e);
+        console.warn('ufi: Failed to load badges', e);
     }
 }
 
@@ -2427,7 +2427,7 @@ async function loadSubscriptions(subscriptionProviderId, retryCount = 0) {
             }
         });
     } catch (e) {
-        console.warn('RoValra: Failed to load subscriptions', e);
+        console.warn('ufi: Failed to load subscriptions', e);
     }
 }
 
@@ -2467,7 +2467,7 @@ async function loadPasses(universeId, retryCount = 0) {
 
         loadDeveloperProducts(universeId);
     } catch (e) {
-        console.warn('RoValra: Failed to load passes', e);
+        console.warn('ufi: Failed to load passes', e);
     }
 }
 
@@ -2500,7 +2500,7 @@ async function loadDeveloperProducts(universeId, retryCount = 0) {
         lastLoadedDevProducts = sortedProducts;
         renderDeveloperProducts(sortedProducts, universeId);
     } catch (e) {
-        console.warn('RoValra: Failed to load developer products', e);
+        console.warn('ufi: Failed to load developer products', e);
     }
 }
 

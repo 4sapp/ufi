@@ -56,7 +56,7 @@ async function getProfileStatus(userId) {
             return null;
         } catch (err) {
             console.error(
-                'RoValra: Failed to fetch trusted friend status.',
+                'ufi: Failed to fetch trusted friend status.',
                 err,
             );
             profileStatusCache.delete(userId);
@@ -118,7 +118,7 @@ async function createAddButton(userId) {
                     })
                     .catch(async (err) => {
                         console.error(
-                            'RoValra: Failed to send trusted friend request.',
+                            'ufi: Failed to send trusted friend request.',
                             err,
                         );
                         showSystemAlert(
@@ -175,7 +175,7 @@ async function createAcceptButton(userId) {
                     })
                     .catch(async (err) => {
                         console.error(
-                            'RoValra: Failed to accept trusted friend request.',
+                            'ufi: Failed to accept trusted friend request.',
                             err,
                         );
                         showSystemAlert(
@@ -233,7 +233,7 @@ async function createRemoveButton(userId) {
                     })
                     .catch(async (err) => {
                         console.error(
-                            'RoValra: Failed to remove trusted friend.',
+                            'ufi: Failed to remove trusted friend.',
                             err,
                         );
                         showSystemAlert(

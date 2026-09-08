@@ -101,7 +101,7 @@ export function init() {
             observeElement('.group-description-dialog-body', (dialogBody) => {
                 injectPendingFunds(dialogBody).catch((error) => {
                     console.warn(
-                        'RoValra: Failed to inject group pending funds',
+                        'ufi: Failed to inject group pending funds',
                         error,
                     );
                 });

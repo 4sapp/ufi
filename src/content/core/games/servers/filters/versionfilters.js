@@ -75,7 +75,7 @@ async function fetchVersionCounts() {
         });
         return response?.counts?.place_versions || [];
     } catch (e) {
-        console.warn('RoValra: Failed to fetch version counts', e);
+        console.warn('ufi: Failed to fetch version counts', e);
         return [];
     }
 }
@@ -93,7 +93,7 @@ async function fetchServersForVersion(version, cursor = null) {
             isRovalraApi: true
         });
     } catch (error) {
-        console.error(`RoValra: Failed to fetch version ${version}.`, error);
+        console.error(`ufi: Failed to fetch version ${version}.`, error);
         return null;
     }
 }

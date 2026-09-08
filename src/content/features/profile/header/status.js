@@ -342,7 +342,7 @@ async function addStatusBubble(avatarContainer) {
                                 return false;
                             } catch (error) {
                                 console.error(
-                                    'RoValra: Failed to update status via API.',
+                                    'ufi: Failed to update status via API.',
                                     error,
                                 );
                                 if (error?.userMessage) {
@@ -370,7 +370,7 @@ async function addStatusBubble(avatarContainer) {
                             await reportUserContent(userId, 'status');
                         } catch (error) {
                             console.error(
-                                'RoValra: Failed to report status.',
+                                'ufi: Failed to report status.',
                                 error,
                             );
                         }
@@ -379,7 +379,7 @@ async function addStatusBubble(avatarContainer) {
             });
         }
     } catch (error) {
-        console.error('RoValra: Error adding status bubble.', error);
+        console.error('ufi: Error adding status bubble.', error);
     }
 }
 
@@ -490,7 +490,7 @@ async function addHomeStatusHover(tile, card) {
                                                 );
                                             } catch (error) {
                                                 console.error(
-                                                    'RoValra: Failed to report status.',
+                                                    'ufi: Failed to report status.',
                                                     error,
                                                 );
                                             }
@@ -505,7 +505,7 @@ async function addHomeStatusHover(tile, card) {
                     } catch (error) {
                         if (!isHovering) return;
                         console.error(
-                            'RoValra: Error fetching status for home page hover.',
+                            'ufi: Error fetching status for home page hover.',
                             error,
                         );
                         bubbleWrapper.remove();

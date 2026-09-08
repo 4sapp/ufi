@@ -20,7 +20,7 @@ async function fetchGameData(universeId) {
             return response.data[0];
         }
     } catch (error) {
-        console.error('RoValra: Failed to fetch game name', error);
+        console.error('ufi: Failed to fetch game name', error);
     }
     return null;
 }
@@ -36,7 +36,7 @@ async function getGameThumbnail(universeId) {
         );
         return thumbnailMap.get(Number(universeId));
     } catch (error) {
-        console.error('RoValra: Failed to fetch game thumbnail', error);
+        console.error('ufi: Failed to fetch game thumbnail', error);
     }
     return null;
 }

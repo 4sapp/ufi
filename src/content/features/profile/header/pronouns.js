@@ -82,7 +82,7 @@ async function syncStoredPronounsToApi(userId, pronouns) {
         return normalizeProfilePronouns(updatedValue) || pronouns;
     } catch (error) {
         console.warn(
-            'RoValra: Existing local pronouns could not be synced to the API yet.',
+            'ufi: Existing local pronouns could not be synced to the API yet.',
             error,
         );
         return pronouns;
@@ -162,7 +162,7 @@ async function initProfilePronouns() {
         if (activeProfileUserId !== String(userId)) return;
         renderAllPronouns();
     } catch (error) {
-        console.warn('RoValra: Failed to load profile pronouns.', error);
+        console.warn('ufi: Failed to load profile pronouns.', error);
     }
 }
 

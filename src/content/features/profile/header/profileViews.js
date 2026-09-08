@@ -85,7 +85,7 @@ async function initProfileViews() {
     try {
         settings = await getUserSettings(userId);
     } catch (error) {
-        console.warn('RoValra: Failed to fetch profile views.', error);
+        console.warn('ufi: Failed to fetch profile views.', error);
         return;
     }
 

@@ -92,7 +92,7 @@ async function processServerElement(serverItem, retries = 5) {
 
         serverItem.classList.add('rovalra-checked');
     } catch (e) {
-        console.error('[RoValra ServerIDs] Error processing server:', e);
+        console.error('[ufi ServerIDs] Error processing server:', e);
     }
 }
 

@@ -485,7 +485,7 @@ export function init() {
         if (getProductsSectionPlaceId() !== placeId) return;
         renderProductsPage(content, placeId).catch((error) => {
             console.error(
-                'RoValra: Failed to render developer products section',
+                'ufi: Failed to render developer products section',
                 error,
             );
             content.innerHTML = '';

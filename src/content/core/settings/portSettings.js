@@ -91,7 +91,7 @@ export async function exportProfileNotes() {
             'success',
         );
     } catch (error) {
-        console.error('RoValra: Failed to export profile notes.', error);
+        console.error('ufi: Failed to export profile notes.', error);
         showSystemAlert('Profile notes could not be exported.', 'warning');
     }
 }
@@ -161,7 +161,7 @@ export async function importProfileNotes() {
                     );
                 } catch (error) {
                     console.error(
-                        'RoValra: Failed to import profile notes.',
+                        'ufi: Failed to import profile notes.',
                         error,
                     );
                     showSystemAlert(
@@ -175,7 +175,7 @@ export async function importProfileNotes() {
 
         input.click();
     } catch (error) {
-        console.error('RoValra: Failed to import profile notes.', error);
+        console.error('ufi: Failed to import profile notes.', error);
         showSystemAlert('Profile notes could not be imported.', 'warning');
     }
 }

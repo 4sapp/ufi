@@ -145,7 +145,7 @@ export async function getPlayabilityStatus(universeId) {
 
         const dataArray = Array.isArray(res) ? res : res?.data;
         if (!dataArray || !dataArray[0]) {
-            console.warn('RoValra: No playability status data', res);
+            console.warn('ufi: No playability status data', res);
             return null;
         }
 
@@ -164,7 +164,7 @@ export async function getPlayabilityStatus(universeId) {
             isPlayable: statusData.isPlayable || false,
         };
     } catch (e) {
-        console.warn('RoValra: Failed to fetch playability status', e);
+        console.warn('ufi: Failed to fetch playability status', e);
         return null;
     }
 }

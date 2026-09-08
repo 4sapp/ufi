@@ -115,7 +115,7 @@ export function init() {
                         );
                     }
                 } catch (e) {
-                    console.error('RoValra: Failed to fetch info', e);
+                    console.error('ufi: Failed to fetch info', e);
                 }
                 return;
             }

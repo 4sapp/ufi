@@ -233,7 +233,7 @@ export function init() {
                         nextPageCursor = response.nextPageToken || null;
                     } catch (error) {
                         console.error(
-                            'RoValra: Failed to fetch avatars',
+                            'ufi: Failed to fetch avatars',
                             error,
                         );
                     } finally {
@@ -375,7 +375,7 @@ export function init() {
                                     })
                                     .catch((error) => {
                                         console.error(
-                                            'RoValra: Failed to fetch outfit details',
+                                            'ufi: Failed to fetch outfit details',
                                             error,
                                         );
                                         setRotatorsBtn.disabled = false;

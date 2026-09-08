@@ -81,7 +81,7 @@ async function fetchBlockedIds() {
         const pageIds = getIdsFromResponse(data);
 
         if (pageIds === null) {
-            console.error('RoValra Bulk Unblock: Unknown response', data);
+            console.error('ufi Bulk Unblock: Unknown response', data);
             throw new Error('Unknown blocked users response');
         }
 
@@ -146,7 +146,7 @@ async function getBlockedUsers() {
             profiles = result.profileDetails;
         }
     } catch (error) {
-        console.warn('RoValra Bulk Unblock: Profile lookup failed', error);
+        console.warn('ufi Bulk Unblock: Profile lookup failed', error);
     }
 
     if (!profiles.length) {
@@ -166,7 +166,7 @@ async function getBlockedUsers() {
             }
         } catch (error) {
             console.warn(
-                'RoValra Bulk Unblock: Fallback profile lookup failed',
+                'ufi Bulk Unblock: Fallback profile lookup failed',
                 error,
             );
         }
@@ -359,7 +359,7 @@ function confirmUnblock(users, managerOverlay) {
                 }
             } catch (error) {
                 console.warn(
-                    `RoValra Bulk Unblock: Failed to unblock ${user.id}`,
+                    `ufi Bulk Unblock: Failed to unblock ${user.id}`,
                     error,
                 );
 
@@ -525,7 +525,7 @@ async function openManager() {
 
         updateCount();
     } catch (error) {
-        console.error('RoValra Bulk Unblock: Failed to load users', error);
+        console.error('ufi Bulk Unblock: Failed to load users', error);
 
         const errorText = document.createElement('div');
 
@@ -677,7 +677,7 @@ function scheduleNativeButton() {
 
     renderTimer = setTimeout(() => {
         updateNativeButton().catch((error) => {
-            console.warn('RoValra Bulk Unblock: Button update failed', error);
+            console.warn('ufi Bulk Unblock: Button update failed', error);
         });
     }, 150);
 }
@@ -685,7 +685,7 @@ function scheduleNativeButton() {
 function handleOpenManager() {
     openManager().catch((error) => {
         managerOpen = false;
-        console.error('RoValra Bulk Unblock: Manager failed', error);
+        console.error('ufi Bulk Unblock: Manager failed', error);
     });
 }
 

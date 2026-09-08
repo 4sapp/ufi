@@ -46,7 +46,7 @@ export async function checkUserExistence(userId, callRobloxApi) {
             return exists;
         }
     } catch (error) {
-        console.error('RoValra: Error checking user existence', error);
+        console.error('ufi: Error checking user existence', error);
     }
     return false;
 }

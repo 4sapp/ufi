@@ -181,7 +181,7 @@ export async function addNavbarButton() {
             if (previousBetaProgramsEnabled) {
                 savePreviousBetaPrograms(betaPrograms).catch((error) => {
                     console.warn(
-                        'RoValra: Failed to cache beta programs',
+                        'ufi: Failed to cache beta programs',
                         error,
                     );
                 });
@@ -441,7 +441,7 @@ export async function addNavbarButton() {
 
             menu.toggle(true);
         } catch (error) {
-            console.error('RoValra: Failed to fetch beta programs', error);
+            console.error('ufi: Failed to fetch beta programs', error);
             if (menu) menu.toggle(false);
         } finally {
             isLoading = false;

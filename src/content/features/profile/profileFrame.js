@@ -296,6 +296,6 @@ export async function init() {
 
         await applyCurrentFrame();
     } catch (error) {
-        console.error('RoValra: Profile frame init failed', error);
+        console.error('ufi: Profile frame init failed', error);
     }
 }

@@ -114,7 +114,7 @@ async function ensureDatacenterDataIsParsed() {
         await loadDatacenterMap();
         await getRegionData();
     } catch (error) {
-        console.warn('Rovalra: Failed to load datacenter map', error);
+        console.warn('ufi: Failed to load datacenter map', error);
     }
 }
 

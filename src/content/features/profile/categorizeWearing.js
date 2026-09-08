@@ -111,7 +111,7 @@ export async function loadAssetTypeIds() {
             }
         });
     } catch (e) {
-        console.error('RoValra: Failed to load dynamic asset type IDs', e);
+        console.error('ufi: Failed to load dynamic asset type IDs', e);
     }
 }
 
@@ -775,7 +775,7 @@ async function loadCurrentlyWearing(content, profileData) {
         }
     } catch (e) {
         console.error(
-            'RoValra: Failed to load currently wearing avatar data',
+            'ufi: Failed to load currently wearing avatar data',
             e,
         );
         document.getElementById('rovalra-main-categorized-wrapper')?.remove();

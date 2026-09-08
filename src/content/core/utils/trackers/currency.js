@@ -89,7 +89,7 @@ export async function updateUserCurrency(userId) {
             }
             return currencyData;
         } catch (error) {
-            console.error('RoValra: Failed to update user currency', error);
+            console.error('ufi: Failed to update user currency', error);
             return null;
         }
     })();

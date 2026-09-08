@@ -16,6 +16,6 @@ export async function init() {
             { multiple: true },
         );
     } catch (error) {
-        console.error('RoValra: Improved avatar card init failed', error);
+        console.error('ufi: Improved avatar card init failed', error);
     }
 }

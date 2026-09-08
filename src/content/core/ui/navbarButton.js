@@ -48,7 +48,7 @@ export function createNavbarButton({ id, iconSvgData, iconData, tooltipText, onC
                             svg.setAttribute('height', '28');
                         }
                     } catch (e) {
-                        console.error('RoValra: Failed to parse navbar button icon svg', e);
+                        console.error('ufi: Failed to parse navbar button icon svg', e);
                         resolve(null);
                         return;
                     }
@@ -56,7 +56,7 @@ export function createNavbarButton({ id, iconSvgData, iconData, tooltipText, onC
                     try {
                         spanIcon.innerHTML = DOMPurify.sanitize(iconData, { ...CUSTOM_ADDED_TAGS });
                     } catch (e) {
-                        console.error('RoValra: Failed to parse navbar button icon element', e);
+                        console.error('ufi: Failed to parse navbar button icon element', e);
                         resolve(null);
                         return;
                     }

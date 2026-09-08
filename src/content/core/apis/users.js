@@ -190,7 +190,7 @@ export async function getProfilePlatformData(options) {
             },
         });
     } catch (error) {
-        console.error('RoValra: Failed to fetch platform profile data', error);
+        console.error('ufi: Failed to fetch platform profile data', error);
         return null;
     }
 }
@@ -211,7 +211,7 @@ export async function getUserFullData(userId) {
         await setCache('user_data', userId.toString(), data, 'session');
         return data;
     } catch (error) {
-        console.warn('RoValra: Failed to fetch user data', error);
+        console.warn('ufi: Failed to fetch user data', error);
         return null;
     }
 }

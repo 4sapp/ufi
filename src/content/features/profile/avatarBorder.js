@@ -525,6 +525,6 @@ export async function init() {
             { multiple: true },
         );
     } catch (error) {
-        console.error('RoValra: Avatar border init failed', error);
+        console.error('ufi: Avatar border init failed', error);
     }
 }

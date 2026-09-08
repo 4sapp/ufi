@@ -318,7 +318,7 @@ export const getPurchasePromptItemInfo = async (modal) => {
                 }
             }
         } catch (error) {
-            console.warn('RoValra: Failed to fetch item price details', error);
+            console.warn('ufi: Failed to fetch item price details', error);
         }
     }
 
@@ -448,7 +448,7 @@ const attachItemDataToPurchasePrompt = (modal, force = false) => {
                         }
                     } catch (error) {
                         console.warn(
-                            `RoValra: Failed to fetch price for cart item ${item.id}`,
+                            `ufi: Failed to fetch price for cart item ${item.id}`,
                             error,
                         );
                     }
@@ -610,7 +610,7 @@ export function init() {
     );
 
     console.log(
-        '%cRoValra Purchase Prompt Item Detector initialized',
+        '%cufi Purchase Prompt Item Detector initialized',
         'color: #FF4500;',
     );
 }

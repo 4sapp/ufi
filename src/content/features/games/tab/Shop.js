@@ -789,7 +789,7 @@ export function createShopSection({ parentContainer, universeId }) {
 
                 loaded = true;
             } catch (error) {
-                console.warn('RoValra: Failed to load shop widgets', error);
+                console.warn('ufi: Failed to load shop widgets', error);
                 passList.innerHTML = '';
                 productList.innerHTML = '';
                 robuxList.innerHTML = '';

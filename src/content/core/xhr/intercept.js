@@ -1378,7 +1378,7 @@ const LayeredAssetTypes = [
             return newAssetList;
         };
 
-        console.log('RoValra: Multi-Accessory patch applied.');
+        console.log('ufi: Multi-Accessory patch applied.');
     };
 
     const initializeHooks = () => {
@@ -1498,6 +1498,6 @@ const LayeredAssetTypes = [
     initializeHooks();
 
     console.log(
-        'RoValra: Privacy Spoofing and Multi-Accessory loaded successfully.',
+        'ufi: Privacy Spoofing and Multi-Accessory loaded successfully.',
     );
 })();

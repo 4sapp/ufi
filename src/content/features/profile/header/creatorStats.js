@@ -275,7 +275,7 @@ async function getCommunityMemberCount(membership) {
         );
     } catch (error) {
         console.warn(
-            `RoValra: Failed to load member count for community ${groupId}`,
+            `ufi: Failed to load member count for community ${groupId}`,
             error,
         );
         return null;
@@ -340,7 +340,7 @@ async function loadCreatorStats(userId) {
 
     if (gameResult.status === 'rejected') {
         console.warn(
-            'RoValra: Failed to load creator game stats',
+            'ufi: Failed to load creator game stats',
             gameResult.reason,
         );
     }
@@ -349,7 +349,7 @@ async function loadCreatorStats(userId) {
         communityResult.status === 'rejected'
     ) {
         console.warn(
-            'RoValra: Failed to load creator community stats',
+            'ufi: Failed to load creator community stats',
             communityResult.reason,
         );
     }
@@ -595,7 +595,7 @@ export async function init() {
                 token,
             ).catch((error) => {
                 console.warn(
-                    'RoValra: Failed to initialize creator stats',
+                    'ufi: Failed to initialize creator stats',
                     error,
                 );
             });

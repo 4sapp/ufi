@@ -111,7 +111,7 @@ export async function fetchRolimonsItems(ids) {
                 );
             }
         } catch (e) {
-            console.warn('[RoValra] Failed to fetch Rolimons data', e);
+            console.warn('[ufi] Failed to fetch Rolimons data', e);
         } finally {
             rolimonsFetchPromise = null;
         }

@@ -155,7 +155,7 @@ async function fetchGameJoinV2Flag() {
     } catch (error) {
         gameJoinUseV2 = true;
         console.warn(
-            'RoValra API: Failed to fetch gamejoin version flag. Falling back to v2.',
+            'ufi API: Failed to fetch gamejoin version flag. Falling back to v2.',
             error,
         );
     }
@@ -531,7 +531,7 @@ export async function callRobloxApi(options) {
             const isDowntimeSimulated = await checkSimulatedDowntime();
             if (isDowntimeSimulated) {
                 console.warn(
-                    `RoValra API: [SIMULATION] 500 Error for ${endpoint}`,
+                    `ufi API: [SIMULATION] 500 Error for ${endpoint}`,
                 );
                 return new Response(
                     JSON.stringify({
@@ -553,7 +553,7 @@ export async function callRobloxApi(options) {
             const isLatencySimulated = await checkSimulatedLatency();
             if (isLatencySimulated) {
                 console.warn(
-                    `RoValra API: [SIMULATION] Adding 5s latency for ${endpoint}`,
+                    `ufi API: [SIMULATION] Adding 5s latency for ${endpoint}`,
                 );
                 await new Promise((resolve) => setTimeout(resolve, 5000));
             }
@@ -564,7 +564,7 @@ export async function callRobloxApi(options) {
                 await checkSimulatedJoinHttpError();
             if (isJoinHttpErrorSimulated) {
                 console.warn(
-                    `RoValra API: [SIMULATION] Returning 500 error for ${endpoint}`,
+                    `ufi API: [SIMULATION] Returning 500 error for ${endpoint}`,
                 );
                 return new Response(
                     JSON.stringify({
@@ -586,7 +586,7 @@ export async function callRobloxApi(options) {
             const isJoinErrorSimulated = await checkSimulatedJoinError();
             if (isJoinErrorSimulated) {
                 console.warn(
-                    `RoValra API: [SIMULATION] Throwing network error for ${endpoint}`,
+                    `ufi API: [SIMULATION] Throwing network error for ${endpoint}`,
                 );
                 throw new Error('ERR_SOCKS_CONNECTION_FAILED');
             }
@@ -655,7 +655,7 @@ export async function callRobloxApi(options) {
                     );
                 }
             } catch (err) {
-                console.warn('RoValra API: Failed to generate BAT token', err);
+                console.warn('ufi API: Failed to generate BAT token', err);
             }
         }
 
@@ -686,7 +686,7 @@ export async function callRobloxApi(options) {
 
                             if (storedVerification) {
                                 console.log(
-                                    'RoValra API: New token detected in body. Updating storage.',
+                                    'ufi API: New token detected in body. Updating storage.',
                                 );
                                 storedVerification.accessToken = newAccessToken;
                                 storedVerification.timestamp = Date.now();
@@ -706,7 +706,7 @@ export async function callRobloxApi(options) {
                         }
                     } catch (e) {
                         console.error(
-                            'RoValra API: Failed to update new access token.',
+                            'ufi API: Failed to update new access token.',
                             e,
                         );
                     }
@@ -734,7 +734,7 @@ export async function callRobloxApi(options) {
                             isTokenInvalid = true;
                             bodyIsInvalid = true;
                             console.log(
-                                'RoValra API: Invalid token/session from response body detected.',
+                                'ufi API: Invalid token/session from response body detected.',
                             );
                         }
                     } catch (e) {}
@@ -747,7 +747,7 @@ export async function callRobloxApi(options) {
                     !skipAutoAuth
                 ) {
                     console.warn(
-                        'RoValra API: Authentication failed. Clearing stored authentication.',
+                        'ufi API: Authentication failed. Clearing stored authentication.',
                     );
                     await chrome.storage.local.remove(OAUTH_STORAGE_KEY);
                 }
@@ -757,14 +757,14 @@ export async function callRobloxApi(options) {
                 }
             } catch (error) {
                 console.error(
-                    `RoValra API: Request to ${fullUrl} failed without retrying.`,
+                    `ufi API: Request to ${fullUrl} failed without retrying.`,
                     error,
                 );
                 throw error;
             }
             if (!lastResponse.ok) {
                 console.error(
-                    `RoValra API: Request to ${fullUrl} failed with status ${lastResponse.status}.`,
+                    `ufi API: Request to ${fullUrl} failed with status ${lastResponse.status}.`,
                 );
             }
             return lastResponse;
@@ -874,7 +874,7 @@ export async function callRobloxApi(options) {
 
         if (!response.ok) {
             console.error(
-                `RoValra API: Request to ${fullUrl} failed with status ${response.status}.`,
+                `ufi API: Request to ${fullUrl} failed with status ${response.status}.`,
             );
 
             if (useApiKey && response.status === 401) {
@@ -1020,7 +1020,7 @@ export async function callRobloxApi(options) {
                 })
                 .catch(() => {});
         } catch (e) {
-            console.warn('RoValra API: Monitor hook failed', e);
+            console.warn('ufi API: Monitor hook failed', e);
         }
     }
 

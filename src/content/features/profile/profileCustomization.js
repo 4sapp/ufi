@@ -83,7 +83,7 @@ async function getOwnedBorders() {
             return ownedBordersCache;
         }
     } catch (error) {
-        console.warn('RoValra: Failed to fetch owned profile borders.', error);
+        console.warn('ufi: Failed to fetch owned profile borders.', error);
     }
 
     return { borders: new Set(), gamepasses: new Set() };
@@ -112,7 +112,7 @@ async function getOwnedFrames() {
             return owned;
         }
     } catch (error) {
-        console.warn('RoValra: Failed to fetch owned profile frames.', error);
+        console.warn('ufi: Failed to fetch owned profile frames.', error);
     }
     return new Set();
 }
@@ -318,7 +318,7 @@ async function renderFramePicker(container, userId) {
         }
         applyCategory('all');
     } catch (error) {
-        console.error('RoValra: Failed to render profile frames.', error);
+        console.error('ufi: Failed to render profile frames.', error);
         container.textContent = ts('profileCustomization.failedToLoad');
     }
 }
@@ -938,7 +938,7 @@ async function renderOwnedBorderPicker(container, userId) {
         applyStoreFilters();
     } catch (error) {
         console.error(
-            'RoValra: Failed to render profile customization.',
+            'ufi: Failed to render profile customization.',
             error,
         );
         container.innerHTML = `<p style="color: var(--rovalra-secondary-text-color);">${ts('profileCustomization.failedToLoad')}</p>`;

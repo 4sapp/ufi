@@ -69,7 +69,7 @@ async function getAssetDeliveryInfo(assetId) {
             }
         }
     } catch (e) {
-        console.error('[RoValra DL] Failed to fetch asset location:', e);
+        console.error('[ufi DL] Failed to fetch asset location:', e);
     }
 
     return null;
@@ -84,7 +84,7 @@ async function downloadAsset(assetId, format, deliveryInfo = null) {
         try {
             await downloadObj(assetId);
         } catch (e) {
-            console.error(`[RoValra DL] Failed to export OBJ:`, e);
+            console.error(`[ufi DL] Failed to export OBJ:`, e);
         }
         return;
     }
@@ -119,7 +119,7 @@ async function downloadAsset(assetId, format, deliveryInfo = null) {
 
             return;
         } catch (e) {
-            console.error(`[RoValra DL] Failed to process raw asset:`, e);
+            console.error(`[ufi DL] Failed to process raw asset:`, e);
         }
     }
 

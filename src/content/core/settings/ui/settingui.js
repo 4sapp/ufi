@@ -62,7 +62,7 @@ async function shouldShowAccountStandingTab(settings) {
         return hasModerationHistory(await response.json());
     } catch (error) {
         console.warn(
-            'RoValra: Failed to check account standing tab visibility',
+            'ufi: Failed to check account standing tab visibility',
             error,
         );
         return false;
@@ -188,7 +188,7 @@ export async function buildSettingsPage({
     const containerMain = document.querySelector('main.container-main');
     if (!containerMain) {
         console.error(
-            'RoValra: Main container not found. Cannot build settings page.',
+            'ufi: Main container not found. Cannot build settings page.',
         );
         return {};
     }
@@ -502,7 +502,7 @@ function createUnifiedMenu({
             };
             handleSearch(mockEvent);
         } catch (error) {
-            console.warn('RoValra: Search handler failed:', error);
+            console.warn('ufi: Search handler failed:', error);
         }
     }, 300);
 

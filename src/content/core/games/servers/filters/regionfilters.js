@@ -182,7 +182,7 @@ async function cacheFlag(countryCode) {
         const blob = await response.blob();
         State.flags[code] = URL.createObjectURL(blob);
     } catch (e) {
-        console.warn('RoValra: Failed to cache flag for', code);
+        console.warn('ufi: Failed to cache flag for', code);
     }
 }
 
@@ -1021,7 +1021,7 @@ export async function initRegionFilters() {
     try {
         startObserving();
     } catch (e) {
-        console.error('RoValra: Failed to start observing.', e);
+        console.error('ufi: Failed to start observing.', e);
     }
 
     setupUI();

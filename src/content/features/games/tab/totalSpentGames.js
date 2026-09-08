@@ -81,7 +81,7 @@ export function init() {
                 }
             } catch (error) {
                 valueContainer.textContent = await t('totalSpent.errorTitle');
-                console.error('RoValra: Failed to load game spending', error);
+                console.error('ufi: Failed to load game spending', error);
             }
         },
         {

@@ -89,7 +89,7 @@ export async function getValidApiKey() {
             return apiKey;
         }
     } catch (error) {
-        console.error('RoValra: Failed to manage API key', error);
+        console.error('ufi: Failed to manage API key', error);
     }
 
     return null;

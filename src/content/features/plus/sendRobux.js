@@ -365,7 +365,7 @@ async function sendParentPermission(userId, robuxAmount, transferRequestId, east
                 },
             });
             if (!askPermissionRequest.ok) {
-                console.error("[RoValra Send Robux] An unknown error occured:", askPermissionRequest.status, await askPermissionRequest.text());
+                console.error("[ufi Send Robux] An unknown error occured:", askPermissionRequest.status, await askPermissionRequest.text());
                 overlay.close();
                 showStep2Popup(userId, robuxAmount, easterEgg, await t('plus.sendRobux.popup.parentPerms.errorSending'));
                 return;
@@ -436,7 +436,7 @@ async function sendParentPermissionRecieve(transferRequestId, easterEgg = false)
             });
             const askPermText = await askPermissionRequest.text();
             if (!askPermissionRequest.ok) {
-                console.error("[RoValra Recieve Robux] An unknown error occured:", askPermissionRequest.status, askPermText);
+                console.error("[ufi Recieve Robux] An unknown error occured:", askPermissionRequest.status, askPermText);
                 overlay.close();
                 const errorAsk = createOverlay({
                     title: await t('plus.sendRobux.popup.parentPerms.errorReceivingTitle'),
@@ -536,7 +536,7 @@ async function getSendRobuxStatus() {
             return isRobloxPlus;
         } catch (err) {
             console.error(
-                'RoValra: Failed to fetch currency transfer status.',
+                'ufi: Failed to fetch currency transfer status.',
                 err,
             );
             return false;
@@ -758,7 +758,7 @@ export function initBuyRobuxPage() {
                 const profileUserSettings = await getUserSettings(profile.userId);
 
 
-                console.log(profile.names.cominedName + ' RoValra Settings:', profileUserSettings)
+                console.log(profile.names.cominedName + ' ufi Settings:', profileUserSettings)
 
                 const profileDiv = document.createElement('div')
                 profileDiv.classList.add(

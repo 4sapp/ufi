@@ -127,7 +127,7 @@ async function fetchUserGames(userId) {
             ? await getGamesFromInventory(userId)
             : await getGamesFromV2(userId);
     } catch (error) {
-        console.error('RoValra: Error fetching user games:', error);
+        console.error('ufi: Error fetching user games:', error);
         return [];
     }
 }
@@ -154,7 +154,7 @@ async function fetchGamePassesForUniverse(universeId) {
         } while (cursor);
     } catch (error) {
         console.error(
-            `RoValra: Error fetching game passes for universe ${universeId}:`,
+            `ufi: Error fetching game passes for universe ${universeId}:`,
             error,
         );
         return [];
@@ -386,7 +386,7 @@ async function showGamePassSelectionOverlay(userId, username) {
             renderNextBatch();
         }
     } catch (error) {
-        console.error('RoValra: Error in showGamePassSelectionOverlay:', error);
+        console.error('ufi: Error in showGamePassSelectionOverlay:', error);
         gamePassListContainer.innerHTML = '';
         loadingMessage.style.display = 'block';
         loadingMessage.textContent = ts('donationLink.errorLoading', {

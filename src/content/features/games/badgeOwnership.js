@@ -256,7 +256,7 @@ function scheduleBadgeOwnershipUpdate(container) {
         setTimeout(() => {
             updateTimers.delete(container);
             updateBadgeOwnership(container).catch((error) => {
-                console.warn('RoValra: Failed to check badge ownership', error);
+                console.warn('ufi: Failed to check badge ownership', error);
             });
         }, UPDATE_DELAY_MS),
     );

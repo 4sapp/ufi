@@ -66,7 +66,7 @@ async function currentUserHasDonated() {
         );
     } catch (error) {
         console.warn(
-            'RoValra: Failed to check donation status before showing donation popup.',
+            'ufi: Failed to check donation status before showing donation popup.',
             error,
         );
         return getCurrentUserTierSync() >= 1;

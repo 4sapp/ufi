@@ -718,6 +718,6 @@ export function init() {
             });
         }
     })().catch((error) => {
-        console.error('RoValra: Failed to initialize API docs.', error);
+        console.error('ufi: Failed to initialize API docs.', error);
     });
 }

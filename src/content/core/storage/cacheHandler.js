@@ -76,7 +76,7 @@ const handleGetCacheError = (e, area) => {
         cacheMemory[area] = memoryFallback[area];
     } else {
         console.error(
-            `RoValra (CacheHandler): Failed to get cache from ${area}`,
+            `ufi (CacheHandler): Failed to get cache from ${area}`,
             e,
         );
     }
@@ -113,7 +113,7 @@ const getCache = async (area = 'session') => {
         if (!isValidCacheObject(cacheData)) {
             if (cacheData !== undefined) {
                 console.log(
-                    `RoValra (CacheHandler): Cache corrupted in ${area} storage, deleting to prevent issues.`,
+                    `ufi (CacheHandler): Cache corrupted in ${area} storage, deleting to prevent issues.`,
                 );
                 await chrome.storage[area].remove(CACHE_KEY);
             }
@@ -170,7 +170,7 @@ const handleSetCacheError = (e, area) => {
     }
 
     console.error(
-        `RoValra (CacheHandler): Failed to set cache in ${area}`,
+        `ufi (CacheHandler): Failed to set cache in ${area}`,
         e,
     );
 };
@@ -255,7 +255,7 @@ export const cleanupExpiredCache = async () => {
             }
         })
         .catch((e) =>
-            console.error('RoValra (CacheHandler): Cleanup error', e),
+            console.error('ufi (CacheHandler): Cleanup error', e),
         );
 
     return writeQueue;
@@ -285,7 +285,7 @@ export const set = async (section, key, value, area = 'session') => {
             await setCache(cache, area, false);
         })
         .catch((e) =>
-            console.error(`RoValra (CacheHandler): Error setting ${key}`, e),
+            console.error(`ufi (CacheHandler): Error setting ${key}`, e),
         );
 
     return writeQueue;
@@ -348,7 +348,7 @@ export const remove = async (section, key, area = 'session') => {
         })
         .catch((e) =>
             console.error(
-                `RoValra (CacheHandler): Failed to remove item "${key}" from ${area}`,
+                `ufi (CacheHandler): Failed to remove item "${key}" from ${area}`,
                 e,
             ),
         );

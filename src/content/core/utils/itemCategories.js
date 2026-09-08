@@ -57,7 +57,7 @@ async function fetchCategories() {
             categoriesCache = processed;
             return processed;
         } catch (error) {
-            console.error('RoValra: Failed to fetch item categories', error);
+            console.error('ufi: Failed to fetch item categories', error);
             categoriesCache = [];
             return [];
         }

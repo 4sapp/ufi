@@ -103,7 +103,7 @@ async function fetchFriendsCount(userId) {
         });
         return typeof response?.count === 'number' ? response.count : null;
     } catch (error) {
-        console.error('RoValra: Failed to fetch friends count', error);
+        console.error('ufi: Failed to fetch friends count', error);
         return null;
     }
 }
@@ -144,7 +144,7 @@ export async function fetchAllTrustedFriends(userId) {
             cursor = response.NextCursor;
         } while (cursor);
     } catch (error) {
-        console.error('RoValra: Failed to fetch all trusted friends', error);
+        console.error('ufi: Failed to fetch all trusted friends', error);
     }
     return trustedIds;
 }
@@ -158,7 +158,7 @@ export async function fetchFriendsOnlineStatus(userId) {
         });
         return response?.data || [];
     } catch (error) {
-        console.error('RoValra: Failed to fetch online status', error);
+        console.error('ufi: Failed to fetch online status', error);
         return [];
     }
 }
@@ -171,7 +171,7 @@ async function fetchDeletedAccountData(userId) {
             useBackground: true,
         });
     } catch (error) {
-        console.error('RoValra: Failed to fetch deleted account data', error);
+        console.error('ufi: Failed to fetch deleted account data', error);
         return null;
     }
 }
@@ -461,7 +461,7 @@ export async function updateFriendsList(userId) {
 
         return fullFriendsList;
     } catch (error) {
-        console.error('RoValra: Failed to update friends list', error);
+        console.error('ufi: Failed to update friends list', error);
         return [];
     }
 }
@@ -540,7 +540,7 @@ async function updateTrustedFriendsOnly(userId, currentFriendsList) {
 
         return updatedList;
     } catch (error) {
-        console.error('RoValra: Failed to update trusted friends', error);
+        console.error('ufi: Failed to update trusted friends', error);
         return currentFriendsList;
     }
 }
@@ -676,7 +676,7 @@ export function initFriendsListTracking() {
             await detectUnfriendEvents(userId, friendsList);
         })().catch((error) => {
             console.error(
-                'RoValra: Failed to refresh friends list on startup',
+                'ufi: Failed to refresh friends list on startup',
                 error,
             );
         });

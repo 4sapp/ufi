@@ -192,7 +192,7 @@ async function loadFirstAccountInfo(section) {
 
         insertFirstAccountElement(section, isOriginalUser, creationTimestamp);
     } catch (err) {
-        console.error('RoValra: Failed to get first account info', err);
+        console.error('ufi: Failed to get first account info', err);
     } finally {
         pendingSections.delete(section);
     }

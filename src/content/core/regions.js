@@ -129,7 +129,7 @@ async function refreshDatacenterMap(currentData) {
     } catch (e) {
         const msg = e.name === 'AbortError' ? 'Timeout' : e.message;
         console.warn(
-            'RoValra: Failed to refresh datacenter map in the background.',
+            'ufi: Failed to refresh datacenter map in the background.',
             msg,
         );
     }
@@ -152,7 +152,7 @@ export function loadDatacenterMap() {
             }
         } catch (e) {
             console.error(
-                'RoValra: Error reading datacenter map from storage.',
+                'ufi: Error reading datacenter map from storage.',
                 e,
             );
         }
@@ -173,7 +173,7 @@ export function loadDatacenterMap() {
                 processDataIntoMap(localData);
             } catch (e) {
                 console.error(
-                    'RoValra: Could not load local fallback JSON.',
+                    'ufi: Could not load local fallback JSON.',
                     e,
                 );
                 serverIpMap = {};
@@ -203,7 +203,7 @@ async function fetchAndProcessRegions() {
     const data = datacenterList;
 
     if (!Array.isArray(data) || data.length === 0) {
-        console.error('RoValra Critical: Could not load region data.');
+        console.error('ufi Critical: Could not load region data.');
         return { regions: newRegions, continents: newContinents };
     }
 
@@ -295,7 +295,7 @@ export async function getRegionData() {
             return data;
         } catch (error) {
             console.error(
-                'RoValra: Failed to fetch and process regions.',
+                'ufi: Failed to fetch and process regions.',
                 error,
             );
             throw error;

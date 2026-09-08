@@ -203,7 +203,7 @@ function notifySubscribers(element, context) {
             }
             sub.callback(element, currentContext);
         } catch (e) {
-            console.warn('RoValra: User card element callback error', e);
+            console.warn('ufi: User card element callback error', e);
         }
     }
 }
@@ -273,7 +273,7 @@ export function onUserCardElement(callback, options = {}) {
             }
             callback(element, getUserCardContext(element));
         } catch (e) {
-            console.warn('RoValra: User card element callback error', e);
+            console.warn('ufi: User card element callback error', e);
         }
     }
 

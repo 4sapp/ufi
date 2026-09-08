@@ -234,7 +234,7 @@ function createProfileNoteController(host, userId, initialNote) {
             currentNote = previousNote;
             if (card.isConnected) renderDisplay();
             console.warn(
-                'RoValra: Failed to save the private profile note.',
+                'ufi: Failed to save the private profile note.',
                 error,
             );
         }

@@ -87,7 +87,7 @@ export async function getCurrencyConversionRate(baseCurrency, targetCurrency) {
 
         const usdRates = data?.usd;
         if (!usdRates) {
-            throw new Error('RoValra: Invalid currency API response structure');
+            throw new Error('ufi: Invalid currency API response structure');
         }
 
         const rateToBase = base === 'usd' ? 1 : Number(usdRates[base]);
@@ -100,7 +100,7 @@ export async function getCurrencyConversionRate(baseCurrency, targetCurrency) {
             rateToTarget <= 0
         ) {
             throw new Error(
-                `RoValra: Invalid conversion data for ${base}/${target}`,
+                `ufi: Invalid conversion data for ${base}/${target}`,
             );
         }
 
@@ -112,7 +112,7 @@ export async function getCurrencyConversionRate(baseCurrency, targetCurrency) {
     } catch (error) {
         currencyRatesCache = null;
         currencyRatesPromise = null;
-        console.error('RoValra: Currency rate fetch failed', error);
+        console.error('ufi: Currency rate fetch failed', error);
         throw error;
     }
 }

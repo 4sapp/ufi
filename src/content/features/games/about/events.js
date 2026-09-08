@@ -47,7 +47,7 @@ async function fetchUniverseId(placeId) {
         const data = await response.json();
         return data?.[0]?.universeId;
     } catch (error) {
-        console.error('RoValra: Error fetching universe ID', error);
+        console.error('ufi: Error fetching universe ID', error);
         return null;
     }
 }
@@ -65,7 +65,7 @@ async function fetchActiveEvents(universeId) {
         const data = await response.json();
         return data?.data || [];
     } catch (error) {
-        console.error('RoValra: Error fetching active events', error);
+        console.error('ufi: Error fetching active events', error);
         return [];
     }
 }
@@ -83,7 +83,7 @@ async function fetchPastEvents(universeId) {
         const data = await response.json();
         return data?.data || [];
     } catch (error) {
-        console.error('RoValra: Error fetching past events', error);
+        console.error('ufi: Error fetching past events', error);
         return [];
     }
 }
@@ -100,7 +100,7 @@ async function fetchEventRsvps(eventId) {
         const data = await response.json();
         return data?.counters?.going || 0;
     } catch (error) {
-        console.error('RoValra: Error fetching event RSVPs', error);
+        console.error('ufi: Error fetching event RSVPs', error);
         return null;
     }
 }
@@ -116,7 +116,7 @@ async function updateEventRsvp(eventId, rsvpStatus) {
 
         return response.ok;
     } catch (error) {
-        console.error('RoValra: Error updating event RSVP', error);
+        console.error('ufi: Error updating event RSVP', error);
         return false;
     }
 }

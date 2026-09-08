@@ -104,7 +104,7 @@ async function shouldHidePopoverButton() {
         return (await settings[NAVBAR_DROPDOWN_SETTING_NAME]) === true;
     } catch (error) {
         console.warn(
-            'RoValra: Failed to read navbar settings dropdown visibility.',
+            'ufi: Failed to read navbar settings dropdown visibility.',
             error,
         );
         return false;

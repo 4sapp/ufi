@@ -40,7 +40,7 @@ async function fetchDevelopAssetDetails(assetIds) {
                     })
                     .catch((e) => {
                         console.warn(
-                            'RoValra: Develop fallback batch failed',
+                            'ufi: Develop fallback batch failed',
                             e,
                         );
                     });
@@ -176,7 +176,7 @@ async function fetchEconomyItemDetails(
 
         return item;
     } catch (e) {
-        console.warn(`RoValra: Economy fallback failed for item ${assetId}`, e);
+        console.warn(`ufi: Economy fallback failed for item ${assetId}`, e);
         return null;
     }
 }
@@ -255,11 +255,11 @@ async function processBatch() {
 
         if (!detailsRes.ok)
             console.warn(
-                'RoValra: Catalog details request failed, using fallback item details.',
+                'ufi: Catalog details request failed, using fallback item details.',
             );
         if (!looksRes.ok)
             console.warn(
-                'RoValra: Looks API request failed, prices may be incomplete.',
+                'ufi: Looks API request failed, prices may be incomplete.',
             );
 
         const detailsData = detailsRes.ok ? await detailsRes.json() : null;
@@ -459,7 +459,7 @@ async function processBatch() {
             }),
         );
     } catch (e) {
-        console.warn('RoValra: Batch request failed', e);
+        console.warn('ufi: Batch request failed', e);
         currentBatch.forEach((request) => {
             request.placeholder.innerHTML =
                 '<div style="padding: 10px;">Failed to load</div>';

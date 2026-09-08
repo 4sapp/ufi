@@ -576,7 +576,7 @@ export async function getSavedPreferredRegion() {
             });
         } catch (e) {
             console.error(
-                'RoValra: Failed to reset invalid preferred region.',
+                'ufi: Failed to reset invalid preferred region.',
                 e,
             );
         }

@@ -412,7 +412,7 @@ function addSpentPerGameSection(table) {
             updateTotalAmount();
         } catch (error) {
             gamesContainer.textContent = ts('spentPerGame.loadError');
-            console.error('RoValra: Failed to load spending per game', error);
+            console.error('ufi: Failed to load spending per game', error);
         } finally {
             loading = false;
         }

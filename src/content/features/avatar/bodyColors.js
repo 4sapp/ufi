@@ -124,7 +124,7 @@ export function init() {
                 refreshAvatarPreview();
                 return true;
             } catch (error) {
-                console.error('RoValra: Failed to set body colours', error);
+                console.error('ufi: Failed to set body colours', error);
                 showSystemAlert(failedText, 'warning');
                 return false;
             } finally {
@@ -255,7 +255,7 @@ export function init() {
                 syncActive();
             }
         } catch (error) {
-            console.error('RoValra: Failed to read body colours', error);
+            console.error('ufi: Failed to read body colours', error);
         }
     };
 

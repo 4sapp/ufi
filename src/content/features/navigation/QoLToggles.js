@@ -115,7 +115,7 @@ export function init() {
                 }
             }
         } catch (e) {
-            console.warn('RoValra: Failed to fetch online status', e);
+            console.warn('ufi: Failed to fetch online status', e);
         }
 
         currentJoinStatus =

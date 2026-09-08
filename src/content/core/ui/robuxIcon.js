@@ -873,7 +873,7 @@ function refreshVisibleUsdEstimates() {
 
 export function applyRobuxIcon(element, options = {}) {
     if (!(element instanceof HTMLElement)) {
-        console.warn('RoValra: applyRobuxIcon requires an HTMLElement');
+        console.warn('ufi: applyRobuxIcon requires an HTMLElement');
         return;
     }
 

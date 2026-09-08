@@ -54,7 +54,7 @@ async function loadVideo(assetId, videoElement, statusText, downloadBtn) {
 
         if (data && data.length > 0 && data[0].errors) {
             console.warn(
-                `[RoValra] Asset ${assetId} failed as 'Video'. Errors:`,
+                `[ufi] Asset ${assetId} failed as 'Video'. Errors:`,
                 data[0].errors,
             );
             statusText.innerText = 'Retrying as GamePreviewVideo...';
@@ -112,7 +112,7 @@ export async function init() {
                 resolve(result && result.EnableVideoTest === true);
             });
         } else {
-            console.warn('[RoValra] Chrome Storage API not found.');
+            console.warn('[ufi] Chrome Storage API not found.');
             resolve(false);
         }
     });

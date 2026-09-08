@@ -1065,7 +1065,7 @@ function openEnvironmentCreatorOverlay() {
                         castShadow: !!data.dirLightCastShadow,
                     });
                 console.log(
-                    'RoValra Environment Config:',
+                    'ufi Environment Config:',
                     JSON.stringify(out, null, 2),
                 );
                 alert('Config printed to console (F12)');
@@ -1511,7 +1511,7 @@ async function injectCustomButtons(toggleButton) {
                         await updateUserSettingViaApi('environment', envId);
                     } catch (error) {
                         console.error(
-                            'RoValra: Failed to save environment via API.',
+                            'ufi: Failed to save environment via API.',
                             error,
                         );
                     }
@@ -1724,7 +1724,7 @@ async function loadCustomEnvironment(scene, config) {
             },
             undefined,
             (error) => {
-                console.error('RoValra: GLTF Load Error', error);
+                console.error('ufi: GLTF Load Error', error);
                 reject(error);
             },
         );
@@ -2100,7 +2100,7 @@ async function preloadAvatar(userId = getUserIdFromUrl()) {
                                 );
                             } catch (error) {
                                 console.error(
-                                    'RoValra: Failed to sync environment to API.',
+                                    'ufi: Failed to sync environment to API.',
                                     error,
                                 );
                             }
@@ -2218,7 +2218,7 @@ async function preloadAvatar(userId = getUserIdFromUrl()) {
                         skyboxUrls[2] = up;
                         skyboxUrls[3] = dn;
                     } catch (e) {
-                        console.warn('RoValra: Skybox rotation failed', e);
+                        console.warn('ufi: Skybox rotation failed', e);
                     }
 
                     const cubeLoader = new THREE.CubeTextureLoader();
@@ -2239,7 +2239,7 @@ async function preloadAvatar(userId = getUserIdFromUrl()) {
             };
 
             await setupEnvironment().catch((err) => {
-                console.error('RoValra: Background env load failed', err);
+                console.error('ufi: Background env load failed', err);
                 profileEnvironmentEnabled = false;
                 setupAtmosphere(
                     RBXRenderer.getScene(),
@@ -2254,7 +2254,7 @@ async function preloadAvatar(userId = getUserIdFromUrl()) {
 
             return globalAvatarData;
         } catch (err) {
-            console.error('RoValra Preload Error:', err);
+            console.error('ufi Preload Error:', err);
             avatarDataPromise = null;
             throw err;
         } finally {

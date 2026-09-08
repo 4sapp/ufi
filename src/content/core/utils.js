@@ -13,7 +13,7 @@ export const getCsrfToken = (() => {
                 return csrfToken;
             }
         } catch (error) {
-            console.error('RoValra (Utils): Failed to get CSRF token.', error);
+            console.error('ufi (Utils): Failed to get CSRF token.', error);
             pendingPromise = null;
             return null;
         }

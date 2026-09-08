@@ -40,7 +40,7 @@ export async function init() {
                     return cloudData?.privateServerPriceRobux;
                 } catch (e) {
                     console.warn(
-                        'RoValra: Failed to fetch original price for Roblox Plus tooltip',
+                        'ufi: Failed to fetch original price for Roblox Plus tooltip',
                         e,
                     );
                     return null;

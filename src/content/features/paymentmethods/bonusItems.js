@@ -81,7 +81,7 @@ async function isEligibleForPersonalizedBonus() {
         return findEligibilityFlag(metadata) === true;
     })().catch((error) => {
         console.warn(
-            'RoValra: Failed to check personalized bonus eligibility.',
+            'ufi: Failed to check personalized bonus eligibility.',
             error,
         );
         eligibilityPromise = null;
@@ -173,7 +173,7 @@ async function loadBonusItem(item) {
         item.loading = false;
         refreshBonusDropdown();
         console.warn(
-            `RoValra: Failed to load bonus session ${item.value}.`,
+            `ufi: Failed to load bonus session ${item.value}.`,
             error,
         );
     }
@@ -194,7 +194,7 @@ function getPaymentPageData(container) {
         return JSON.parse(container.dataset.paymentMethodsPage || '{}');
     } catch (error) {
         console.warn(
-            'RoValra: Failed to read payment methods page data.',
+            'ufi: Failed to read payment methods page data.',
             error,
         );
         return null;
