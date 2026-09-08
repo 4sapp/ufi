@@ -329,13 +329,20 @@ export function getFullRegionName(regionCode) {
     let parts = [];
     if (regionData.city && regionData.city !== regionData.country)
         parts.push(regionData.city);
-    if (regionData.state && regionData.country === 'United States')
+    if (
+        regionData.state &&
+        (regionData.country === 'United States' || regionData.country === 'US')
+    )
         parts.push(regionData.state);
     if (regionData.country) parts.push(regionData.country);
 
     parts = [...new Set(parts.filter((p) => p))];
 
-    if (parts.length > 1 && parts[parts.length - 1] === 'United States') {
+    if (
+        parts.length > 1 &&
+        (parts[parts.length - 1] === 'United States' ||
+            parts[parts.length - 1] === 'US')
+    ) {
         parts[parts.length - 1] = 'USA';
     }
 

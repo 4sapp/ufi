@@ -33,6 +33,7 @@ import {
 } from '../../../core/games/servers/serverdetails.js';
 import { createUUID } from '../../../core/apis/serverApi.js';
 import { addModernPrivateServerControls } from '../privateserver.js';
+import { initMiamiFinder } from './miamifinder.js';
 
 const SHARED_STYLES = `
     #rovalra-main-controls {
@@ -329,6 +330,9 @@ function safeInitAll() {
     } catch (e) {}
     try {
         if (typeof initGlobalStatsBar === 'function') initGlobalStatsBar();
+    } catch (e) {}
+    try {
+        if (typeof initMiamiFinder === 'function') initMiamiFinder();
     } catch (e) {}
 
     startController();

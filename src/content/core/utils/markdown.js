@@ -1,6 +1,6 @@
 import { marked } from 'marked'; // Better markdown!!!
 import DOMPurify from 'dompurify';
-import { CUSTOM_ADDED_TAGS } from './purifyCfg';
+import { CUSTOM_ADDED_TAGS } from './purifyCfg.js';
 
 export function parseMarkdown(text, themeColors = {}) {
     if (!text) return '';

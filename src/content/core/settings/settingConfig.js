@@ -185,6 +185,20 @@ export const SETTINGS_CONFIG = {
                         type: 'checkbox',
                         default: false,
                     },
+                    miamiFinderMode: {
+                        label: 'Miami Server Finder Mode',
+                        description: [
+                            'Default mode for the Miami Server Finder on experience server lists.',
+                            '**Miami**: Focuses on finding verified Miami and Florida Roblox servers.',
+                            '**Best Connection**: Chooses the best server using lowest latency and connection score.',
+                        ],
+                        type: 'select',
+                        options: [
+                            { label: 'Miami Priority', value: 'miami' },
+                            { label: 'Best Connection', value: 'best_connection' },
+                        ],
+                        default: 'miami',
+                    },
                 },
             },
             QuickPlayEnable: {

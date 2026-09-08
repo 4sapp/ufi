@@ -1,0 +1,285 @@
+.rovalra-miami-finder-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+    margin: 12px 0;
+    border-radius: 8px;
+    background-color: var(--rovalra-container-background-color, rgba(255, 255, 255, 0.05));
+    border: 1px solid var(--rovalra-border-color, rgba(255, 255, 255, 0.1));
+    color: var(--rovalra-main-text-color, #f7f7f8);
+    box-sizing: border-box;
+    width: 100%;
+    transition: all 0.2s ease;
+
+    .miami-finder-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--rovalra-border-color, rgba(255, 255, 255, 0.08));
+
+        .header-title-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .header-icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 24px;
+                height: 24px;
+                color: #ff708d;
+            }
+
+            .header-title {
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 1.2;
+                color: var(--rovalra-main-text-color, #ffffff);
+            }
+
+            .header-badge {
+                font-size: 11px;
+                font-weight: 600;
+                padding: 2px 7px;
+                border-radius: 12px;
+                background-color: rgba(255, 112, 141, 0.18);
+                color: #ff708d;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        .header-modes {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            padding: 2px;
+            gap: 2px;
+
+            .mode-pill {
+                padding: 5px 10px;
+                font-size: 12px;
+                font-weight: 600;
+                border: none;
+                border-radius: 5px;
+                background: transparent;
+                color: var(--rovalra-secondary-text-color, #a0a0a0);
+                cursor: pointer;
+                transition: background 0.15s, color 0.15s;
+
+                &.active {
+                    background: var(--rovalra-button-background-color, rgba(255, 255, 255, 0.15));
+                    color: var(--rovalra-main-text-color, #ffffff);
+                }
+
+                &:hover:not(.active) {
+                    color: var(--rovalra-main-text-color, #ffffff);
+                }
+            }
+        }
+    }
+
+    .miami-finder-body {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        .server-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+
+            .info-field {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                padding: 10px 12px;
+                background: rgba(0, 0, 0, 0.12);
+                border-radius: 6px;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+
+                .field-label {
+                    font-size: 11px;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    color: var(--rovalra-secondary-text-color, #8e9297);
+                }
+
+                .field-value {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: var(--rovalra-main-text-color, #ffffff);
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    &.score-value {
+                        font-size: 16px;
+                        font-weight: 700;
+                    }
+
+                    .copy-id-btn {
+                        background: none;
+                        border: none;
+                        padding: 2px 4px;
+                        cursor: pointer;
+                        color: var(--rovalra-secondary-text-color, #8e9297);
+                        display: inline-flex;
+                        align-items: center;
+                        transition: color 0.15s;
+
+                        &:hover {
+                            color: var(--rovalra-main-text-color, #ffffff);
+                        }
+                    }
+                }
+            }
+        }
+
+        .region-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+
+            &.miami {
+                background: rgba(0, 200, 115, 0.18);
+                color: #00e588;
+            }
+            &.florida {
+                background: rgba(0, 180, 216, 0.18);
+                color: #00b4d8;
+            }
+            &.us_east {
+                background: rgba(72, 149, 239, 0.18);
+                color: #4895ef;
+            }
+            &.us_other, &.international {
+                background: rgba(181, 131, 244, 0.18);
+                color: #b583f4;
+            }
+            &.unknown {
+                background: rgba(255, 255, 255, 0.1);
+                color: #a0a0a0;
+            }
+        }
+
+        .region-truth-note {
+            font-size: 12px;
+            line-height: 1.4;
+            color: var(--rovalra-secondary-text-color, #8e9297);
+            font-style: italic;
+        }
+
+        .finder-status-banner {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            line-height: 1.4;
+
+            &.info {
+                background: rgba(51, 95, 255, 0.12);
+                color: #6a95ff;
+                border: 1px solid rgba(51, 95, 255, 0.25);
+            }
+
+            &.error {
+                background: rgba(255, 75, 75, 0.12);
+                color: #ff6b6b;
+                border: 1px solid rgba(255, 75, 75, 0.25);
+            }
+
+            &.success {
+                background: rgba(0, 200, 115, 0.12);
+                color: #00e588;
+                border: 1px solid rgba(0, 200, 115, 0.25);
+            }
+        }
+    }
+
+    .miami-finder-actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 4px;
+
+        .btn-finder-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: opacity 0.15s, transform 0.1s;
+
+            &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+
+            &:not(:disabled):active {
+                transform: scale(0.98);
+            }
+
+            &.primary {
+                background: #ff5e7e;
+                color: #ffffff;
+
+                &:hover:not(:disabled) {
+                    background: #ff476c;
+                }
+            }
+
+            &.join {
+                background: var(--rovalra-playbutton-color, #335fff);
+                color: #ffffff;
+
+                &:hover:not(:disabled) {
+                    filter: brightness(1.1);
+                }
+            }
+
+            &.secondary {
+                background: var(--rovalra-button-background-color, rgba(255, 255, 255, 0.12));
+                color: var(--rovalra-main-text-color, #ffffff);
+
+                &:hover:not(:disabled) {
+                    background: rgba(255, 255, 255, 0.18);
+                }
+            }
+        }
+    }
+}
+
+#rovalra-toggle-miami-finder {
+    &.active {
+        background-color: rgba(255, 112, 141, 0.25) !important;
+        color: #ff708d !important;
+    }
+
+    svg {
+        width: 18px;
+        height: 18px;
+    }
+}
