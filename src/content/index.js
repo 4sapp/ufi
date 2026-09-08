@@ -1,6 +1,4 @@
 import { initializeObserver, startObserving } from './core/observer.js';
-import { getValidAccessToken } from './core/oauth/oauth.js';
-import { startAuthFavoriteCleanupMonitor } from './core/oauth/fallback.js';
 import { t } from './core/locale/i18n.js';
 // Site wide
 import { init as initOnboarding } from './features/onboarding/onboarding.js';
@@ -599,11 +597,6 @@ async function initializePage() {
 
     initializeObserver();
     const observerStatus = startObserving();
-
-    getValidAccessToken(false, false).catch((error) =>
-        console.error('ufi: OAuth token initialization failed', error),
-    );
-    startAuthFavoriteCleanupMonitor();
 
     const runSettingsMaintenance = () => {
         refreshRemoteSettingLocks()

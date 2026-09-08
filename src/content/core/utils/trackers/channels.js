@@ -136,18 +136,8 @@ async function fetchAssignment(binaryType) {
 }
 
 async function reportAssignments(assignments) {
-    const response = await callRobloxApi({
-        subdomain: 'apis',
-        endpoint: '/v1/channels/enrollments',
-        method: 'POST',
-        isRovalraApi: true,
-        body: assignments,
-        noCache: true,
-    });
-
-    if (!response.ok) {
-        throw new Error(`Enrollment API returned HTTP ${response.status}`);
-    }
+    // Client-side only in ufi: no external telemetry
+    return;
 }
 
 export async function updateClientChannelAssignments() {

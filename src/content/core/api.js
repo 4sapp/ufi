@@ -592,17 +592,20 @@ export async function callRobloxApi(options) {
             }
         }
 
-        const baseUrl = isRovalraApi
-            ? subdomain === 'www'
-                ? 'https://www.rovalra.com'
-                : `https://${subdomain}.rovalra.com`
-            : `https://${subdomain}.roblox.com`;
+        if (isRovalraApi) {
+            return new Response(JSON.stringify({}), {
+                status: 200,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+
+        const baseUrl = `https://${subdomain}.roblox.com`;
         let fullUrl = customFullUrl || `${baseUrl}${endpoint}`;
 
         if (fullUrl.includes('?')) {
-            fullUrl += `&_RoValraRequest=${noCache ? Date.now() : ''}`;
+            fullUrl += `&_ufiRequest=${noCache ? Date.now() : ''}`;
         } else {
-            fullUrl += `?_RoValraRequest=${noCache ? Date.now() : ''}`;
+            fullUrl += `?_ufiRequest=${noCache ? Date.now() : ''}`;
         }
 
         const isMutatingMethod = ['POST', 'PATCH', 'DELETE'].includes(
