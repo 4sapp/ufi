@@ -1,130 +1,84 @@
+# ufi — Miami Server Finder & Roblox Region Selector
+
 <p align="center">
-  <img src="./public/Assets/logo.svg" alt="RoValra" width="520">
+  <strong>ufi</strong> is a personal fork of <a href="https://github.com/NotValra/RoValra">RoValra</a> enhanced with specialized tools for Roblox server discovery, truthful region verification, and preferred-region joining.
 </p>
 
 <p align="center">
-  <strong>RoValra</strong> is a modern browser extension that enhances the Roblox experience with quality-of-life features and advanced tooling, all completely free.
-</p>
-
-<p align="center">
-  <a href="https://rovalra.com"><strong>Official Website</strong></a> •
-  <a href="https://chromewebstore.google.com/detail/RoValra%20-%20Roblox%20Improved/njcickgebhnpgmoodjdgohkclfplejli">Chrome Web Store</a> •
-  <a href="https://discord.gg/GHd5cSKJRk">Discord</a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/NotValra/RoValra/releases"><img alt="GitHub Downloads" src="https://img.shields.io/github/downloads/NotValra/RoValra/total?label=Downloads"></a>
-  <a href="https://chromewebstore.google.com/detail/rovalra-roblox-improved/njcickgebhnpgmoodjdgohkclfplejli"><img alt="Chrome Webstore Installs" src="https://img.shields.io/chrome-web-store/users/njcickgebhnpgmoodjdgohkclfplejli?logo=googlechrome&logoColor=white&label=Weekly%20Users&link=https%3A%2F%2Fchromewebstore.google.com%2Fdetail%2Frovalra-roblox-improved%2Fnjcickgebhnpgmoodjdgohkclfplejli"></a>
-  <a href="https://chromewebstore.google.com/detail/rovalra-roblox-improved/njcickgebhnpgmoodjdgohkclfplejli/reviews"><img alt="Rating" src="https://img.shields.io/chrome-web-store/stars/njcickgebhnpgmoodjdgohkclfplejli?logo=reverbnation&logoColor=yellow&link=https%3A%2F%2Fchromewebstore.google.com%2Fdetail%2Frovalra-roblox-improved%2Fnjcickgebhnpgmoodjdgohkclfplejli%2Freviews&label=Rating"></a>
-  <a href="https://discord.gg/GHd5cSKJRk"><img alt="Discord" src="https://img.shields.io/discord/1143867106765570088?logo=discord&logoColor=white&label=Discord&color=002bff&link=https://discord.gg/GHd5cSKJRk"></a>
-
+  <a href="https://github.com/4sapp/ufi">GitHub Repository</a> •
+  <a href="https://github.com/NotValra/RoValra">Upstream Project (RoValra)</a>
 </p>
 
 ---
 
-## Official Links
+## Key Features
 
-- **Website:** https://rovalra.com
-- **Features:** https://www.rovalra.com/features/
-- **FAQ & Support:** https://www.rovalra.com/support/
+### 🌴 Miami Server Finder
+- **True Miami Detection**: Accurately detects verified Roblox datacenters located in Miami, Florida (`Location #17`, DataCenter IDs: `332`, `374`, `432`, `433`, `434`).
+- **Zero Fabrication**: Never fakes geographic location. If an exact Miami datacenter is not currently active for an experience, it transparently indicates the closest available Florida or US East server.
+- **Hierarchical Priority**:
+  1. Verified Miami
+  2. Verified Florida
+  3. US East (Atlanta, Ashburn, New York City, Columbus, etc.)
+  4. Other US / Nearby Regions
+  5. Unknown fallback
 
-> [!WARNING]
-> RoValra is only distributed through the official [website](https://rovalra.com), [Chrome Web Store](https://chromewebstore.google.com/detail/RoValra%20-%20Roblox%20Improved/njcickgebhnpgmoodjdgohkclfplejli) and unofficially through [Firefox](https://github.com/rav4toy/RoValra-Firefox)
+### ⚡ Best Connection Mode
+- An alternative search mode that prioritizes the best possible connection and lowest network roundtrip latency rather than a fixed geographic preference.
+- Evaluates candidate servers via Roblox's native latency endpoints, measures live request roundtrips, and ranks candidates using a comprehensive connection score (0–100).
 
----
-
-## Support the Project
-
-If you find RoValra useful, consider giving the repository a **star⭐**.\
-Or [donate robux.](https://www.roblox.com/games/store-section/9452973012) \
-It helps a lot and supports continued development.
-
----
-
-## Installation
-
-### Option 1: Chrome Web Store and Firefox Web Store (Recommended)
-
-Install directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/RoValra%20-%20Roblox%20Improved/njcickgebhnpgmoodjdgohkclfplejli) Or [FireFox (Unofficial port)](https://addons.mozilla.org/en-US/firefox/addon/rovalra-rav4/)
-
-> [!WARNING]
-> Firefox port of RoValra is **unofficial and not controlled by us.**\
-> Please verify what you are downloading is trustworthy before you download it by reading the [source code](https://github.com/rav4toy/RoValra-Firefox)\
-> The FireFox port is use at your own risk
+### 🎯 Smart Server Scoring & Filtering
+- **Formula**: `score = regionScore + connectionScore + availabilityScore - playerPenalty - failurePenalty`
+- Automatically excludes full servers (`playing >= maxPlayers`) and inactive instances.
+- Prefers servers with modest player counts when region and connection scores are comparable.
+- **Find Another**: Allows quickly cycling to the next best candidate server if you want a different instance.
 
 ---
 
-### Option 2: Manual Installation (Developer Mode)
+## Installation & Setup
 
-<details>
-<summary><strong>Expand instructions</strong></summary>
+This extension runs completely locally in your browser without requiring external backend servers or third-party databases.
 
-### Build from source
+### 1. Build from Source
+
+Requirements: [Node.js](https://nodejs.org/) (v18 or higher) and `npm`.
 
 ```bash
+# Clone the repository
+git clone https://github.com/4sapp/ufi.git
+cd ufi
+
+# Install dependencies
 npm install
+
+# Build the extension
 npm run build
 ```
 
-### Load into browser
+The compiled extension output will be generated in the `dist/` directory.
 
-1. Enable **Developer Mode** in your browser’s extensions page
-2. Download and unzip the latest release from
-   [https://github.com/NotValra/RoValra/releases](https://github.com/NotValra/RoValra/releases)
-3. Import the folder that directly contains:
-    - `manifest.json`
+### 2. Load into Your Browser (Chrome, Edge, Brave, Opera)
 
-</details>
+1. Open your browser and navigate to:
+   - Chrome / Brave: `chrome://extensions/`
+   - Edge: `edge://extensions/`
+2. Enable **Developer mode** (toggle in the top-right corner).
+3. Click **Load unpacked** (or **Cargar descomprimida**).
+4. Select the `dist/` folder inside the `ufi` project directory.
+5. Visit any Roblox game page, open the **Servers** tab, and use the **Miami Server Finder** panel!
+
+---
+
+## Upstream & Acknowledgements
+
+This project is a fork of and builds upon the open-source work in [RoValra](https://github.com/NotValra/RoValra) by Valra and its contributors.
+
+- **Upstream Repository:** [https://github.com/NotValra/RoValra](https://github.com/NotValra/RoValra)
+- **Roblox Datacenter IP Research:** Julia ([Datacenter IP Research](https://github.com/RoSeal-Extension/Top-Secret-Thing))
+- **Original Region Searcher Logic:** l5se
 
 ---
 
 ## License
 
-RoValra source code is licensed under the **GNU General Public License version 3.0** unless otherwise stated.
-
-The following image assets are **not** licensed under GPL-3.0 and are not available for reuse:
-
-- `public/Assets/Contributor.png`
-- `public/Assets/icon-16.png`
-- `public/Assets/icon-48.png`
-- `public/Assets/icon-128.png`
-- `public/Assets/RoValraLogo.png`
-- `public/Assets/DonatorTiers/`
-
-These images, including the RoValra logo and related logo/icon artwork, are fully copyrighted by Valra. All rights, title, and ownership in the RoValra logo belong to Valra. They may not be copied, redistributed, modified, published, used, or included in any other project, product, service, website, extension, fork, or derivative work without prior written permission from Valra.
-
----
-
-## Credits
-
-- **Contributors:**
-  [https://github.com/NotValra/RoValra/graphs/contributors](https://github.com/NotValra/RoValra/graphs/contributors)
-
-- **Sales / Revenue Data:**
-  [https://github.com/workframes/roblox-owner-counts](https://github.com/workframes/roblox-owner-counts)
-
-- **UI & Chrome Store Graphics:**
-  mmfw
-
-- **Development:**
-  Gemini, Valra and [the contributors](https://github.com/NotValra/RoValra/graphs/contributors)
-
-- **Region Searcher:**
-  Originally a Python script by l5se (used with permission, improved and rewritten for the extension)
-
-- **Additional Development Help:**
-  [Aspect](https://github.com/Aspectise)
-
-- **Extension Logo:**
-  _Gilbert_, a fish caught in
-  [Fisch](https://www.roblox.com/games/16732694052/Fisch)
-
-- **Early help with locating Servers:**
-  7_lz (Discord)
-
-- **Roblox Datacenter IP Research:**
-  Julia -
-  [Datacenter IP Research](https://github.com/RoSeal-Extension/Top-Secret-Thing)
-
-- **Project Name:**
-  coweggs (Discord)
+This project is open-source under the **GNU General Public License v3.0 (GPL-3.0)**, preserving the license of the upstream RoValra codebase.
