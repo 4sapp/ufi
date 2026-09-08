@@ -52,7 +52,7 @@ const cleanup = (async () => {
 });
 
 const init = (async () => {
-    console.debug("RoValra: Verifying settings compat.");
+    console.debug("ufi: Verifying settings compat.");
 
     let deleted = [];
     let replaced = [];
@@ -114,9 +114,17 @@ const init = (async () => {
 
     compatResults = { replaced: replaced, deleted: deleted };
 
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.tabs.query({ active: true, currentWindow: true, url: '*://*.roblox.com/*' }, (tabs) => {
         if (tabs[0]?.id) {
-            chrome.tabs.sendMessage(tabs[0].id, { type: "settingsCompatResultData", replaced: replaced, deleted: deleted }, () => {});
+            chrome.tabs.sendMessage(
+                tabs[0].id,
+                { type: "settingsCompatResultData", replaced: replaced, deleted: deleted },
+                () => {
+                    if (chrome.runtime.lastError) {
+                        // Suppress "Receiving end does not exist" if page is not yet listening
+                    }
+                }
+            );
         }
     });
 

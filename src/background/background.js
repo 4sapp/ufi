@@ -30,7 +30,7 @@ if (chrome.storage.session && chrome.storage.session.setAccessLevel) {
             accessLevel: 'TRUSTED_AND_UNTRUSTED_CONTEXTS',
         })
         .catch((err) =>
-            console.error('RoValra: Failed to set session access level', err),
+            console.error('ufi: Failed to set session access level', err),
         );
 }
 
@@ -79,13 +79,13 @@ function initializeSettings(reason) {
 
                 if (storedValue === null) {
                     console.warn(
-                        `RoValra: Setting '${key}' was null but expected ${defaultType}. Resetting.`,
+                        `ufi: Setting '${key}' was null but expected ${defaultType}. Resetting.`,
                     );
                     settingsToUpdate[key] = defaultValue;
                     needsUpdate = true;
                 } else if (storedType !== defaultType) {
                     console.warn(
-                        `RoValra: Type mismatch for '${key}'. Expected ${defaultType}, got ${storedType}. Resetting.`,
+                        `ufi: Type mismatch for '${key}'. Expected ${defaultType}, got ${storedType}. Resetting.`,
                     );
                     settingsToUpdate[key] = defaultValue;
                     needsUpdate = true;
@@ -97,12 +97,12 @@ function initializeSettings(reason) {
             chrome.storage.local.set(settingsToUpdate, () => {
                 if (chrome.runtime.lastError) {
                     console.error(
-                        'RoValra: Failed to sync settings.',
+                        'ufi: Failed to sync settings.',
                         chrome.runtime.lastError,
                     );
                 } else {
                     console.log(
-                        `RoValra: Synced/Fixed ${Object.keys(settingsToUpdate).length} settings (Trigger: ${reason}).`,
+                        `ufi: Synced/Fixed ${Object.keys(settingsToUpdate).length} settings (Trigger: ${reason}).`,
                     );
                 }
             });
@@ -334,27 +334,45 @@ const contextMenuClickListener = async (info, tab) => {
         const placeId = info.menuItemId.replace('rovalra-copy-universe-', '');
         const universeId = await getUniverseIdFromPlaceId(placeId);
         if (universeId && tab?.id) {
-            chrome.tabs.sendMessage(tab.id, {
-                action: 'copyToClipboard',
-                text: String(universeId),
-            });
+            chrome.tabs.sendMessage(
+                tab.id,
+                {
+                    action: 'copyToClipboard',
+                    text: String(universeId),
+                },
+                () => {
+                    if (chrome.runtime.lastError) {}
+                },
+            );
         }
     } else if (info.menuItemId.startsWith('rovalra-viewid-')) {
         const id = info.menuItemId.replace('rovalra-viewid-', '');
         if (id && tab?.id) {
-            chrome.tabs.sendMessage(tab.id, {
-                action: 'view-ids',
-                data: {
-                    targetId: id
-                }
-            })
+            chrome.tabs.sendMessage(
+                tab.id,
+                {
+                    action: 'view-ids',
+                    data: {
+                        targetId: id,
+                    },
+                },
+                () => {
+                    if (chrome.runtime.lastError) {}
+                },
+            );
         }
     } else if (info.menuItemId.startsWith('rovalra-copy-') && tab?.id) {
         const textToCopy = info.menuItemId.replace('rovalra-copy-', '');
-        chrome.tabs.sendMessage(tab.id, {
-            action: 'copyToClipboard',
-            text: textToCopy,
-        });
+        chrome.tabs.sendMessage(
+            tab.id,
+            {
+                action: 'copyToClipboard',
+                text: textToCopy,
+            },
+            () => {
+                if (chrome.runtime.lastError) {}
+            },
+        );
     }
 };
 
@@ -386,7 +404,7 @@ async function getUniverseIdFromPlaceId(placeId) {
         }
         return null;
     } catch (e) {
-        console.error('RoValra: Error fetching universe ID from place ID', e);
+        console.error('ufi: Error fetching universe ID from place ID', e);
         return null;
     }
 }
@@ -469,7 +487,7 @@ async function wearOutfit(outfitData) {
                 : outfitData;
         if (!outfitId) {
             console.error(
-                'RoValra: wearOutfit called with invalid outfitData',
+                'ufi: wearOutfit called with invalid outfitData',
                 outfitData,
             );
             return { ok: false };
@@ -557,7 +575,7 @@ async function wearOutfit(outfitData) {
         const results = await Promise.all(promises);
         return { ok: results.every((r) => r && r.ok) };
     } catch (e) {
-        console.error('RoValra: Error wearing outfit', e);
+        console.error('ufi: Error wearing outfit', e);
         return { ok: false };
     }
 }
@@ -786,7 +804,7 @@ async function fetchTransactionsPage(userId, cursor = null) {
                 rateLimitDelay: getRateLimitDelay(response),
             };
         } catch (error) {
-            console.error('RoValra: Failed to fetch transactions page', error);
+            console.error('ufi: Failed to fetch transactions page', error);
             return null;
         }
     }
@@ -1237,7 +1255,7 @@ async function runTransactionLoop(userId, existingData, isIncremental, scanId) {
 
             if (internalErrorCount >= TRANSACTION_MAX_INTERNAL_ERRORS) {
                 console.warn(
-                    'RoValra: Treating repeated Roblox transaction internal errors as end of scan',
+                    'ufi: Treating repeated Roblox transaction internal errors as end of scan',
                     {
                         userId,
                         cursor,
@@ -1360,7 +1378,7 @@ async function fetchBadgesPage(userId, cursor = null) {
             if (!response.ok) return null;
             return await response.json();
         } catch (error) {
-            console.error('RoValra: Failed to fetch badges page', error);
+            console.error('ufi: Failed to fetch badges page', error);
             return null;
         }
     }
@@ -1620,7 +1638,7 @@ async function fetchAvatarInventoryPage(sortOption, pageToken = null) {
             return await response.json();
         } catch (error) {
             console.error(
-                'RoValra: Failed to fetch avatar inventory page',
+                'ufi: Failed to fetch avatar inventory page',
                 error,
             );
             return null;
@@ -1958,7 +1976,7 @@ async function getCustomFontFamily(assetId) {
             const fileResponse = await fetchAssetDelivery(faceAssetId);
             if (!fileResponse.ok) {
                 console.warn(
-                    `RoValra: Custom font file ${faceAssetId} failed with HTTP ${fileResponse.status}`,
+                    `ufi: Custom font file ${faceAssetId} failed with HTTP ${fileResponse.status}`,
                 );
                 continue;
             }
@@ -2195,7 +2213,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 (granted) => {
                     if (chrome.runtime.lastError)
                         console.warn(
-                            'RoValra: Permission request failed:',
+                            'ufi: Permission request failed:',
                             chrome.runtime.lastError,
                         );
                     sendResponse({ granted: !!granted });
@@ -2344,7 +2362,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                     });
                 })
                 .catch((err) => {
-                    console.error('RoValra: Background API fetch failed', err);
+                    console.error('ufi: Background API fetch failed', err);
                     sendResponse({
                         ok: false,
                         status: 500,
