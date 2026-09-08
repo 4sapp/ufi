@@ -1,47 +1,78 @@
-# ufi — Miami Server Finder & Roblox Region Selector
+# ufi
 
-<p align="center">
-  <strong>ufi</strong> is a personal fork of <a href="https://github.com/NotValra/RoValra">RoValra</a> enhanced with specialized tools for Roblox server discovery, truthful region verification, and preferred-region joining.
-</p>
+A lightweight, local browser extension for Roblox server discovery, regional ranking, and targeted server instance selection.
 
-<p align="center">
-  <a href="https://github.com/4sapp/ufi">GitHub Repository</a> •
-  <a href="https://github.com/NotValra/RoValra">Upstream Project (RoValra)</a>
-</p>
+Based on the [RoValra](https://github.com/NotValra/RoValra) architecture, **ufi** is a personal fork specialized in identifying authentic regional game instances—primarily focused on Miami and US East infrastructure—alongside a low-latency connection finder.
+
+---
+
+## Overview
+
+Finding specific regional instances on Roblox is traditionally opaque. The public server directory lists player counts and server version numbers, but omits datacenter identities and exact physical locations. 
+
+`ufi` resolves this limitation directly inside the browser. It queries available public instances, evaluates their underlying infrastructure through legitimate join handshake telemetry, computes a multi-factor connection score, and launches the desktop client into the selected server instance.
+
+The extension operates **strictly on client-side browser APIs**. It requires no cloud backends, databases, external proxies, or tracking services.
 
 ---
 
 ## Key Features
 
-### 🌴 Miami Server Finder
-- **True Miami Detection**: Accurately detects verified Roblox datacenters located in Miami, Florida (`Location #17`, DataCenter IDs: `332`, `374`, `432`, `433`, `434`).
-- **Zero Fabrication**: Never fakes geographic location. If an exact Miami datacenter is not currently active for an experience, it transparently indicates the closest available Florida or US East server.
-- **Hierarchical Priority**:
-  1. Verified Miami
-  2. Verified Florida
-  3. US East (Atlanta, Ashburn, New York City, Columbus, etc.)
-  4. Other US / Nearby Regions
-  5. Unknown fallback
+### Miami Server Finder
 
-### ⚡ Best Connection Mode
-- An alternative search mode that prioritizes the best possible connection and lowest network roundtrip latency rather than a fixed geographic preference.
-- Evaluates candidate servers via Roblox's native latency endpoints, measures live request roundtrips, and ranks candidates using a comprehensive connection score (0–100).
+Targeted discovery for Roblox instances hosted in Miami, Florida datacenters.
 
-### 🎯 Smart Server Scoring & Filtering
-- **Formula**: `score = regionScore + connectionScore + availabilityScore - playerPenalty - failurePenalty`
-- Automatically excludes full servers (`playing >= maxPlayers`) and inactive instances.
-- Prefers servers with modest player counts when region and connection scores are comparable.
-- **Find Another**: Allows quickly cycling to the next best candidate server if you want a different instance.
+- **Verified Datacenter Matching**: Matches instance telemetry against known physical Roblox datacenters in Miami (`Location #17`, DataCenter IDs: `332`, `374`, `432`, `433`, `434`).
+- **Truthful Region Attribution**: Zero simulated or fabricated locations. If Miami capacity is inactive for a specific game, the extension explicitly communicates the nearest verified fallback (e.g., Florida statewide or US East hubs such as Atlanta or Ashburn).
+- **Hierarchical Resolution**:
+  1. Verified Miami datacenter
+  2. Verified Florida statewide infrastructure
+  3. US East regional datacenters (Georgia, Virginia, New York, Ohio)
+  4. Compatible nearby North American regions
+  5. Unverified / Unknown instances
+
+### Best Connection Mode
+
+An alternative discovery engine prioritizing overall connection stability and network roundtrip time rather than a fixed geographic market.
+
+- Utilizes Roblox latency-sorted discovery endpoints alongside measured handshake roundtrip durations.
+- Ranks candidate instances according to responsive latency and server capacity.
+
+### Server Scoring Engine
+
+Candidates are scored on an objective 0–100 scale using a transparent heuristic:
+
+$$\text{Score} = \text{RegionScore} + \text{ConnectionScore} + \text{AvailabilityScore} - \text{PlayerPenalty} - \text{FailurePenalty}$$
+
+- **Region Score** (up to 50 pts): Awarded based on verified proximity to the target region.
+- **Connection Score** (up to 30 pts): Derived from live roundtrip network latency or geographic distance.
+- **Availability Score** (20 pts): Confirms the instance is responsive, active, and contains open player slots.
+- **Player Penalty** (0–12 pts): Dampens crowded servers, favoring instances with room for friends when connection quality is equal.
+- **Hard Rejections**: Servers at maximum capacity (`playing >= maxPlayers`) or inactive instances receive a score of 0 and are excluded immediately.
+- **Find Another**: Allows instant rejection of the current candidate to evaluate the next highest-scoring server.
 
 ---
 
-## Installation & Setup
+## Technical Architecture
 
-This extension runs completely locally in your browser without requiring external backend servers or third-party databases.
+### How Region Detection Works
 
-### 1. Build from Source
+1. **Place Resolution**: Extracts the active `PlaceId` from the navigation context.
+2. **Cataloging Instances**: Iterates through paginated public servers via `games.roblox.com/v1/games/{placeId}/servers/Public`.
+3. **Infrastructure Resolution**: Evaluates candidate JobIds through the `gamejoin.roblox.com` endpoint. The resulting response yields the physical `DataCenterId` and machine network routing without needing to fully initialize a gameplay session.
+4. **Local Datacenter Mapping**: The retrieved `DataCenterId` is referenced against `ServerList.json`, which contains verified geographic coordinates and municipal classifications.
+5. **Execution**: Once approved, `launchGame()` triggers `Roblox.GameLauncher.joinGameInstance()` via secure main-world injection to prompt the local Roblox client.
 
-Requirements: [Node.js](https://nodejs.org/) (v18 or higher) and `npm`.
+---
+
+## Building & Installation
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (version 18 or later)
+- `npm` (bundled with Node.js)
+
+### 1. Build the Extension
 
 ```bash
 # Clone the repository
@@ -51,34 +82,40 @@ cd ufi
 # Install dependencies
 npm install
 
-# Build the extension
+# Build distribution bundle
 npm run build
 ```
 
-The compiled extension output will be generated in the `dist/` directory.
+The compiled extension files, content scripts, background workers, and SCSS stylesheets are output directly to the `dist/` directory.
 
-### 2. Load into Your Browser (Chrome, Edge, Brave, Opera)
+### 2. Load into Chromium Browsers (Chrome, Edge, Brave, Opera)
 
-1. Open your browser and navigate to:
-   - Chrome / Brave: `chrome://extensions/`
-   - Edge: `edge://extensions/`
-2. Enable **Developer mode** (toggle in the top-right corner).
-3. Click **Load unpacked** (or **Cargar descomprimida**).
-4. Select the `dist/` folder inside the `ufi` project directory.
-5. Visit any Roblox game page, open the **Servers** tab, and use the **Miami Server Finder** panel!
+1. Open your browser and navigate to `chrome://extensions/` (or `edge://extensions/`).
+2. Toggle **Developer mode** in the top-right corner of the page.
+3. Click **Load unpacked** in the upper toolbar.
+4. Select the `dist/` directory located inside your cloned `ufi` folder.
+5. Navigate to any Roblox experience page and open the **Servers** tab. The **Miami Server Finder** panel will be mounted directly above the active instance list.
+
+---
+
+## Project Integrity & Network Rules
+
+- **No Credential Access**: The extension does not read, store, or transmit security tokens, cookies, or account credentials.
+- **No Client Tampering**: Does not inject DLLs, manipulate game memory, or modify the Roblox desktop client.
+- **Rate-Limit Conscious**: Candidate evaluation is strictly throttled with micro-delays to comply with Roblox endpoint rate limits and avoid server flooding.
 
 ---
 
 ## Upstream & Acknowledgements
 
-This project is a fork of and builds upon the open-source work in [RoValra](https://github.com/NotValra/RoValra) by Valra and its contributors.
+This software is a specialized fork of [RoValra](https://github.com/NotValra/RoValra), developed by Valra and open-source contributors.
 
-- **Upstream Repository:** [https://github.com/NotValra/RoValra](https://github.com/NotValra/RoValra)
-- **Roblox Datacenter IP Research:** Julia ([Datacenter IP Research](https://github.com/RoSeal-Extension/Top-Secret-Thing))
-- **Original Region Searcher Logic:** l5se
+- **Upstream Repository**: [NotValra/RoValra](https://github.com/NotValra/RoValra)
+- **Datacenter Identification Research**: Julia ([RoSeal Datacenter IP Research](https://github.com/RoSeal-Extension/Top-Secret-Thing))
+- **Original Region Search Logic**: l5se
 
 ---
 
 ## License
 
-This project is open-source under the **GNU General Public License v3.0 (GPL-3.0)**, preserving the license of the upstream RoValra codebase.
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**, maintaining full compliance with the upstream codebase license.
