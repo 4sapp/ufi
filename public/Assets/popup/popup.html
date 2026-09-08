@@ -6,14 +6,15 @@
     <meta charset="UTF-8">
     <style>
         :root {
-            --bg-base: #0c0d12;
-            --bg-card: rgba(255, 255, 255, 0.05);
-            --border-card: rgba(255, 255, 255, 0.1);
+            --bg-base: #191b1d;
+            --bg-card: #232527;
+            --border: #313336;
             --text-primary: #ffffff;
-            --text-secondary: #9aa0a6;
-            --accent-gradient: linear-gradient(135deg, #ff6b8b 0%, #ff8e53 50%, #4facfe 100%);
-            --accent-pink: #ff6b8b;
-            --accent-cyan: #00e5ff;
+            --text-secondary: #9ea1a7;
+            --btn-bg: #2b2d30;
+            --btn-hover: #36383c;
+            --accent: #00a2ff;
+            --accent-hover: #008be6;
         }
 
         * {
@@ -23,150 +24,88 @@
         }
 
         body {
-            width: 320px;
-            padding: 24px 20px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            width: 290px;
+            padding: 18px 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-base);
             color: var(--text-primary);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bg-glow {
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 220px;
-            height: 120px;
-            background: radial-gradient(circle, rgba(255, 107, 139, 0.25) 0%, rgba(79, 172, 254, 0.15) 60%, transparent 100%);
-            filter: blur(35px);
-            z-index: 0;
-            pointer-events: none;
         }
 
         .container {
-            position: relative;
-            z-index: 1;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 14px;
         }
 
         .header {
-            text-align: center;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 4px;
+            gap: 2px;
         }
 
         .logo-title {
-            font-size: 32px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.1;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.2px;
         }
 
         .logo-subtitle {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-primary);
-            letter-spacing: 0.2px;
-        }
-
-        .logo-desc {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-secondary);
-            margin-top: 2px;
         }
 
-        .features-list {
+        .info-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .info-card strong {
+            color: var(--text-primary);
+        }
+
+        .actions {
             display: flex;
             flex-direction: column;
             gap: 8px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-card);
-            border-radius: 12px;
-            padding: 12px 14px;
         }
 
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 12px;
-            line-height: 1.4;
-            color: var(--text-secondary);
-        }
-
-        .feature-item strong {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .feature-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            margin-top: 5px;
-            flex-shrink: 0;
-        }
-
-        .dot-miami {
-            background: #ff6b8b;
-            box-shadow: 0 0 8px rgba(255, 107, 139, 0.6);
-        }
-
-        .dot-ping {
-            background: #00e5ff;
-            box-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
-        }
-
-        .dot-safe {
-            background: #00e588;
-            box-shadow: 0 0 8px rgba(0, 229, 136, 0.6);
-        }
-
-        .btn-action {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+        .btn {
+            display: block;
             width: 100%;
-            padding: 11px 16px;
-            border-radius: 10px;
-            font-size: 13px;
+            padding: 9px 12px;
+            border-radius: 6px;
+            font-size: 12px;
             font-weight: 600;
+            text-align: center;
             text-decoration: none;
             cursor: pointer;
             border: none;
-            transition: all 0.2s ease;
+            transition: background-color 0.15s ease;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #ff6b8b 0%, #ff8e53 100%);
+            background-color: var(--accent);
             color: #ffffff;
-            box-shadow: 0 4px 15px rgba(255, 107, 139, 0.3);
         }
 
         .btn-primary:hover {
-            filter: brightness(1.08);
-            transform: translateY(-1px);
+            background-color: var(--accent-hover);
         }
 
         .btn-secondary {
-            background: var(--bg-card);
-            border: 1px solid var(--border-card);
+            background-color: var(--btn-bg);
+            border: 1px solid var(--border);
             color: var(--text-primary);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-1px);
+            background-color: var(--btn-hover);
         }
 
         .footer {
@@ -174,7 +113,7 @@
             align-items: center;
             justify-content: space-between;
             padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid var(--border);
             font-size: 11px;
             color: var(--text-secondary);
         }
@@ -184,8 +123,7 @@
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            transition: color 0.2s ease;
+            gap: 4px;
         }
 
         .footer a:hover {
@@ -193,48 +131,36 @@
         }
 
         .footer svg {
-            width: 14px;
-            height: 14px;
+            width: 13px;
+            height: 13px;
             fill: currentColor;
         }
     </style>
 </head>
 
 <body>
-    <div class="bg-glow"></div>
-
     <div class="container">
         <div class="header">
             <h1 class="logo-title">ufi</h1>
             <p class="logo-subtitle">Miami Server Finder</p>
-            <p class="logo-desc">Descubre servidores de Roblox en Miami y con el menor ping</p>
         </div>
 
-        <div class="features-list">
-            <div class="feature-item">
-                <span class="feature-dot dot-miami"></span>
-                <span><strong>Modo Miami:</strong> Conéctate a datacenters verificados en Miami y Florida sin rodeos.</span>
-            </div>
-            <div class="feature-item">
-                <span class="feature-dot dot-ping"></span>
-                <span><strong>Mejor Conexión:</strong> Evalúa la latencia real para encontrar el servidor más rápido.</span>
-            </div>
-            <div class="feature-item">
-                <span class="feature-dot dot-safe"></span>
-                <span><strong>100% Verídico:</strong> Detección real por infraestructura, sin datos falsos.</span>
-            </div>
+        <div class="info-card">
+            Busca servidores en <strong>Miami</strong> o con el menor ping directamente desde la pestaña <strong>Servidores</strong> en Roblox.
         </div>
 
-        <button type="button" id="settings-link" class="btn-action btn-primary">
-            Ajustes de la Extensión
-        </button>
+        <div class="actions">
+            <button type="button" id="settings-link" class="btn btn-primary">
+                Ajustes de la Extensión
+            </button>
 
-        <button type="button" id="github-link" class="btn-action btn-secondary">
-            Ver Código en GitHub
-        </button>
+            <button type="button" id="github-link" class="btn btn-secondary">
+                Ver Código en GitHub
+            </button>
+        </div>
 
         <div class="footer">
-            <span>ufi v2.6.8 • Fork Personal</span>
+            <span>ufi v2.6.8</span>
             <a href="#" id="github-footer" title="GitHub">
                 <svg viewBox="0 0 24 24">
                     <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
